@@ -1,0 +1,405 @@
+.vs-canciones-contenedor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.btn-cancion{
+  flex: 1;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 10px;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+  }
+
+  .vs{
+    color: white;
+  }
+
+  p {
+    margin-top: 15px;
+    font-size: 20px;
+  }
+}
+
+.btn-cancion:last-child {
+  margin-bottom: 83px; 
+}
+
+
+.vs {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.ganadora-mensaje {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 24px;
+    color: #222428;
+  }
+}
+
+.signOut{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.btn-rejugar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  left: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  width: 300px;
+  height: 75px;
+  font-size: 24px;
+}
+
+.tema-argentina{
+  ion-content{
+    font-family: "Girassol", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  // .btn-cancion {
+  //   width: 380px;
+  //   height: 400px;
+  //   border-radius: 60%;
+    
+  //   background-image: url('/assets/argentina/sol40.png');
+
+  //   background-size: 85%;
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+
+  //   background-color: transparent;
+    
+  //   box-shadow: none;
+
+  //   border: none;
+  //   color: #64351f;
+  //   font-weight: bold;
+    
+
+  //   h1{
+  //     font-size: 20px;
+  //   }
+  //   p{
+  //     font-size: 17px;
+  //   }
+  // }
+
+  // .btn-cancion::before{
+  //   content: "";
+  //   width: 55px;
+  //   height: 55px;
+  //   background-image: url('/assets/argentina/sol40.png');
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  //   position: absolute;
+  //   top: -8px;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   animation: girarSol 10s linear infinite;
+  // }
+
+  // @keyframes girarSol {
+  //   from { transform: translateX(-50%) rotate(0deg); }
+  //   to   { transform: translateX(-50%) rotate(360deg); }
+  // }
+  .btn-cancion {
+    width: 280px;
+    height: 180px;
+    background: linear-gradient(#ffffff 35%, #75aadb 100%);
+    border: 4px solid #f5b30d;
+    border-radius: 25px 25px 35px 35px;
+    padding-top: 58px; 
+    position: relative;
+    font-family: "Girassol", serif;
+    color: #12263a;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    //margin: 15px 0;
+
+    h1{ font-size: 20px; margin: 5px 10px; }
+    p{ font-size: 16px; opacity:.8; }
+  }
+
+  .btn-cancion::before{
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-image: url('/assets/argentina/sol-de-mayo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: girarSol 10s linear infinite;
+  }
+
+  .btn-cancion2::before{
+    animation: girarSol2 10s linear infinite;
+  }
+
+  @keyframes girarSol {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg); }
+  }
+  @keyframes girarSol2 {
+    from { transform: translateX(-50%) rotate(360deg); }
+    to   { transform: translateX(-50%) rotate(0deg); }
+  }
+
+  .texto1{
+    color: #6d6e71;
+  }
+
+  .texto2{
+    color: #12263a;
+  }
+
+  .btn-rejugar{
+    background: #75aadb;
+    color: #031a36;
+    font-family: "Girassol", serif;
+    font-weight: 400;
+    font-style: normal; 
+  }
+
+  .vs{
+    text-shadow:
+    0 0 3px #f5b30d,
+    0 0 6px #f5b30d,
+    0 0 10px #f5b30d;
+  }
+
+  .vs-canciones-contenedor{
+    align-items: center;
+  }
+}
+
+.tema-naif{
+  ion-button{
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .btn-cancion {
+    background: #ffb347;
+    color: #4a2e0e;
+    border-radius: 999px;
+    border: 3px solid #ffe6b3;
+    box-shadow: 0 0 6px #ffb347;
+    font-family: "Pacifico", cursive;
+  }
+
+  .texto1{
+    color: #35b0c1;
+  }
+  .texto2{
+    color: #ce2b43;
+  }
+
+  .btn-rejugar{
+    width: 180px;  
+    height: 180px;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vs{
+    text-shadow:
+      0 0 3px #ce2b43,
+      0 0 6px #ce2b43,
+      0 0 10px #ce2b43;
+  }
+}
+
+.tema-profesional{
+  .btn-cancion1{
+    background: #631c24;
+  }
+  .btn-cancion2{
+    background: #c93434;
+  }
+
+  .texto1{
+    color: white;
+  }
+  .texto2{
+    color: #ffd700;
+  }
+
+  .btn-rejugar{
+    color: black;
+  }
+
+  .vs{
+    color: white;
+  }
+}
+
+
+ion-content.tema-festivo::part(background) {
+  background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+}
+
+.tema-festivo{
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+  ion-toolbar{
+    font-family: "Chewy", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+  }
+
+  ion-button{
+    font-family: "Chewy", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .btn-cancion {
+    width: 260px;
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: #795476;
+    background: #ffe6e8;
+    border: 3px solid #ff9fcf;
+
+    border-radius: 60% 60% 50% 50% / 70% 70% 40% 40%;
+
+    box-shadow: 0 0 10px #ffcae6;
+    padding: 15px;
+  }
+
+  .vs-canciones-contenedor{
+    align-items: center;
+  }
+
+  .signOut{
+    --background:#eb76a9;
+    --color: #ffffff;
+    border: 2px solid #72b800;
+    box-sizing: border-box;
+  }
+
+  .btn-rejugar{
+    border-radius: 999px;
+    background: #ffa584;
+    color: #ffffff;
+    border: 2px solid #5bcff8;
+    box-sizing: border-box;
+  }
+
+  .texto1{
+    color: #af5285;
+  }
+
+  .texto2{
+    color: #c82519;
+  }
+
+  ion-toolbar{
+    --background: #f26434;
+  }
+
+  .fondo-pascua {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .fondo {
+    position: absolute;
+    bottom: -120%;
+    left: -120%;
+    width: 250%;
+    height: 250%;
+    animation: diagonalFlow 25s linear infinite;
+    opacity: 0.4;
+  }
+
+  .patron {
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/custom/easter-bunny.png"), url("/assets/custom/easter-day.png");
+    background-repeat: repeat, repeat;
+    background-size: 100px 100px, 100px 100px;
+    background-position: 0 0, 100px 0;  
+    opacity: 0.6;
+  }
+
+  @keyframes diagonalFlow {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50%, -50%);
+    }
+  }
+}

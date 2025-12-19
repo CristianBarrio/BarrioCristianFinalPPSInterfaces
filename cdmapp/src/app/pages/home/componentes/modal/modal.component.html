@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Mesa de entrada</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+
+  <div style="height: 48%;">
+    <ion-button class="ion-margin-bottom expand customButtonB" (click)="confirm('mesa')" [disabled]="usuarioActual.enEspera || usuarioActual.tieneMesa">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-icon name="restaurant-outline" style="font-size: 40vw;"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-label style="font-size: 5vw;" *ngIf="!usuarioActual.enEspera && !usuarioActual.tieneMesa">Solicitar mesa</ion-label>
+            <ion-label style="font-size: 5vw;" *ngIf="usuarioActual.tieneMesa">Ya tiene mesa asignada</ion-label>
+            <ion-label style="font-size: 5vw;" *ngIf="usuarioActual.enEspera">Ya se encuentra en espera</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-button>
+  </div>
+
+  <div style="height: 48%;">
+    <ion-button class="ion-margin-bottom expand customButtonA" (click)="confirm('encuestas')">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-icon name="star" style="font-size: 40vw;"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-label style="font-size: 5vw;">Encuestas</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-button>
+  </div>
+
+</ion-content>

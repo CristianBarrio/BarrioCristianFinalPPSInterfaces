@@ -1,0 +1,26 @@
+// $fuente: 'arco';
+
+// .item-background-A{
+//   --ion-item-background:#FF0000;
+//   --ion-text-color: #fffb00;
+//   --border-color: #fffb00;
+//   --ion-font-family: $fuente;
+// }
+
+// .item-background-B{
+//   --ion-item-background:#FFFB00;
+//   --ion-text-color: #FF0000;
+//     --border-color: #FF0000;
+//   --ion-font-family: $fuente;
+
+// }
+
+// ion-item {
+//   border-color: rgba(173, 190, 20, 0.452);
+//   border-style: solid;
+//   border-width: 1px 0px 0px 0px;
+// }
+ion-list{
+    --background: transparent !important;
+    --ion-item-background: transparent !important;
+}

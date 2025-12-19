@@ -1,0 +1,117 @@
+<div class="navidad">
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        <strong>{{"Ingresar"}}</strong>
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+</div>
+
+<ion-content class="navidad">
+    <div class="d-flex center">
+
+        <form class="auth-form" [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
+
+          <div class="logo">
+            <img class="logo-naif" src="assets/logonaif.png">
+            <img class="logo-arg" src="assets/logoarg.png">
+            <img class="logo-pro" src="assets/logopro.png">
+            <img class="logo-navidad" src="assets/logonavidad.png">
+          </div>
+          <h1 class="logo-h1">La Comanda</h1>
+
+          <ion-input class="customA" expand="full" type="email" placeholder="Correo" id="floatingInput" formControlName="email">
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+          </ion-input>
+            
+            <div class="validators">
+              <ion-label color="danger"
+                *ngIf="formulario.controls['email'].errors?.['required'] && formulario.controls['email'].touched">
+                Ingrese su dirección de correo
+              </ion-label>
+            <ion-label color="danger"
+              *ngIf="formulario.controls['email'].errors?.['email'] && formulario.controls['email'].touched">
+              El formato no es correcto
+            </ion-label>
+            
+           </div>
+          
+          <ion-input 
+            class="customB"
+            expand="full"
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Contraseña"
+            formControlName="password"
+            id="floatingPassword">
+
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+
+            <ion-button class="eye-icon" (click)="showOrHidePassword()" slot="end" fill="clear" shape="round">
+              <ion-icon slot="icon-only" [name]="hide ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+            </ion-button>
+          </ion-input>
+
+          <div class="validators">
+            <ion-label color="danger"
+              *ngIf="formulario.controls['password'].errors?.['required'] && formulario.controls['password'].touched">
+              Ingrese una contraseña
+            </ion-label>
+            <ion-label color="danger"
+              *ngIf="formulario.controls['password'].errors?.['minlength'] && formulario.controls['password'].touched">
+              La contraseña debe tener al menos 6 caracteres
+            </ion-label>
+          </div>
+        
+          <!-- <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="formulario.invalid">
+            INGRESAR
+            <img class="submit-img" *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/mate.png" alt="" slot="end">
+                <img class="submit-img" *ngIf="temaActual === 'tema-profesional'" src="assets/profesional/ink-pen.png" alt="" slot="end">
+                <img class="submit-img" *ngIf="temaActual === 'tema-naif'" src="assets/naif/paint-brush.png" alt="" slot="end">
+                <img class="submit-img" *ngIf="temaActual === 'tema-festivo'" src="assets/custom/christmas-tree.png" alt="" slot="end">
+
+                <ion-icon *ngIf="temaActual !== 'tema-argentina'
+                          && temaActual !== 'tema-profesional'
+                          && temaActual !== 'tema-naif'
+                          && temaActual !== 'tema-festivo'" 
+                          slot="end" name="log-in-outline"></ion-icon>
+          </ion-button> -->
+          
+          <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="formulario.invalid">
+            INGRESAR
+            <div class="submit-img" slot="end"></div>
+          </ion-button>
+          <hr>
+          <ion-button expand="block" mode="ios" class="submit" routerLink="/registro">
+            REGISTRARSE
+          </ion-button>
+          
+          <!-- <ion-button id="usuariosDePrueba" expand="block" mode="ios" class="submit">
+            USUARIOS
+          </ion-button> -->
+          <div class="user-buttons-container">
+              <ion-button class="user-button button1" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[0])">ADMIN</ion-button>
+              <ion-button class="user-button button2" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[1])">
+                <span class="texto-btn">MAITRE</span>
+              </ion-button>
+              <ion-button class="user-button button3" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[2])">COCINERO</ion-button>
+              <ion-button class="user-button button4" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[3])">BARTENDER</ion-button>
+              <ion-button class="user-button button5" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[4])">MOZO</ion-button>
+              <ion-button class="user-button button6" expand="block" shape="square" (click)="autocompletarUsuario(usuariosRegistrados[5])">CLIENTE</ion-button>
+          </div>
+          <hr>
+
+          <div class="animacion-navidad" aria-hidden="true">
+            <div class="anim-img"><img src="/assets/custom/snowflake.png" height="25px" width="25px"></div>
+            <div class="anim-img"><img src="/assets/custom/candy-cane.png" height="25px" width="25px"></div>
+            <div class="anim-img"><img src="/assets/custom/snowflake.png" height="25px" width="25px"></div>
+            <div class="anim-img"><img src="/assets/custom/candy-cane.png" height="25px" width="25px"></div>
+            <div class="anim-img"><img src="/assets/custom/snowflake.png" height="25px" width="25px"></div>
+            <div class="anim-img"><img src="/assets/custom/candy-cane.png" height="25px" width="25px"></div>
+          </div>
+
+        </form>
+      </div>
+
+  <ion-action-sheet trigger="usuariosDePrueba" header="Usuarios de prueba" class="my-custom-class" [backdropDismiss]="true" [buttons]="actionSheetButtons" (didDismiss)="setearCampos($event)"></ion-action-sheet>
+</ion-content>

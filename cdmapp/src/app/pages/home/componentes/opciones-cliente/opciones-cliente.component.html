@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Consultas</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <img class="ion-margin-top" alt="QR Code" src="../../../assets/icontest.png" style="width: 300px;" />
+        <hr>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngIf="usuarioActual.tienePedido" class="ion-text-center ion-margin-top">
+        <ion-button expand="full" class="customButtonA" (click)="verEstado()">Estado del pedido</ion-button>
+      </ion-col>
+      <ion-col *ngIf="!usuarioActual.tienePedido" class="ion-text-center ion-margin-top">
+        <ion-button expand="full" class="customButtonA" (click)="confirm('hacerPedido')">Hacer pedido</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="usuarioActual.tienePedido">
+      <ion-col class="ion-text-center ion-margin-top" *ngIf="pedidoActual.estado === 'recibido'">
+        <ion-button expand="full" class="customButtonB" (click)="confirm('pedirCuenta')">Pedir la cuenta</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-top">
+        <ion-button expand="full" class="customButtonA" (click)="confirm('cargarEncuesta')">Cargar Encuesta</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-top">
+        <ion-button expand="full" class="customButtonB" (click)="confirm('encuestas')">Encuestas</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

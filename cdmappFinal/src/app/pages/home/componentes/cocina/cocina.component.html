@@ -1,0 +1,40 @@
+<div class="cocina halloween">
+  <ion-list *ngIf="$pedidosEnProceso | async" lines="none" class="item-background-A ion-margin-top lista-card" [inset]="true">
+    <ion-list-header>
+      <ion-label>Pedidos en proceso</ion-label>
+    </ion-list-header>
+    <ng-container *ngFor="let pedido of $pedidosEnProceso | async">
+      <ng-container *ngIf="!pedido['listoCocina']">
+        <ion-accordion-group class="item-B bartender-accordion">
+          <ion-accordion toggleIcon="caret-down-circle">
+            <ion-item slot="header" class="item-B">
+              <ion-icon class="ion-accordion-toggle-icon" name="caret-down-circle" slot="end" color="white">
+              </ion-icon>
+              <ion-avatar aria-hidden="true" slot="start">
+                <img alt="" src="{{pedido['mesa'].foto}}" />
+              </ion-avatar>
+              <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
+                {{pedido['mesa'].numero}}</ion-label>
+              <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+                Mesa №: {{pedido['mesa'].numero}}</ion-label>
+            </ion-item>
+            <div slot="content">
+              <ng-container *ngFor="let producto of pedido['productos']">
+                <ion-item *ngIf="producto.tipo === 'plato' || producto.tipo === 'postre'">
+                  <ion-label>x{{producto.cantidad}}
+                    {{producto.nombre}}</ion-label>
+                </ion-item>
+              </ng-container>
+              <ion-item class="ion-align-items-center">
+                <ion-label color="warning" class="ion-align-items-center">Entregar</ion-label>
+                <ion-button size="large" expand="block" color="warning" slot="end" class="btn-confirmar" (click)="cambiarEstado(pedido, true)">
+                  <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ng-container>
+    </ng-container>
+  </ion-list>
+</div>

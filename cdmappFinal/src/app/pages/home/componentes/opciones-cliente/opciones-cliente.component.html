@@ -1,0 +1,58 @@
+<div class="opciones-cliente pascua">
+  <ion-header class="pascua">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+      </ion-buttons>
+      <ion-title>Consultas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding pascua">
+    <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+           <div class="icontest ion-margin-top">
+            <img class="icon-naif" src="assets/iconnaif.png" style="width: 300px;">
+            <img class="icon-arg" src="assets/iconarg.png" style="width: 300px;">
+            <img class="icon-pro" src="assets/iconpro.png" style="width: 300px;">
+            <img class="icon-pascua" src="assets/iconpascua (1).png" style="width: 300px;">
+          </div>
+          <hr>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="usuarioActual?.tienePedido" class="ion-text-center ion-margin-top">
+          <ion-button expand="full" class="customButtonA" (click)="verEstado()">Estado del pedido</ion-button>
+        </ion-col>
+        <ion-col *ngIf="!usuarioActual?.tienePedido" class="ion-text-center ion-margin-top">
+          <ion-button expand="full" class="customButtonA" (click)="confirm('hacerPedido')">Hacer pedido</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="usuarioActual?.tienePedido">
+        <ion-col class="ion-text-center ion-margin-top" *ngIf="pedidoActual.estado === 'recibido'">
+          <ion-button expand="full" class="customButtonB" (click)="confirm('pedirCuenta')">Pedir la cuenta</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center ion-margin-top">
+          <ion-button expand="full" class="customButtonA" (click)="confirm('cargarEncuesta')">Cargar Encuesta</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center ion-margin-top">
+          <ion-button expand="full" class="customButtonB" (click)="confirm('encuestas')">Encuestas</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="fondo-pascua" aria-hidden="true">
+      <div class="fondo">
+        <div class="patron"></div>
+      </div>
+      <div>
+        <div class="patron"></div>
+      </div>
+    </div>
+  </ion-content>
+</div>

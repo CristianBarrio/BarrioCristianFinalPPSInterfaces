@@ -1,0 +1,101 @@
+<ion-grid>
+  <ion-col>
+
+
+    <form [formGroup]="formularioClientes" (ngSubmit)="onSubmit(formularioClientes.value)" novalidate>
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Apellido" labelPlacement="floating" type="text" class="form-control"
+              formControlName="apellido" placeholder="Apellido"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Correo" labelPlacement="floating" type="email" class="form-control"
+              formControlName="correo" placeholder="Correo"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Password" labelPlacement="floating" type="password" class="form-control"
+              formControlName="password" placeholder="Password"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="DNI" labelPlacement="floating" type="number" class="form-control" formControlName="dni"
+              placeholder="DNI"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevaFoto()" color="tertiary" shape="round" expand="block"
+              size="large">Foto</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreview !== null" src="{{imagePreview}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioClientes.invalid || false" color="success" type="submit">Guardar
+            Cliente</ion-button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+    <form [formGroup]="formularioModificar" (ngSubmit)="updateUsuario(formularioClientes.value)" novalidate
+      *ngIf="inputCliente">
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Apellido" labelPlacement="floating" type="text" class="form-control"
+              formControlName="apellido" placeholder="Apellido"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Correo" labelPlacement="floating" type="email" class="form-control"
+              formControlName="correo" placeholder="Correo"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Password" labelPlacement="floating" type="password" class="form-control"
+              formControlName="password" placeholder="Password"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="DNI" labelPlacement="floating" type="number" class="form-control" formControlName="dni"
+              placeholder="DNI"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevaFotoModificar()" color="tertiary" shape="round" expand="block"
+              size="large">Foto</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img src="{{imagePreviewModificar}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioModificar.invalid || false" color="warning" type="submit">Modificar
+            Cliente</ion-button>
+          <ion-button (click)="borrarUsuario()" color="danger">Borrar</ion-button>
+          <ion-button (click)="cancelarSeleccion()">Cancelar</ion-button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+
+  </ion-col>
+
+</ion-grid>

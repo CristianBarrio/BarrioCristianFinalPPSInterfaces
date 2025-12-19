@@ -1,0 +1,100 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Registro</ion-title>
+    <ion-icon slot="start" routerLink="/login" size="large" name="arrow-back-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="formularioClientes" (ngSubmit)="onSubmit(formularioClientes.value)" novalidate>
+    <ion-grid class="">
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <div class="outer">
+            <img [src]="imagePreview" class="profilePic" alt="">
+            <ion-icon name="camera" class="inner" color="warning" (click)="nuevaFoto()"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="scan()" class="customButtonA" expand="block" size="large">Escanear DNI</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control customA"
+            formControlName="nombre" placeholder="Nombre"></ion-input>
+          <ion-label color="danger" class="ion-margin-top"
+            *ngIf="formularioClientes.controls['nombre'].errors?.['required'] && formularioClientes.controls['nombre'].touched">
+            Debe ingresar un nombre
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input label="Apellido" labelPlacement="floating" type="text" class="form-control customB"
+            formControlName="apellido" placeholder="Apellido"></ion-input>
+          <ion-label color="danger" class="ion-margin-top"
+            *ngIf="formularioClientes.controls['apellido'].errors?.['required'] && formularioClientes.controls['apellido'].touched">
+            Debe ingresar su apellido
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input label="Correo" labelPlacement="floating" type="email" class="form-control customA"
+            formControlName="correo" placeholder="Correo"></ion-input>
+          <ion-label color="danger"
+            *ngIf="formularioClientes.controls['correo'].errors?.['required'] && formularioClientes.controls['correo'].touched">
+            Ingrese su dirección de correo
+          </ion-label>
+          <ion-label color="danger"
+            *ngIf="formularioClientes.controls['correo'].errors?.['email'] && formularioClientes.controls['correo'].touched">
+            El formato no es correcto
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input label="Password" labelPlacement="floating" type="password" class="form-control customB"
+            formControlName="password" placeholder="Password"></ion-input>
+          <ion-label color="danger"
+            *ngIf="formularioClientes.controls['password'].errors?.['required'] && formularioClientes.controls['password'].touched">
+            Ingrese una contraseña
+          </ion-label>
+          <ion-label color="danger"
+            *ngIf="formularioClientes.controls['password'].errors?.['minlength'] && formularioClientes.controls['password'].touched">
+            La contraseña debe tener al menos 6 caracteres
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input label="DNI" labelPlacement="floating" type="number" class="form-control customA"
+            formControlName="dni" placeholder="DNI"></ion-input>
+          <ion-label color="danger"
+            *ngIf="formularioClientes.controls['dni'].errors?.['required'] && formularioClientes.controls['dni'].touched">
+            Ingrese su DNI
+          </ion-label>
+          <ion-label color="danger"
+            *ngIf="(formularioClientes.controls['dni'].errors?.['min'] || formularioClientes.controls['dni'].errors?.['max']) && formularioClientes.controls['dni'].touched">
+            Ingrese un número de DNI correcto (Entre 1 y 100 millones)
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="customButtonA" expand="block" size="large" routerLink="/registro-anonimo">Registro
+            anónimo</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="formularioClientes.invalid || false" expand="block" size="large" class="customButtonB"
+            type="submit">Registrarse</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

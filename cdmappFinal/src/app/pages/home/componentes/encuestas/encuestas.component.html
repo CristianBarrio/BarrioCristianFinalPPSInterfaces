@@ -1,0 +1,96 @@
+<div class="encuestas pascua">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <!-- <ion-buttons slot="start">
+        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+      </ion-buttons> -->
+
+      <!-- <ion-segment (ionChange)="segmentChanged($event)" value="torta">
+        <ion-segment-button value="torta">
+          <ion-label>Servicio</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="barras">
+          <ion-label>Velocidad</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="linea">
+          <ion-label>Precios</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="comentarios">
+          <ion-label>Comentarios</ion-label>
+        </ion-segment-button>
+      </ion-segment> -->
+      <ion-title class="ion-text-center"><strong>Encuestas</strong></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div [ngSwitch]="selectedSegment">
+      <div *ngSwitchCase="'torta'">
+        <ion-card>
+          <ion-card-content>
+            <div *ngIf="chartPie" [chart]="chartPie"></div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngSwitchCase="'barras'">
+        <ion-card>
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content>
+            <div *ngIf="chartBar" [chart]="chartBar"></div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div *ngSwitchCase="'linea'">
+        <ion-card>
+          <ion-card-header>
+          </ion-card-header>
+          <ion-card-content>
+            <div *ngIf="chartLine" [chart]="chartLine"></div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <!-- <div *ngSwitchCase="'comentarios'">
+        <ion-card *ngFor="let comentario of comentarios">
+          <ion-card-header>
+            <ion-card-title>{{comentario.fecha.toDate() | date:'h:mma d/MM/YY'}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ comentario.mensaje }}</p>
+          </ion-card-content>
+        </ion-card>
+      </div> -->
+      <div *ngSwitchCase="'comentarios'">
+        <ion-card class="comentarios-card">
+          <ion-card-header>
+            <ion-card-title>Comentarios</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content class="comentarios-content">
+            <ion-card *ngFor="let comentario of comentarios" class="coment">
+              <b>{{comentario.fecha.toDate() | date:'h:mma d/MM/YY'}}</b>
+              <p>{{ comentario.mensaje }}</p>
+            </ion-card>
+          </ion-card-content>
+
+        </ion-card>
+      </div>
+    </div>
+
+    <div class="encuesta-btn-container">
+      <ion-button class="encuesta-btn buttonE1" expand="block" shape="square" [ngClass]="{ active: btnElegido === 'torta' }" (click)="elegirBoton('torta')">Servicio</ion-button>
+      <ion-button class="encuesta-btn buttonE2" expand="block" shape="square" [ngClass]="{ active: btnElegido === 'barras' }" (click)="elegirBoton('barras')">Velocidad</ion-button>
+      <ion-button class="encuesta-btn buttonE3" expand="block" shape="square" [ngClass]="{ active: btnElegido === 'linea' }" (click)="elegirBoton('linea')">Precios</ion-button>
+      <ion-button class="encuesta-btn buttonE4" expand="block" shape="square" [ngClass]="{ active: btnElegido === 'comentarios' }" (click)="elegirBoton('comentarios')">Comentarios</ion-button>
+    </div>
+
+    <div class="fondo-pascua" aria-hidden="true">
+      <div class="fondo">
+        <div class="patron"></div>
+      </div>
+      <div>
+        <div class="patron"></div>
+      </div>
+    </div>
+  </ion-content>
+</div>

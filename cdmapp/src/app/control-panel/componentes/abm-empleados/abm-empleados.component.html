@@ -1,0 +1,132 @@
+<ion-grid>
+  <ion-col>
+    <form [formGroup]="formularioEmpleados" (ngSubmit)="onSubmit(formularioEmpleados.value)" novalidate>
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Apellido" labelPlacement="floating" type="text" class="form-control"
+              formControlName="apellido" placeholder="Apellido"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Correo" labelPlacement="floating" type="email" class="form-control"
+              formControlName="correo" placeholder="Correo"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Password" labelPlacement="floating" type="password" class="form-control"
+              formControlName="password" placeholder="Password"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="DNI" labelPlacement="floating" type="number" class="form-control" formControlName="dni"
+              placeholder="DNI"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="CUIL" labelPlacement="floating" type="text" class="form-control" formControlName="cuil"
+              placeholder="CUIL"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-select formControlName="tipo" label="Tipo" label-placement="floating" value="mozo">
+                  <ion-select-option value="maître">Maître</ion-select-option>
+                  <ion-select-option value="mozo">Mozo</ion-select-option>
+                  <ion-select-option value="cocinero">Cocinero</ion-select-option>
+                  <ion-select-option value="bartender">Bartender</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevaFoto()" color="tertiary" shape="round" expand="block"
+              size="large">Foto</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreview !== null" src="{{imagePreview}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioEmpleados.invalid || false" color="success" type="submit">Guardar
+            Empleado</ion-button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+    <form [formGroup]="formularioModificar" (ngSubmit)="updateUsuario(formularioEmpleados.value)" novalidate
+      *ngIf="inputEmpleado">
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Apellido" labelPlacement="floating" type="text" class="form-control"
+              formControlName="apellido" placeholder="Apellido"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Correo" labelPlacement="floating" type="email" class="form-control"
+              formControlName="correo" placeholder="Correo"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Password" labelPlacement="floating" type="password" class="form-control"
+              formControlName="password" placeholder="Password"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="DNI" labelPlacement="floating" type="number" class="form-control" formControlName="dni"
+              placeholder="DNI"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="CUIL" labelPlacement="floating" type="text" class="form-control" formControlName="cuil"
+              placeholder="CUIL"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-select formControlName="tipo" label="Tipo" label-placement="floating" value="mozo">
+                  <ion-select-option value="maître">Maître</ion-select-option>
+                  <ion-select-option value="mozo">Mozo</ion-select-option>
+                  <ion-select-option value="cocinero">Cocinero</ion-select-option>
+                  <ion-select-option value="bartender">Bartender</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevaFotoModificar()" color="tertiary" shape="round" expand="block"
+              size="large">Foto</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img src="{{imagePreviewModificar}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioModificar.invalid || false" color="warning" type="submit">Modificar
+            Empleado</ion-button>
+          <ion-button (click)="borrarUsuario()" color="danger">Borrar</ion-button>
+          <ion-button (click)="cancelarSeleccion()">Cancelar</ion-button>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+  </ion-col>
+</ion-grid>

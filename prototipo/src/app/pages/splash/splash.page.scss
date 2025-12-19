@@ -1,0 +1,215 @@
+.splash {
+  width: 100%;
+  height: 100%;
+  transition: background 1.5s ease, color 1.5s ease, filter 1.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+  h1{
+    font-size: 55px;
+  }
+
+  ion-label{
+    font-size: 55px;
+  }
+
+.label-superior{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.label-inferior{
+    margin-top: 30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tema-argentina {
+  background: linear-gradient(to bottom, #74acdf 0%, #ffffff 100%);
+  color: white;
+  font-family: "Girassol", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  .logo, h1{
+    fill: white;
+    filter: drop-shadow(0 0 8px #f5b30d);
+  }
+
+  .label-superior, .label-inferior{
+    color: #003b6f;
+  }
+}
+
+.tema-profesional {
+  background: #031a36;
+  color: #ffffff;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400; 
+  font-style: normal;
+
+  ion-label{
+    font-size: 50px;
+  }
+
+  h1{
+    color:#e9bc77;
+    font-family: "DM Serif Text", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+    .logo{
+        fill: #e9bc77;
+    }
+}
+
+.tema-naif {
+  background: #fed4e8;
+  color: #10b1a9;
+  font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    h1{
+        color: #fef3d0;
+        text-shadow:
+        0 0 3px #ce2b43,
+        0 0 6px #ce2b43,
+        0 0 10px #ce2b43;
+    }
+    .logo{
+        fill: #fef3d0;
+        filter: drop-shadow(0 0 8px #ff7b00);
+    }
+}
+
+ion-content.tema-festivo-navidad::part(background) {
+    background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+}
+
+.tema-festivo-navidad {
+  color: #095502;
+  font-family: "Mountains of Christmas", serif;
+  font-weight: 700;
+  font-style: normal;
+
+    h1{
+        color: #B71C1C;
+        text-shadow: 0 0 3px #FFD700
+        0 0 6px #FFD700
+        0 0 10px #FFD700;
+    }
+    .logo{
+        fill: #cd4239;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+    }
+
+    background-image: 
+        url('/assets/custom/candy-cane.png'),
+        url('/assets/custom/santa-hat.png'),
+        url('/assets/custom/snowflake.png');
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position:
+        10% 20%,
+        80% 30%,
+        50% 80%,
+        center; 
+        
+    background-size:
+        60px,
+        50px,
+        55px,
+        cover;
+}
+
+ion-content.tema-festivo-halloween::part(background) {
+    background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
+}
+
+.tema-festivo-halloween {
+  color: white;
+  font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    .logo{
+        fill: #1a0a0a;
+        filter: drop-shadow(0 0 8px #fe4e00);
+    }
+
+      background-image:
+        url('/assets/custom/bats.png'),
+        url('/assets/custom/pumpkin.png'),
+        url('/assets/custom/tombstone.png');
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position:
+        30% 20%,
+        70% 30%,
+        40% 75%,
+        center;
+        
+    background-size:
+        70px,
+        80px,
+        65px,
+        cover;
+}
+
+ion-content.tema-festivo-pascua::part(background) {
+    background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+}
+
+.tema-festivo-pascua {
+  color: #c82519;
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+    h1{
+        color: #795476;
+        text-shadow: 0 0 3px #ff9fcf
+        0 0 6px #ff9fcf
+        0 0 10px #ff9fcf;
+    }
+    .logo{
+        fill: #795476;
+        filter: drop-shadow(0 0 8px #ff9fcf);
+    }
+
+      background-image:
+        url('/assets/custom/easter-day.png'),
+        url('/assets/custom/easter-bunny.png'),
+        url('/assets/custom/easter-eggs.png');
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position:
+        15% 25%,
+        70% 2%,
+        50% 75%,
+        center;
+
+    background-size:
+        60px,
+        70px,
+        55px,
+        cover;
+}
+

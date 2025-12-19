@@ -1,0 +1,19 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-input [(ngModel)]="titulo" labelPlacement="floating" label="Titulo" type="text"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-input [(ngModel)]="mensaje" labelPlacement="floating" label="Mensaje" type="text"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-input [(ngModel)]="rol" labelPlacement="floating" label="Rol" type="text"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="sendPush()">Enviar Push</ion-button>
+      <ion-button (click)="sendPushRol()">Enviar Push Rol</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

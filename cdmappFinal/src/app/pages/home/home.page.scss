@@ -1,0 +1,61 @@
+// $fuente: 'arco';
+
+// ion-toolbar{
+//   --background: rgba(255, 0, 0, 1);
+//   --color: #fffb00;
+//   --border-color: #fffb00;
+//   --border-width: 0px 0px 4px 0px;
+//   font-family: $fuente;
+// }
+
+// ion-content{
+//  --background: black;
+// --background: #724121;
+//  --background: #fa2828;
+// --background: 'none';
+// background-color: #ffcfcf;
+// opacity: 1;
+// background-image:  linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777);
+// background-size: 56px 98px;
+// background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+// font-family: $fuente;
+// }
+
+// .xc {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .fullheight {
+//   height: 100%;
+// }
+
+// .customButtonA{
+//   --background: #fffb00;
+//   --color: #ff0000;
+//     font-family: $fuente;
+
+// }
+
+// .customButtonB{
+//   --background: rgb(255, 0, 0);
+//   --color: #fffb00;
+//     font-family: $fuente;
+
+// }
+.tema-festivo{
+
+    ion-content{
+        --background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+    }
+}
+
+.salir-img {
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    background-image: var(--salir-icon);
+    background-size: cover;
+    background-position: center;
+}

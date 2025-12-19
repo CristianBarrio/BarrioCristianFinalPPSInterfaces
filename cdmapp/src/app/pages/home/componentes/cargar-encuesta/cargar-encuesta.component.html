@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ encuesta.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let pregunta of encuesta.preguntas">
+    <ion-card-header>
+      <ion-card-title>{{ pregunta.texto }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ng-container [ngSwitch]="pregunta.tipo">
+        <ion-radio-group *ngSwitchCase="'multiple-choice'" [(ngModel)]="respuestas[pregunta.id]" (ngModelChange)="onAnswerChange()">
+          <ion-item *ngFor="let opcion of pregunta.opciones" class="itemA">
+            <ion-label>{{ opcion }}</ion-label>
+            <ion-radio slot="start" [value]="opcion"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <ion-item *ngSwitchCase="'texto'" class="itemA">
+          <ion-input [(ngModel)]="respuestas[pregunta.id]" placeholder="Escriba su respuesta"></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+  <ion-button class="customButtonB" expand="full" (click)="guardarRespuestas()" [disabled]="!allAnswered">ENVIAR</ion-button>
+</ion-content>

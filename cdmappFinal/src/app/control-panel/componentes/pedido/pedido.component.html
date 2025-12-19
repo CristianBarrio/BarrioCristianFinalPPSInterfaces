@@ -1,0 +1,214 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        Precio total: ${{ total | number : "1.2-2" }} | Tiempo de preparación:
+        {{ tiempo }} minutos
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Platos</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ng-container *ngFor="let producto of productos | async">
+              <ion-item *ngIf="producto.tipo === 'plato'">
+                <ion-thumbnail slot="start">
+                  <img
+                    alt="Silhouette of mountains"
+                    src="{{ producto.fotos[0] }}"
+                  />
+                </ion-thumbnail>
+                <ion-label>
+                  Precio: ${{ producto.precio }}<br />Tiempo de preparación:
+                  {{ producto.tiempoPreparacion }} minutos</ion-label
+                >
+                <ion-item>
+                  <ion-button
+                    size="large"
+                    [disabled]="estaEnElArray(producto.uid)"
+                    (click)="quitarDelArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="remove"></ion-icon>
+                  </ion-button>
+                  <ion-input
+                    class="ion-text-center"
+                    ion-text-center
+                    type="text"
+                    min="0"
+                    [value]="calcularCantidad(producto.uid)"
+                    [readonly]="true"
+                  ></ion-input>
+                  <ion-button
+                    size="large"
+                    (click)="agregarAlArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="add"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Bebidas</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ng-container *ngFor="let producto of productos | async">
+              <ion-item *ngIf="producto.tipo === 'bebida'">
+                <ion-thumbnail slot="start">
+                  <img
+                    alt="Silhouette of mountains"
+                    src="{{ producto.fotos[0] }}"
+                  />
+                </ion-thumbnail>
+                <ion-label>
+                  Precio: ${{ producto.precio }}<br />Tiempo de preparación:
+                  {{ producto.tiempoPreparacion }} minutos</ion-label
+                >
+                <ion-item>
+                  <ion-button
+                    size="large"
+                    [disabled]="estaEnElArray(producto.uid)"
+                    (click)="quitarDelArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="remove"></ion-icon>
+                  </ion-button>
+                  <ion-input
+                    class="ion-text-center"
+                    ion-text-center
+                    type="text"
+                    min="0"
+                    [value]="calcularCantidad(producto.uid)"
+                    [readonly]="true"
+                  ></ion-input>
+                  <ion-button
+                    size="large"
+                    (click)="agregarAlArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="add"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Postres</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ng-container *ngFor="let producto of productos | async">
+              <ion-item *ngIf="producto.tipo === 'postre'">
+                <ion-thumbnail slot="start">
+                  <img
+                    alt="Silhouette of mountains"
+                    src="{{ producto.fotos[0] }}"
+                  />
+                </ion-thumbnail>
+                <ion-label>
+                  Precio: ${{ producto.precio }}<br />Tiempo de preparación:
+                  {{ producto.tiempoPreparacion }} minutos</ion-label
+                >
+                <ion-item>
+                  <ion-button
+                    size="large"
+                    [disabled]="estaEnElArray(producto.uid)"
+                    (click)="quitarDelArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="remove"></ion-icon>
+                  </ion-button>
+                  <ion-input
+                    class="ion-text-center"
+                    ion-text-center
+                    type="text"
+                    min="0"
+                    [value]="calcularCantidad(producto.uid)"
+                    [readonly]="true"
+                  ></ion-input>
+                  <ion-button
+                    size="large"
+                    (click)="agregarAlArray(producto)"
+                    shape="round"
+                  >
+                    <ion-icon slot="icon-only" name="add"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ng-container *ngFor="let producto of pedido.productos">
+              <ion-item *ngIf="producto.tipo === 'plato'">
+                <ion-label
+                  >x{{ producto.cantidad }} {{ producto.nombre }} | Precio
+                  unitario: ${{ producto.precio }} | TOTAL: ${{
+                    producto.precio * producto.cantidad | number : "1.2-2"
+                  }}</ion-label
+                >
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ng-container *ngFor="let producto of pedido.productos">
+              <ion-item *ngIf="producto.tipo === 'bebida'">
+                <ion-label
+                  >x{{ producto.cantidad }} {{ producto.nombre }} | Precio
+                  unitario: ${{ producto.precio }} | TOTAL: ${{
+                    producto.precio * producto.cantidad | number : "1.2-2"
+                  }}</ion-label
+                >
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ng-container *ngFor="let producto of pedido.productos">
+              <ion-item *ngIf="producto.tipo === 'postre'">
+                <ion-label
+                  >x{{ producto.cantidad }} {{ producto.nombre }} | Precio
+                  unitario: ${{ producto.precio }} | TOTAL: ${{
+                    producto.precio * producto.cantidad | number : "1.2-2"
+                  }}</ion-label
+                >
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,67 @@
+<div class="chat pascua">
+  <ion-header class="chat pascua">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+      </ion-buttons>
+      <ion-title>Consultas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content #content #scrollMe [scrollTop]="scrollMe.scrollToBottom" [fullscreen]="true" class="chat pascua">
+    <div class="chat-wrapper">
+    <ion-grid class="messages-container">
+      <ion-row *ngFor="let mensaje of arrayMensajes ; trackBy: trackByFn">
+
+        <!-- <ion-col size="12" *ngIf="mensaje.userUID !== usuarioActual.uid" class="message other-message ion-margin-top">
+          <b>{{ mensaje.nombre }}</b><br><br>
+          <span>{{ mensaje.mensaje }}</span>
+          <div class="time"  text-right><br>{{ mensaje.fechaLocal?.toDate() | date:'h:mma d/MM/YY' }}</div>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="mensaje.userUID === usuarioActual.uid" class="message my-message ion-margin-top">
+          <span>{{ mensaje.mensaje }}</span>
+          <div class="time" >{{ mensaje.fechaLocal?.toDate() | date:'h:mma d/MM/YY' }}</div>
+        </ion-col> -->
+        <ion-col size="9" *ngIf="mensaje.userUID !== usuarioActual.uid">
+          <div class="bubble other-message">
+            <b>{{ mensaje.nombre }}</b><br><br>
+            <span>{{ mensaje.mensaje }}</span>
+            <div class="time">{{ mensaje.fechaLocal?.toDate() | date:'h:mma d/MM/YY' }}</div>
+          </div>
+        </ion-col>
+
+        <ion-col offset="7.5" size="9" *ngIf="mensaje.userUID === usuarioActual.uid">
+          <div class="bubble my-message">
+            <span>{{ mensaje.mensaje }}</span>
+            <div class="time">{{ mensaje.fechaLocal?.toDate() | date:'h:mma d/MM/YY' }}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+
+    <div class="fondo-pascua" aria-hidden="true">
+      <div class="fondo">
+        <div class="patron"></div>
+      </div>
+      <div>
+        <div class="patron"></div>
+      </div>
+    </div>
+
+  </ion-content>
+<ion-footer class="chat-footer pascua">
+    <ion-toolbar>
+      <ion-row align-items-center>
+        <ion-col size="12">
+          <ion-input class="message-input" rows="1" [(ngModel)]="mensaje" (keydown.enter)="enviarMensaje()"
+            [counter]="true" maxlength="21">
+            <ion-button fill="clear" slot="end" [disabled]="mensaje === ''" (click)="enviarMensaje()">
+              <ion-icon slot="icon-only" name="send" aria-hidden="true"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>

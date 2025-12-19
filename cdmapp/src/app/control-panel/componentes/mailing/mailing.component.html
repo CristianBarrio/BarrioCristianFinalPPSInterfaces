@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-input [(ngModel)]="correo" labelPlacement="floating" label="Mail" type="text"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-input [(ngModel)]="usuario" labelPlacement="floating" label="Usuario" type="text"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-list>
+        <ion-radio-group [(ngModel)]="decision" [value]="true">
+          <ion-item>
+            <ion-radio [value]="true">Aceptado</ion-radio><br />
+          </ion-item>
+          <ion-item>
+            <ion-radio [value]="false">Rechazado</ion-radio><br />
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="enviarMail()">Enviar Mail</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

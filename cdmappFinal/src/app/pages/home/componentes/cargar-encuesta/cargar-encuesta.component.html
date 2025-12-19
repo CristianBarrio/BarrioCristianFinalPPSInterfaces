@@ -1,0 +1,41 @@
+
+  <ion-header class="cargar-encuesta pascua">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+      </ion-buttons>
+      <ion-title>{{ encuesta.titulo }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="cargar-encuesta pascua" style="position: relative; z-index: 2;">
+    <ion-card *ngFor="let pregunta of encuesta.preguntas" class="encuesta-card">
+      <ion-card-header>
+        <ion-card-title>{{ pregunta.texto }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ng-container [ngSwitch]="pregunta.tipo">
+          <ion-radio-group *ngSwitchCase="'multiple-choice'" [(ngModel)]="respuestas[pregunta.id]" (ngModelChange)="onAnswerChange()">
+            <ion-item *ngFor="let opcion of pregunta.opciones" class="itemA">
+              <ion-label class="opcion-encuesta">{{ opcion }}</ion-label>
+              <ion-radio slot="start" [value]="opcion"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+          <ion-item *ngSwitchCase="'texto'" class="itemA">
+            <ion-input [(ngModel)]="respuestas[pregunta.id]" placeholder="Escriba su respuesta" class="encuesta-input"></ion-input>
+          </ion-item>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-button class="customButtonB btn-cargar" expand="full" (click)="guardarRespuestas()" [disabled]="!allAnswered">ENVIAR</ion-button>
+    
+    <!-- <div class="fondo-pascua" aria-hidden="true">
+      <div class="fondo">
+        <div class="patron"></div>
+      </div>
+      <div>
+        <div class="patron"></div>
+      </div>
+    </div> -->
+  
+  </ion-content>

@@ -1,0 +1,130 @@
+<ion-grid>
+  <ion-col>
+
+
+    <form [formGroup]="formularioProductos" (ngSubmit)="onSubmit(formularioProductos.value)" novalidate>
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Descripción" labelPlacement="floating" type="text" class="form-control"
+              formControlName="descripcion" placeholder="Descripción"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Tiempo de Preparación" labelPlacement="floating" type="number" class="form-control"
+              formControlName="tiempoPreparacion" placeholder="Tiempo de Preparación"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Precio" labelPlacement="floating" type="number" class="form-control"
+              formControlName="precio" placeholder="Precio"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-select formControlName="tipo" label="Tipo" label-placement="floating" value="plato">
+                  <ion-select-option value="plato">Plato</ion-select-option>
+                  <ion-select-option value="postre">Postre</ion-select-option>
+                  <ion-select-option value="bebida">Bebida</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevasFotos()" color="tertiary" shape="round" expand="block"
+              size="large">Fotos</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreview.length > 0" src="{{imagePreview[0]}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreview.length > 1" src="{{imagePreview[1]}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreview.length > 2" src="{{imagePreview[2]}}" style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioProductos.invalid || false" color="success" type="submit">Guardar
+            Producto</ion-button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+    <form [formGroup]="formularioModificar" (ngSubmit)="updateProducto(formularioProductos.value)" novalidate
+      *ngIf="inputProductos">
+      <ion-grid class="mt-2">
+        <ion-row>
+          <ion-col>
+            <ion-input label="Nombre" labelPlacement="floating" type="text" class="form-control"
+              formControlName="nombre" placeholder="Nombre"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Descripción" labelPlacement="floating" type="text" class="form-control"
+              formControlName="descripcion" placeholder="Descripción"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Tiempo de Preparación" labelPlacement="floating" type="number" class="form-control"
+              formControlName="tiempoPreparacion" placeholder="Tiempo de Preparación"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input label="Precio" labelPlacement="floating" type="number" class="form-control"
+              formControlName="precio" placeholder="Precio"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-select formControlName="tipo" label="Tipo" label-placement="floating" value="plato">
+                  <ion-select-option value="plato">Plato</ion-select-option>
+                  <ion-select-option value="postre">Postre</ion-select-option>
+                  <ion-select-option value="bebida">Bebida</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="nuevasFotosModificar()" color="tertiary" shape="round" expand="block"
+              size="large">Fotos</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreviewModificar.length > 0" src="{{imagePreviewModificar[0]}}"
+              style="height: 150px; width: auto;" alt="">
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreviewModificar.length > 1" src="{{imagePreviewModificar[1]}}"
+              style="height: 150px; width: auto;" alt="">
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <img *ngIf="imagePreviewModificar.length > 2" src="{{imagePreviewModificar[2]}}"
+              style="height: 150px; width: auto;" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button [disabled]="formularioModificar.invalid || false" color="warning" type="submit">Modificar
+            Producto</ion-button>
+          <ion-button (click)="borrarProducto()" color="danger">Borrar</ion-button>
+          <ion-button (click)="cancelarSeleccion()">Cancelar</ion-button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+
+  </ion-col>
+
+</ion-grid>

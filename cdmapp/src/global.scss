@@ -1,0 +1,88 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+/**
+ * Since we are styling elements inside of ion-input
+ * we need to move this CSS to a global stylesheet. Otherwise,
+ * Angular components with encapsulation enabled will add
+ * scoped style attributes to these selectors.
+ */
+ion-input.custom.ios .input-bottom .helper-text,
+ion-input.custom.ios .input-bottom .counter,
+ion-input.custom.md .input-bottom .helper-text,
+ion-input.custom.md .input-bottom .counter {
+  color: var(--ion-color-primary);
+}
+
+ion-action-sheet.my-custom-class {
+  --background: #ff0000;
+  --backdrop-opacity: 0.6;
+  --button-background-selected: #fbff00;
+  --button-color: #ffffff;
+  --color: #fbff00;
+}
+
+@font-face {
+  font-family: 'arco';
+  src: url('assets/ARCO.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ion-accordion-group {
+  ion-accordion {
+    .ion-accordion-toggle-icon {
+      color: red;
+    }
+  }
+}
+
+ion-toast.custom-toast {
+  --background: #fbff00;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ff0000;
+  font-family: 'arco';
+}
+
+ion-loading.custom-loading {
+  --background: #ff0000;
+  --spinner-color: #fbff00;
+  font-family: 'arco';
+  color: #fbff00;
+}

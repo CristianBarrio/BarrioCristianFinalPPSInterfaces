@@ -1,0 +1,335 @@
+ion-content {
+    --padding-top: 16px;
+    --padding-end: 16px;
+    --padding-bottom: 1px;
+    --padding-start: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .auth-form {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .submit {
+    margin-top: 11px; 
+  }
+
+  ion-content.tema-festivo::part(background) {
+    background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+  }
+
+  .tema-festivo{
+
+    ::ng-deep app-custom-input ion-item {
+      --background: #fcf4e4;
+      --color: #837e57;
+    }
+
+    ::ng-deep app-custom-input ion-icon {
+      color:#cd4239;
+    }
+
+    ::ng-deep app-logo h1{
+      color: #B71C1C;
+      text-shadow: 1px 1px 0 #FFD700;
+    }
+
+    ion-toolbar{
+      --background: white;
+      --color:black;
+      font-family: "Mountains of Christmas", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    .submit{
+      --background: #cd4239;
+      --color: white;
+      font-family: "Mountains of Christmas", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .user-buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      justify-content: center;
+    }
+
+    .user-button {
+      --background: #964B00; 
+      --color: #ffffff; 
+      font-family: "Mountains of Christmas", serif;
+      font-weight: 700;
+      font-style: normal;
+
+      width: 30%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.75em; 
+    }
+
+    button{
+      font-family: "Mountains of Christmas", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .button1, .button3{
+      --background: #961e00; 
+      --color: gold; 
+    }
+    .button2{
+      --background: #095502; 
+      --color: gold; 
+    }
+
+
+    .button4, .button5, .button6 {
+      display: none;
+    }
+
+    .validators{
+      font-family: "Mountains of Christmas", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+
+    .animacion {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .anim-img {
+      position: absolute;
+      top: -10px;
+      color: rgb(0, 0, 0);
+      font-size: 1.5em;
+      user-select: none;
+      animation: fall 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    .anim-img:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+    .anim-img:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 1s; }
+    .anim-img:nth-child(3) { left: 40%; animation-duration: 8s;  animation-delay: 2s; }
+    .anim-img:nth-child(4) { left: 60%; animation-duration: 14s; animation-delay: 1.5s; }
+    .anim-img:nth-child(5) { left: 80%; animation-duration: 11s; animation-delay: 3s; }
+    .anim-img:nth-child(6) { left: 90%; animation-duration: 13s; animation-delay: 1s; }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.6;
+      }
+    }
+  }
+
+
+  .tema-profesional{
+    .submit{
+      --background: #e1b367;
+      --color: #031a36;
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .user-buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 5px;
+      justify-content: center;
+    }
+
+    .user-button {
+      --background: #964B00; 
+      --color: #ffffff; 
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+
+      width: 26%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.75em; 
+    }
+
+    .button1{
+      --background: #964B00; 
+        --color: #ffffff; 
+        font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .submit{
+      --background: #e1b367;
+      --color: #031a36;
+    }
+  }
+
+
+
+  .tema-naif{
+    .user-buttons-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+  
+  .user-button {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+    
+    width: 90px;  
+    height: 95px;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75em;
+    min-width: 80px; 
+    min-height: 80px; 
+  }
+
+  .user-button::part(native) {
+    border-radius: 50%;
+  }
+  
+  
+  .button1 {
+      --background: #af7dee;
+      --color: #ffffff;
+      top: 0px;
+      left: -50px;
+    }
+    
+  .button2 {
+      --background: #30a890;
+      --color: #ffffff;
+      top: 40px;
+      left: 50px;
+    }
+    
+  .button3 {
+      --background: #fc6a9c;
+      --color: #ffffff;
+      top: 80px;
+      left: 0px;
+    }
+    
+    .button4, .button5, .button6 {
+      display: none;
+    }
+
+    .submit{
+      --background: #ff7b00;
+      --color: black;
+
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  }
+  
+.tema-argentina{
+
+  .user-buttons-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-button {
+    position: absolute;
+    width: 90px;
+    height: 70px;
+    border-radius: 20px 20px 40px 40px;
+    font-family: "Girassol", serif;
+    font-weight: 400;
+    --color: #031a36;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .user-button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .validators{
+    font-family: "Girassol", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .button1 {
+    --background: #74acdf;
+    top: 0;
+    left: 10%;
+    transform: rotate(-5deg);
+  }
+
+  .button2 {
+    --background: #ffffff;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .button3 {
+    --background: #f5b30d;
+    top: 120px;
+    right: 10%;
+    transform: rotate(5deg);
+  }
+
+    .button4, .button5, .button6 {
+      display: none;
+    }
+    
+    .submit{
+      --background: #f5b30d;
+      --color: #031a36;
+      font-family: "Girassol", serif;
+      font-weight: 700;
+      font-style: normal;
+      border-radius: 12px;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+    }
+  }
+  
+  .submit-img{
+    width: 24px; 
+    height: 24px; 
+    margin-left: 6px;
+  }

@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>Nombre</ion-col>
+    <ion-col>Apellido</ion-col>
+    <ion-col>DNI</ion-col>
+    <ion-col>CUIL</ion-col>
+    <ion-col>Perfil</ion-col>
+    <ion-col>Tipo</ion-col>
+    <ion-col>Correo</ion-col>
+    <ion-col>Editar</ion-col>
+  </ion-row>
+  <ng-container *ngIf="usuarios | async; else loading">
+    <ion-row *ngFor="let user of usuarios | async">
+      <ion-col>{{user['nombre']}}</ion-col>
+      <ion-col>{{user['apellido']}}</ion-col>
+      <ion-col>{{user['dni']}}</ion-col>
+      <ion-col>{{user['cuil']}}</ion-col>
+      <ion-col>{{user['perfil']}}</ion-col>
+      <ion-col>{{user['tipo']}}</ion-col>
+      <ion-col>{{user['correo']}}</ion-col>
+      <ion-col><ion-button size="small" (click)="enviar(user)">EDITAR</ion-button></ion-col>
+    </ion-row>
+  </ng-container>
+  <ng-template #loading>
+    <ion-spinner class="spin"></ion-spinner>
+  </ng-template>
+</ion-grid>

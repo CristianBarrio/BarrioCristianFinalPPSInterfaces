@@ -1,0 +1,17 @@
+<div class="admin halloween">
+  <!-- <ion-item class="ion-margin itemA" lines="none">
+    <ion-label slot="start">Clientes</ion-label>
+  </ion-item> -->
+    <ng-container>
+      <ion-item *ngFor="let cliente of $clientes | async" class="ion-margin itemB" lines="none">
+        <ion-label>{{ (cliente['correo'].length>10)? (cliente['correo'] | slice:0:50):(cliente['correo']) }}
+          <div class="acciones">
+            <ion-button [disabled]="cliente['estado'] === 'rechazado'" color="danger"
+            (click)="cambiarAcceso(cliente['uid'], cliente['nombre'], cliente['correo'], 'rechazado')">Quitar Acceso</ion-button>
+            <ion-button [disabled]="cliente['estado'] === 'aceptado'" color="success"
+            (click)="cambiarAcceso(cliente['uid'], cliente['nombre'], cliente['correo'], 'aceptado')">Dar Acceso</ion-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+</div>

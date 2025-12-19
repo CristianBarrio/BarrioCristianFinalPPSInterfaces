@@ -1,0 +1,5 @@
+<ion-input [(ngModel)]="correo" type="text" label="Correo" labelPlacement="floating"></ion-input>
+<ion-input [(ngModel)]="password" type="text" label="Password" labelPlacement="floating"></ion-input>
+<ion-button (click)="loguear()">Loguear</ion-button>
+<ion-button (click)="logout()">Salir</ion-button>
+{{usuarioActual | json}}

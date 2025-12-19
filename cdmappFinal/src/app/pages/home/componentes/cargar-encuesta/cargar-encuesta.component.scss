@@ -1,0 +1,98 @@
+ion-toolbar{
+  --border-width: 0px 0px 0px 0px;
+}
+
+ion-content{
+  opacity: 1;
+  background-size: 56px 98px;
+  background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+  position: relative;
+}
+
+.xc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+
+ion-card {
+  --placeholder-opacity: 0.8;
+    opacity: 1;
+  --padding-bottom: 10px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --padding-top: 10px;
+  }
+
+.encuesta-card {
+  ion-card-title {
+    font-size: 22px;
+  }
+
+  ion-label {
+    font-size: 16px;
+  }
+
+  ion-item {
+    --font-size: 16px;
+  }
+}
+
+.cargar-encuesta {
+
+  ion-content {
+    --padding-bottom: 100px;
+    height: 100%;
+  }
+
+  ion-card {
+    margin-bottom: 1rem;
+  }
+}
+
+.customButtonB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 15px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: calc(100% - 40px);
+  text-align: center;
+  box-sizing: border-box;
+
+  --padding-top: 18px;
+  --padding-bottom: 18px;
+  font-size: 20px;
+}
+
+.encuesta-input {
+  --background: transparent;
+  --border-radius: 10px;
+  --padding-start: 10px;
+  --padding-end: 40px;
+
+  --highlight-color-focused: transparent;
+  --highlight-color: transparent;
+  --border-color: transparent;
+  --border-width: 0;
+  --show-clear-button: none;
+  --box-shadow: none;
+  --inner-border-width: 0;
+  --inner-padding-end: 0;
+
+  --color: black;
+  border: none !important;
+}
+
+.fondo-pascua {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" [value]=tab>
+      <ion-segment-button value="admin"><ion-label>Dueño/Supervisor</ion-label></ion-segment-button>
+      <ion-segment-button value="empleado"><ion-label>Empleado</ion-label></ion-segment-button>
+      <ion-segment-button value="cliente"><ion-label>Cliente</ion-label></ion-segment-button>
+      <ion-segment-button value="mesa"><ion-label>Mesa</ion-label></ion-segment-button>
+      <ion-segment-button value="producto"><ion-label>Productos</ion-label></ion-segment-button>
+      <ion-segment-button value="mail"><ion-label>Mail</ion-label></ion-segment-button>
+      <ion-segment-button value="pedido"><ion-label>Pedido</ion-label></ion-segment-button>
+      <ion-segment-button value="login"><ion-label>Login</ion-label></ion-segment-button>
+      <ion-segment-button value="push"><ion-label>Push</ion-label></ion-segment-button>
+
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col *ngIf="tab === 'admin'" size="12" size-md="4" style="background-color: #9b276f; border: solid 1px #fff;">
+        Alta Dueño/Supervisor
+        <app-abm-admins [inputAdmin]="usuarioAdmin" (guardar)="guardar($event, 'usuarios')" (cancelar)="seleccionarAdmin($event)" (update)="actualizar($event, 'usuarios', 'usuario')"  (borrar)="borrar($event, 'usuarios')"></app-abm-admins>
+      </ion-col>
+      <ion-col *ngIf="tab === 'empleado'" size="12" size-md="4"
+        style="background-color: #34a093; border: solid 1px #fff;">
+        Alta Empleado
+        <app-abm-empleados [inputEmpleado]="usuarioEmpleado" (guardar)="guardar($event, 'usuarios')" (cancelar)="seleccionarEmpleado($event)" (update)="actualizar($event, 'usuarios', 'usuario')" (borrar)="borrar($event, 'usuarios')"></app-abm-empleados>
+      </ion-col>
+      <ion-col *ngIf="tab === 'cliente'" size="12" size-md="4"
+        style="background-color: #45469c; border: solid 1px #fff;">
+        Alta Clientes
+        <app-abm-clientes [inputCliente]="usuarioCliente" (guardar)="guardar($event, 'usuarios')" (cancelar)="seleccionarCliente($event)" (update)="actualizar($event, 'usuarios', 'usuario')" (borrar)="borrar($event, 'usuarios')"></app-abm-clientes>
+      </ion-col>
+      <ion-col *ngIf="tab === 'mesa'" size="12" size-md="4" style="background-color: #2c992c; border: solid 1px #fff;">
+        Alta Mesa
+        <app-abm-mesas  [inputMesa]="mesa" (guardar)="guardar($event, 'mesa')" (cancelar)="seleccionarMesa($event)" (update)="actualizar($event, 'mesas', 'mesa')" (borrar)="borrar($event, 'mesas')"></app-abm-mesas>
+      </ion-col>
+      <ion-col *ngIf="tab === 'producto'" size="12" size-md="4"
+        style="background-color: #8ead37; border: solid 1px #fff;">
+        Alta Producto
+        <app-abm-productos [inputProductos]="producto" (guardar)="guardar($event, 'producto')" (cancelar)="seleccionarProducto($event)" (update)="actualizar($event, 'productos', 'producto')" (borrar)="borrar($event, 'productos')"></app-abm-productos>
+      </ion-col>
+
+
+      <ion-col *ngIf="tab === 'admin'" size="12" size-md="8" style="background-color: #9b276f; border: solid 1px #fff;">
+        <app-tabla-admins (enviarUser)="seleccionarAdmin($event)"></app-tabla-admins>
+      </ion-col>
+      <ion-col *ngIf="tab === 'empleado'" size="12" size-md="8"
+        style="background-color: #34a093; border: solid 1px #fff;">
+        <app-tabla-empleados (enviarUser)="seleccionarEmpleado($event)"></app-tabla-empleados>
+      </ion-col>
+      <ion-col *ngIf="tab === 'cliente'" size="12" size-md="8"
+        style="background-color: #45469c; border: solid 1px #fff;">
+        <app-tabla-clientes (enviarUser)="seleccionarCliente($event)"></app-tabla-clientes>
+      </ion-col>
+      <ion-col *ngIf="tab === 'mesa'" size="12" size-md="8" style="background-color: #2c992c; border: solid 1px #fff;">
+        <app-tabla-mesas (enviarMesa)="seleccionarMesa($event)"></app-tabla-mesas>
+      </ion-col>
+      <ion-col *ngIf="tab === 'producto'" size="12" size-md="8"
+        style="background-color: #8ead37; border: solid 1px #fff;">
+        <app-tabla-productos (enviarProducto)="seleccionarProducto($event)"></app-tabla-productos>
+      </ion-col>
+      <ion-col *ngIf="tab === 'mail'"
+        style="background-color: #cf8e2d; border: solid 1px #fff;">
+        <app-mailing></app-mailing>
+      </ion-col>
+      
+      <ion-col *ngIf="tab === 'pedido'"
+        style="background-color: #7e00a5; border: solid 1px #fff;">
+        <app-pedido></app-pedido>
+      </ion-col>
+      <ion-col *ngIf="tab === 'login'"
+        style="background-color: #a03b3b; border: solid 1px #fff;">
+        <app-login></app-login>
+      </ion-col>
+      <ion-col *ngIf="tab === 'push'"
+        style="background-color: #4b4f80; border: solid 1px #fff;">
+        <app-push></app-push>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

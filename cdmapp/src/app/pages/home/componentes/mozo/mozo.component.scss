@@ -1,0 +1,30 @@
+$fuente: 'arco';
+
+.item-background-A{
+  --ion-item-background:#FF0000;
+  --ion-text-color: #fffb00;
+  --border-color: #fffb00;
+  --ion-font-family: $fuente;
+}
+
+.item-background-B{
+  --ion-item-background:#FFFB00;
+  --ion-text-color: #FF0000;
+    --border-color: #FF0000;
+  --ion-font-family: $fuente;
+
+}
+
+ion-item {
+  border-color: rgba(173, 190, 20, 0.452);
+  border-style: solid;
+  border-width: 1px 0px 0px 0px;
+}
+
+.customButtonA{
+  --background: #fffb00;
+  --color: #ff0000;
+    ion-label {
+    font-family: $fuente;
+  }
+}

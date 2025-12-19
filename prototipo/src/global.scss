@@ -1,0 +1,317 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+@import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+ion-content.tema-argentina::part(background) {
+  background: linear-gradient(to bottom, #74acdf 0%, #ffffff 100%);
+}
+
+.custom-toast {
+  position: relative;
+  transform: translateY(-50px);
+}
+
+ion-content {
+  --padding-top: env(safe-area-inset-top);
+  --padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+// -------------------- TEMAS --------------------
+
+// CUSTOM
+.tema-festivo * {
+  transition: all 0.3s ease-in-out;
+}
+
+// ARGENTINA
+.tema-argentina{
+    transition: all 0.3s ease-in-out;
+
+    ion-content {
+        font-family: "Girassol", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    ion-toolbar{
+        --background:white;
+        --color:#f5b30d;
+        font-family: "Girassol", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    ion-button{
+        font-family: "Girassol", serif;
+        font-weight: 400;
+        font-style: normal; 
+    }
+    
+    ion-input {
+        --color: white;
+        border-radius: 12px;
+    }
+
+    ion-icon {
+        color: #f5b30d;
+    }
+
+    .signOut{
+        --background: #4d8dff;
+        --color: black;
+    }
+}
+
+// PROFESIONAL
+.tema-profesional{
+    transition: all 0.3s ease-in-out;
+
+    ion-content {
+        --background: #031a36; 
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    ion-button{
+       font-family: "DM Serif Text", serif;
+       font-weight: 700;
+       font-style: normal; 
+    }
+    
+    ion-toolbar{
+        --background: white;
+        --color:black;
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    app-custom-input{
+        ion-icon{
+            color:#7b6136;
+        }
+    }
+
+    ion-item{
+        --background: #f0e2c2;
+        --color: #031a36;
+
+        ion-icon{
+            color:#7b6136;
+        }
+    }
+
+    .signOut{
+        --background:white;
+        --color: black;
+    }
+
+    .btn-rejugar{
+        background:white;
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+}
+
+// NAIF
+.tema-naif{
+    transition: all 0.3s ease-in-out;
+
+    ion-content {
+        --background: #fed4e8; 
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    ion-button{
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+        
+    ion-toolbar{
+        --background: #10b1a9;
+        --color:black;
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .signOut{
+        --background:#e68dbd;
+        --color: black;
+    }
+
+    .btn-rejugar{
+        background:#ffb347;
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: black;
+    }
+
+    app-custom-input{
+        color: gray;
+    }
+
+    .custom-input{
+        --background:#f1daae;
+        --color:black;
+        ion-icon{
+            color:gray;
+        }
+    }
+
+    ion-item{
+        --background: #f1daae;
+
+        ion-icon{
+            color:gray;
+        }
+    }
+}
+
+// -------------------- TEMAS --------------------
+
+.submit {
+    margin-top: 40px;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px;
+    opacity: 30%;
+
+    ion-icon {
+        font-size: 100px;
+    }
+}
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.custom-input {
+    --border-color: #e0e0e0;
+    --border-radius: 15px;
+    --border-style: solid;
+    --border-width: 1px;
+    margin: 20px 0;
+
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
+
+    .eye-icon {
+        position: relative;
+        top: 13px;
+    }
+}
+
+.validators {
+    color: var(--ion-color-danger);
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.auth-form {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.product-item {
+    --padding-top: 20px;
+
+    ion-avatar {
+        width: 70px;
+        height: 80px;
+        --border-radius: 15px;
+    }
+
+    .name {
+        font-weight: 600;
+        padding-bottom: 5px;
+    }
+
+    .data {
+        font-size: 13px;
+
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    .option-btn {
+        font-size: 27px;
+    }
+
+    ion-chip {
+        font-size: 14px;
+        border-radius: 10px;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .auth-form {
+        width: 500px;
+    }
+
+    .add-update-modal {
+        --height: 680px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Pacifico&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Girassol&family=Pacifico&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Chewy&display=swap');

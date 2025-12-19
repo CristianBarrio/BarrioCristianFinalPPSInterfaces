@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">PPS 2do Parcial: Comanda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <img class="ion-margin-top" alt="QR Code" src="../../../assets/icontest.png" style="width: 300px;" />
+        <hr>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
+          <ion-input class="customA" expand="full" type="email" placeholder="Correo" id="floatingInput" 
+            formControlName="email"></ion-input>
+          <hr>
+          <ion-label color="danger"
+            *ngIf="formulario.controls['email'].errors?.['required'] && formulario.controls['email'].touched">
+            Ingrese su dirección de correo
+          </ion-label>
+          <ion-label color="danger"
+            *ngIf="formulario.controls['email'].errors?.['email'] && formulario.controls['email'].touched">
+            El formato no es correcto
+          </ion-label>
+          <hr>
+          <ion-input class="customB" expand="full" type="password" placeholder="Contraseña" formControlName="password" 
+            id="floatingPassword"></ion-input>
+          <hr>
+          <ion-label color="danger"
+            *ngIf="formulario.controls['password'].errors?.['required'] && formulario.controls['password'].touched">
+            Ingrese una contraseña
+          </ion-label>
+          <ion-label color="danger"
+            *ngIf="formulario.controls['password'].errors?.['minlength'] && formulario.controls['password'].touched">
+            La contraseña debe tener al menos 6 caracteres
+          </ion-label>
+          <ion-button class="ion-margin-top customButtonB" [disabled]="formulario.invalid" expand="full" 
+            size="large" type="submit">Ingresar</ion-button>
+          <hr>
+          <ion-button class="ion-margin-top customButtonA" expand="full" routerLink="/registro" size="large" type="button">Registrarse</ion-button>
+          <hr>
+          <ion-button id="usuariosDePrueba" class="ion-margin-top customButtonB" expand="full" 
+            size="large">Usuarios</ion-button>
+          <hr>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<ion-action-sheet trigger="usuariosDePrueba" header="Usuarios de prueba" class="my-custom-class" [backdropDismiss]="true" [buttons]="actionSheetButtons" (didDismiss)="setearCampos($event)"></ion-action-sheet>
+</ion-content>

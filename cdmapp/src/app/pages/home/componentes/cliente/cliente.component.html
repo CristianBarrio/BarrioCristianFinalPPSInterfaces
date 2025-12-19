@@ -1,0 +1,58 @@
+<ion-grid>
+
+  <ng-container>
+    <ion-row>
+      <ion-col>
+        <ion-item class="itemA" lines="none">
+          <ion-label *ngIf="!usuarioActual.enEspera && !usuarioActual.tieneMesa">Ud. no se encuentra en lista de espera.
+            Solicitelo escaneando el código QR</ion-label>
+          <ion-label *ngIf="usuarioActual.enEspera && !usuarioActual.tieneMesa"> Se encuentra en la lista de espera.
+          </ion-label>
+          <ion-label *ngIf="usuarioActual.tieneMesa"> Su mesa es la número {{usuarioActual.mesa.numero}} </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+
+  <ion-row class="ion-no-margin">
+    <ion-col class="ion-text-center">
+      <ion-button (click)="scan()" class="customButtonA">
+        <img class="ion-margin-top" alt="QR Code" src="../../../assets/qrr.svg" style="height: 300px" />
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center ion-margin-top">
+      <ion-item class="itemA ion-text-center" lines="none">
+        <ion-label>Escanée el código QR</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="usuarioActual.tieneMesa">
+    <ion-col>
+      <ion-button size="large" expand="full" (click)="modalChat()" class="customButtonA"><ion-label>Consultar al
+          mozo</ion-label></ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="pedidoActual !== undefined && pedidoActual !== null && pedidoActual.estado === 'entregado'">
+    <ion-col>
+      <ion-button size="large" expand="full" (click)="cambiarEstado('recibido')"
+        class="customButtonB"><ion-label>Confirmar recepción del pedido</ion-label></ion-button>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col class="ion-text-center ion-margin-top">
+      <ion-button (click)="openModal()" class="customButtonA">Modal Lobby</ion-button>
+      <ion-button (click)="modalPedido()" class="customButtonA">Pedido</ion-button>
+      <ion-button (click)="modalOpciones()" class="customButtonA">Modal Opciones</ion-button>
+    </ion-col>
+  </ion-row> -->
+</ion-grid>
+
+<!-- <ion-row *ngIf="pedidoActual">
+  <ion-col>
+    <ion-item>
+      {{pedidoActual.uid|json}}
+    </ion-item>
+  </ion-col>
+</ion-row> -->

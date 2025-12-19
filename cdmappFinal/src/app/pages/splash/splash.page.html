@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" [ngClass]="temaActual" class="splash">
+  <div [ngClass]="temaActual" class="splash">
+
+    <div class="label-superior">
+      <ion-label>Cristian Barrio</ion-label>
+    </div>
+
+    <div class="container ion-text-center">
+      <div class="logo">
+          <img *ngIf="temaActual === 'tema-argentina'" src="/assets/logoarg.png">
+          <img *ngIf="temaActual === 'tema-naif'" src="/assets/logonaif.png">
+          <img *ngIf="temaActual === 'tema-profesional'" src="/assets/logopro.png">
+          <img *ngIf="temaActual === 'tema-festivo-navidad'" src="/assets/logonavidad.png">
+          <img *ngIf="temaActual === 'tema-festivo-halloween'" src="/assets/logohalloween.png">
+          <img *ngIf="temaActual === 'tema-festivo-pascua'" src="/assets/logopascua.png">
+      </div>
+
+      <h1 margin-top=25px>LA COMANDA</h1>
+    </div>
+
+    <div class="label-inferior">
+      <ion-label>División 4A</ion-label>
+    </div>
+
+  </div>
+</ion-content>

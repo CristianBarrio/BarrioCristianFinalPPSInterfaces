@@ -1,0 +1,13 @@
+# Node / Ionic / Angular
+node_modules/
+dist/
+www/
+
+# Firebase / secrets
+*.env
+*.json
+key_file.json
+
+# Mac / Windows
+.DS_Store
+Thumbs.db

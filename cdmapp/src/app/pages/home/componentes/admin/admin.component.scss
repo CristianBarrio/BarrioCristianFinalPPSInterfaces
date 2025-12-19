@@ -1,0 +1,19 @@
+$fuente: 'arco';
+
+.itemA {
+  --background: #ff0000 !important;
+  --color: #fffb00 !important;
+
+  ion-label {
+    font-family: $fuente;
+  }
+}
+
+.itemB {
+  --background: #fffb00 !important;
+  --color: #ff0000 !important;
+
+  ion-label {
+    font-family: $fuente;
+  }
+}

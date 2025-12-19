@@ -1,0 +1,19 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>Numero</ion-col>
+    <ion-col>Tipo</ion-col>
+    <ion-col>Capacidad</ion-col>
+    <ion-col>EDITAR</ion-col>
+  </ion-row>
+    <ng-container *ngIf="mesas | async; else loading">
+  <ion-row *ngFor="let mesa of mesas | async">
+    <ion-col>{{mesa['numero']}}</ion-col>
+    <ion-col>{{mesa['tipo']}}</ion-col>
+    <ion-col>{{mesa['capacidad']}}</ion-col>
+    <ion-col><ion-button size="small" (click)="enviar(mesa)">EDITAR</ion-button></ion-col>
+  </ion-row>
+  </ng-container>
+  <ng-template #loading>
+    <ion-spinner class="spin"></ion-spinner>
+  </ng-template>
+</ion-grid>

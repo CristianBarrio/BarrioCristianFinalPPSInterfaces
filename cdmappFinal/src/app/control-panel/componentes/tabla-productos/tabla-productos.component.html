@@ -1,0 +1,23 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>Nombre</ion-col>
+    <ion-col>Tipo</ion-col>
+    <ion-col>Descripción</ion-col>
+    <ion-col>Precio</ion-col>
+    <ion-col>Tiempo</ion-col>
+    <ion-col>EDITAR</ion-col>
+  </ion-row>
+  <ng-container *ngIf="productos | async; else loading">
+    <ion-row *ngFor="let producto of productos | async">
+      <ion-col>{{producto['nombre']}}</ion-col>
+      <ion-col>{{producto['tipo']}}</ion-col>
+      <ion-col>{{producto['descripcion']}}</ion-col>
+      <ion-col>{{producto['precio']}}</ion-col>
+      <ion-col>{{producto['tiempoPreparacion']}}</ion-col>
+      <ion-col><ion-button size="small" (click)="enviar(producto)">EDITAR</ion-button></ion-col>
+    </ion-row>
+  </ng-container>
+  <ng-template #loading>
+    <ion-spinner class="spin"></ion-spinner>
+  </ng-template>
+</ion-grid>

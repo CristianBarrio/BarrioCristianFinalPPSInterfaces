@@ -1,0 +1,86 @@
+<div [ngClass]="temaActual">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Buscar Artista</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content [ngClass]="temaActual">
+  <div [ngClass]="temaActual">
+    <br>
+    <ion-item class="buscar-input">
+      <ion-input
+        [(ngModel)]="nombreArtista"
+        (ionInput)="buscarArtista()"
+        [clearInput]="true"
+      ></ion-input>
+      <ion-icon name="search"></ion-icon>
+    </ion-item>
+
+    
+    <div *ngIf="!artista" class="centro-contenedor">
+      <img *ngIf="temaActual === 'tema-profesional'" src="assets/profesional/up-chevron1.png" height=100px width=100px>
+      <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/obelisk-of-buenos-aires.png" height=100px width=100px>
+      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/hot-air-balloon.png" height=100px width=100px>
+      <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/candle (1).png" height=100px width=100px style="margin-left: 22px;">
+
+      <img *ngIf="temaActual !== 'tema-profesional' &&
+            temaActual !== 'tema-argentina' &&
+            temaActual !== 'tema-naif' &&
+            temaActual !== 'tema-festivo'"
+            src="assets/up-arrow.png" height=100px width=100px>
+
+      <h1>Ingresá un artista o banda de Spotify</h1>
+    </div>
+
+    <div *ngIf="artista">
+      <div class="info-artista">
+        <div class="artista-img">
+          <img [src]="artista.images[0]?.url" alt="Imagen del artista"/>
+        </div>
+        <h1>{{ artista.name }}</h1>
+
+        <br>
+        <ion-button
+          expand="block"
+          (click)="confirmarArtista()"
+          [disabled]="cancionesArtista.length < 4"
+          class="elegir-btn"
+        >
+          Elegí tu canción favorita
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="!artista && nombreArtista.trim() !== ''" class="noSeEncontro">
+      <h2>No se encontró el artista</h2>
+    </div> -->
+
+    <div *ngIf="msgError" style="margin-left: 20px; margin-top: 10px;">
+      <ion-text color="danger">{{ msgError }}</ion-text>
+    </div>
+
+    <ion-button class="signOut" expand="block" (click)="signOut()">Cerrar Sesión
+      <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/tombstone.png" height="35px" width="35px" style="margin-left: 8px;" slot="end">
+      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/scribble.png" height="40px" width="40px" style="margin-left: 8px;" slot="end">
+      <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/medialuna.png" height="40px" width="40px" style="margin-left: 8px;" slot="end">
+
+      <ion-icon *ngIf="temaActual !== 'tema-argentina' 
+                    && temaActual !== 'tema-naif'
+                    && temaActual !== 'tema-festivo'" 
+                    slot="end" name="log-out-outline"></ion-icon>
+     </ion-button>
+
+  </div>
+
+  <div [ngClass]="temaActual" *ngIf="temaActual === 'tema-festivo'" class="animacion" aria-hidden="true">
+      <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+      <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+      <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+      <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+      <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+      <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+  </div>
+</ion-content>
+

@@ -1,0 +1,311 @@
+  ion-content {
+    --keyboard-offset: 0px;
+  }
+  
+  .info-artista {
+    text-align: center;
+    margin-top: 20px;
+
+    h1{
+      font-size: 80px;
+    }
+
+    ion-button {
+      margin: 0 20px; 
+      height: 80px;
+      font-size: 20px; 
+      --border-radius: 12px; 
+    } 
+  }
+  
+  .artista-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .artista-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+  }
+
+
+  bracket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .match {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 10px;
+  }
+  
+  .song {
+    width: 45%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .song:hover {
+    background-color: #ddd;
+  }
+  
+  .centro-contenedor {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 20px;
+
+    h1{
+      font-size: 50px;
+    }
+  }
+
+  .signOut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    text-align: center;
+    box-sizing: border-box;
+
+    --padding-top: 18px;
+    --padding-bottom: 18px;
+    font-size: 20px;
+  }
+
+  .buscar-input{
+    padding: 8px 12px; 
+    --border-radius: 25px; 
+    border-radius: 25px;
+    overflow: hidden;  
+  }
+
+  .noSeEncontro{
+    margin-left: 20px;
+  }
+
+  .tema-naif{
+    .signOut{
+      font-family: "Pacifico", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .elegir-btn{
+      --background: #ff7b00;
+    }
+    
+    h1, h2, h3{
+      color: #fef3d0;
+    }
+
+    .centro-contenedor h1{
+      text-shadow:
+      0 0 3px #ce2b43,
+      0 0 6px #ce2b43,
+      0 0 10px #ce2b43;
+    }
+
+    .info-artista h1{
+      text-shadow:
+      0 0 3px #ce2b43,
+      0 0 6px #ce2b43,
+      0 0 10px #ce2b43;
+    }
+  }
+
+  .tema-profesional{
+    .elegir-btn{
+      --background: #ffd700;
+    }
+
+    h1,h2,h3{
+      color: white;
+    }
+
+    .centro-contenedor h1{
+      font-size: 45px; 
+    }
+  }
+
+  ion-content.tema-festivo::part(background) {
+    background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
+  }
+
+  .tema-festivo{
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    h1,h2,h3{
+      color: white;
+    }
+
+    ion-toolbar{
+      font-family: "Creepster", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    ion-button{
+      font-family: "Creepster", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    ion-input{
+      font-family: "Creepster", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    ion-icon{
+      color: #fe4e00;
+    }
+
+    .buscar-input {
+      padding: 8px 12px;
+      --border-radius: 25px;
+      border-radius: 25px;
+      overflow: hidden;
+
+      background: rgba(20, 10, 0, 0.7);
+      border: 2px solid #fe4e00;
+      box-shadow: inset 0 0 8px #000;
+      color: #f8f4e3;
+
+      --background: transparent;
+    }
+
+    .buscar-input ion-input::part(native) {
+      --background: transparent;
+      color: #f8f4e3;
+    }
+
+
+    .elegir-btn {
+      --background: #fe4e00;
+      --background-hover: #ff7a1a;
+      --background-activated: #ff6a00;
+      --border-radius: 12px;
+      --ripple-color: transparent;
+      --box-shadow: none;
+      border-radius: 12px;
+      border: none;
+      background: #fe4e00;
+      box-shadow: 0 0 15px #fe4e00;
+      transition: box-shadow 0.3s;
+      overflow: hidden;
+      --color: black;
+    }
+
+    .elegir-btn:hover {
+      box-shadow: 0 0 25px #ff9933;
+    }
+
+    
+    .elegir-btn::part(native) {
+      border-radius: 12px;
+      background: #fe4e00;
+      box-shadow: 0 0 15px #fe4e00;
+    }
+
+    .signOut{
+      --background:#1b090c;
+      --color: #ffffff;
+      
+      border: 2px solid #10fe08;
+      box-sizing: border-box;
+    }
+
+    .animacion {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .anim-img {
+      position: absolute;
+      top: 0;
+      left: -10%;
+      color: rgb(0, 0, 0);
+      font-size: 1.5em;
+      user-select: none;
+      animation: drift 12s linear infinite;
+      opacity: 0.8;
+    }
+
+    .anim-img:nth-child(1) { top: 7.5%; animation-duration: 12s; animation-delay: 0s; }
+    .anim-img:nth-child(2) { top: 20%; animation-duration: 14s; animation-delay: 1s; }
+    .anim-img:nth-child(3) { top: 40%; animation-duration: 10s; animation-delay: 2s; }
+    .anim-img:nth-child(4) { top: 60%; animation-duration: 16s; animation-delay: 1.5s; }
+    .anim-img:nth-child(5) { top: 75%; animation-duration: 11s; animation-delay: 3s; }
+    .anim-img:nth-child(6) { top: 90%; animation-duration: 13s; animation-delay: 1s; }
+
+    @keyframes drift {
+      0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(110vw) rotate(0deg);
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .tema-argentina{
+    ion-input{
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .centro-contenedor h1{
+      text-shadow:
+      0 0 3px #f5b30d,
+      0 0 6px #f5b30d,
+      0 0 10px #f5b30d;
+    }
+
+    h1,h2,h3{
+      color: white;
+    }
+
+    .info-artista h1{
+      text-shadow:
+      0 0 3px #f5b30d,
+      0 0 6px #f5b30d,
+      0 0 10px #f5b30d;
+    }
+
+    .elegir-btn{
+      --background: #4d8dff;
+    }
+  }

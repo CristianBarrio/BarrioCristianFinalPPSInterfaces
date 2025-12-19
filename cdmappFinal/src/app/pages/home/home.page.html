@@ -1,0 +1,41 @@
+<div class="halloween">
+  <ion-header [translucent]="true" class="halloween">
+    <ion-toolbar>
+      <ion-title *ngIf="usuarioActual.tipo === 'admin'" class="ion-text-center"><strong>Principal Dueño</strong></ion-title>
+      <ion-title *ngIf="usuarioActual.tipo === 'maitre'" class="ion-text-center"><strong>Principal Maître</strong></ion-title>
+      <ion-title *ngIf="usuarioActual.tipo === 'cocinero'" class="ion-text-center"><strong>Principal Cocina</strong></ion-title>
+      <ion-title *ngIf="usuarioActual.tipo === 'bartender'" class="ion-text-center"><strong>Principal Bar</strong></ion-title>
+      <ion-title *ngIf="usuarioActual.tipo === 'mozo'" class="ion-text-center"><strong>Principal Mozo</strong></ion-title>
+      <ion-title *ngIf="usuarioActual.perfil === 'cliente'" class="ion-text-center"><strong>Principal</strong></ion-title>
+      <!-- <ion-button class="customButtonA ion-margin-end" slot="end" (click)="salir()">
+        <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+      </ion-button> -->
+    </ion-toolbar>
+  </ion-header>
+</div>
+  
+<ion-content [fullscreen]="true" class="halloween">
+  <div>
+    <app-admin *ngIf="usuarioActual.tipo === 'admin'"></app-admin>
+    <app-cliente *ngIf="usuarioActual.perfil === 'cliente'"></app-cliente>
+    <app-maitre *ngIf="usuarioActual.tipo === 'maitre'"></app-maitre>
+    <app-mozo *ngIf="usuarioActual.tipo === 'mozo'"></app-mozo>
+    <app-cocina *ngIf="usuarioActual.tipo === 'cocinero'"></app-cocina>
+    <app-bartender *ngIf="usuarioActual.tipo === 'bartender'"></app-bartender>
+  </div>
+
+  <div class="animacion-halloween" aria-hidden="true">
+    <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+    <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+    <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+    <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+    <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
+    <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
+  </div>
+
+  <ion-button class="salir signOut" expand="block" type="salir" (click)="salir()">Cerrar Sesión
+    <div class="salir-img" slot="end"></div>
+    <ion-icon slot="end" name="log-out-outline" class="pro-icon"></ion-icon>
+  </ion-button>
+</ion-content>
+

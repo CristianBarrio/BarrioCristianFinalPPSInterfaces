@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="usuarioActual.tipo === 'admin'" class="ion-text-center">Principal Dueño</ion-title>
+    <ion-title *ngIf="usuarioActual.tipo === 'maitre'" class="ion-text-center">Principal Maître</ion-title>
+    <ion-title *ngIf="usuarioActual.tipo === 'cocinero'" class="ion-text-center">Principal Cocina</ion-title>
+    <ion-title *ngIf="usuarioActual.tipo === 'bartender'" class="ion-text-center">Principal Bar</ion-title>
+    <ion-title *ngIf="usuarioActual.tipo === 'mozo'" class="ion-text-center">Principal Mozo</ion-title>
+    <ion-title *ngIf="usuarioActual.perfil === 'cliente'" class="ion-text-center">Principal</ion-title>
+    <ion-button class="customButtonA ion-margin-end" slot="end" (click)="salir()">
+      <ion-icon slot="icon-only" color="danger" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--div class="xc fullheight"-->
+  <div>
+    
+    <app-admin *ngIf="usuarioActual.tipo === 'admin'"></app-admin>
+    <app-cliente *ngIf="usuarioActual.perfil === 'cliente'"></app-cliente>
+    <app-maitre *ngIf="usuarioActual.tipo === 'maitre'"></app-maitre>
+    <app-mozo *ngIf="usuarioActual.tipo === 'mozo'"></app-mozo>
+    <app-cocina *ngIf="usuarioActual.tipo === 'cocinero'"></app-cocina>
+    <app-bartender *ngIf="usuarioActual.tipo === 'bartender'"></app-bartender>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-content>
+  <ion-grid class="ion-margin-top">
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
+          <ion-label>Detalle</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ng-container *ngIf="pedidoActual.productos.length === 0">
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
+            <ion-label>El pedidoActual está vacío</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+
+    <ion-row>
+      <ion-col>
+        <ng-container *ngFor="let producto of pedidoActual.productos">
+          <ion-item *ngIf="producto.tipo === 'plato'" class="itemA">
+            <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+              ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
+          </ion-item>
+        </ng-container>
+        <hr>
+        <ng-container *ngFor="let producto of pedidoActual.productos">
+          <ion-item *ngIf="producto.tipo === 'bebida'" class="itemA">
+            <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+              ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
+          </ion-item>
+        </ng-container>
+        <hr>
+        <ng-container *ngFor="let producto of pedidoActual.productos">
+          <ion-item *ngIf="producto.tipo === 'postre'" class="itemA">
+            <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+              ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
+          <ion-label>SUBTOTAL: ${{ subtotal | number : "1.2-2" }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-margin">
+      <ion-col class="ion-text-center">
+        <ion-button (click)="scan()" expand="full" class="customButtonB">Escanear propina</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
+          <ion-label>Propina %{{ cantidadaPropina }} ${{propina | number : "1.2-2"}}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-margin-top itemA ion-text-center" lines="none">
+          <ion-label style="font-size: 64px;">TOTAL: ${{ subtotal + propina | number : "1.2-2" }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" class="customButtonB" (click)="confirm('pagar')">Pagar</ion-button>
+      </ion-col>
+    </ion-row>
+    <!--ion-row>
+      <ion-col>
+        <ion-button expand="full" class="customButtonA" (click)="cambiarPropina('nada')">0</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" class="customButtonA" (click)="cambiarPropina(5)">5</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" class="customButtonA" (click)="cambiarPropina(10)">10</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" class="customButtonA" (click)="cambiarPropina(15)">15</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" class="customButtonA" (click)="cambiarPropina(20)">20</ion-button>
+      </ion-col>
+    </ion-row-->
+  </ion-grid>
+</ion-content>

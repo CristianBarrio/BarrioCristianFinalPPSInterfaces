@@ -1,0 +1,211 @@
+<!-- <ion-list *ngIf="$listaEspera | async" lines="none" class="item-background-A ion-margin-top" [inset]="true">
+  <ion-list-header>
+    <ion-label>Clientes en espera</ion-label>
+  </ion-list-header>
+  <ion-item-group>
+    <ion-item *ngFor="let cliente of $listaEspera | async">
+      <ion-avatar aria-hidden="true" slot="start">
+        <img alt="" src={{cliente.foto}} />
+      </ion-avatar>
+      <ion-label>{{cliente.nombre}} {{cliente.apellido}}</ion-label>
+      <ion-list slot="end" *ngIf="$mesasLibres | async">
+        <ion-item>
+          <ion-select aria-label="mesa" placeholder="Asignar Mesa" okText="Asignar mesa" cancelText="Cancelar"
+            (ionChange)="asignarMesa($event.detail.value, cliente)">
+            <ion-select-option *ngFor="let mesa of $mesasLibres | async" [value]="mesa">№: {{mesa.numero}} CAP:
+              {{mesa.capacidad}} TIPO: {{mesa.tipo}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-item-group>
+</ion-list>
+<hr>
+
+<ion-list *ngIf="$listaEsperaAnonimos | async" lines="none" class="item-background-A ion-margin-top" [inset]="true">
+  <ion-list-header>
+    <ion-label>Clientes anónimos en espera</ion-label>
+  </ion-list-header>
+  <ion-item-group>
+    <ion-item *ngFor="let cliente of $listaEsperaAnonimos | async">
+      <ion-avatar aria-hidden="true" slot="start">
+        <img alt="" src={{cliente.foto}} />
+      </ion-avatar>
+      <ion-label>{{cliente.nombre}}</ion-label>
+      <ion-list slot="end" *ngIf="$mesasLibres | async">
+        <ion-item>
+          <ion-select aria-label="mesa" placeholder="Asignar Mesa" okText="Asignar mesa" cancelText="Cancelar"
+            (ionChange)="asignarMesa($event.detail.value, cliente)">
+            <ion-select-option *ngFor="let mesa of $mesasLibres | async" [value]="mesa">№: {{mesa.numero}} CAP:
+              {{mesa.capacidad}} TIPO: {{mesa.tipo}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-item-group>
+</ion-list>
+<hr>
+
+<ion-list *ngIf="$mesas | async" lines="none" class="item-background-B ion-margin-top" [inset]="true">
+  <ion-list-header>
+    <ion-label>Mesas</ion-label>
+  </ion-list-header>
+  <ng-container *ngFor="let mesa of $mesas | async">
+    <ion-item *ngIf="mesa.estado !== 'ocupada'" class="item-B">
+      <ion-label>№: {{mesa.numero}} TIPO: {{mesa.tipo}} CAP: {{mesa.capacidad}} ESTADO: {{mesa.estado}}</ion-label>
+    </ion-item>
+    <ion-accordion-group *ngIf="mesa.estado === 'ocupada'" class="item-B">
+      <ion-accordion toggleIcon="caret-down-circle">
+        <ion-item slot="header" class="item-B">
+          <ion-label>№: {{mesa.numero}} TIPO: {{mesa.tipo}} CAP: {{mesa.capacidad}} ESTADO: {{mesa.estado}}</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-item>
+            <ion-avatar aria-hidden="true" slot="start">
+              <img alt="" src={{mesa.cliente.foto}} />
+            </ion-avatar>
+            <ion-label *ngIf="!mesa.cliente.esAnonimo">{{mesa.cliente.nombre}} {{mesa.cliente.apellido}}</ion-label>
+            <ion-label *ngIf="mesa.cliente.esAnonimo">{{mesa.cliente.nombre}} (anónimo)</ion-label>
+          </ion-item>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-container>
+</ion-list> -->
+
+<div class="maitre halloween">
+
+  <ion-list *ngIf="$listaEspera | async" lines="none" class="item-background-A ion-margin-top lista-card" [inset]="true">
+    <ion-list-header>
+      <ion-label>Clientes en espera</ion-label>
+    </ion-list-header>
+
+    <ion-item-group>
+      <ion-item *ngFor="let cliente of $listaEspera | async">
+
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" [src]="cliente['foto']" />
+        </ion-avatar>
+
+        <ion-label>
+          {{ cliente['nombre'] }} {{ cliente['apellido'] }}
+        </ion-label>
+
+        <ng-container *ngIf="$mesasLibres | async as mesasLibres">
+          <ion-list slot="end" *ngIf="!cliente['tieneMesa']">
+            <ion-item class="maitre-item">
+              <ion-select
+                class="mesa-select"
+                aria-label="mesa"
+                placeholder="Asignar Mesa"
+                okText="Asignar mesa"
+                cancelText="Cancelar"
+                [disabled]="mesasLibres.length === 0"
+                (ionChange)="asignarMesa($event.detail.value, cliente)"
+              >
+                <ion-select-option
+                  *ngFor="let mesa of mesasLibres"
+                  [value]="mesa"
+                >
+                  №: {{ mesa['numero'] }} CAP: {{ mesa['capacidad'] }} TIPO: {{ mesa['tipo'] }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ng-container>
+
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <hr>
+
+  <ion-list *ngIf="$listaEsperaAnonimos | async" lines="none" class="item-background-A ion-margin-top lista-card" [inset]="true">
+    <ion-list-header>
+      <ion-label>Clientes anónimos en espera</ion-label>
+    </ion-list-header>
+
+    <ion-item-group>
+      <ion-item *ngFor="let cliente of $listaEsperaAnonimos | async">
+
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" [src]="cliente['foto']" />
+        </ion-avatar>
+
+        <ion-label>
+          {{ cliente['nombre'] }}
+        </ion-label>
+
+        <ng-container *ngIf="$mesasLibres | async as mesasLibres">
+          <ion-list slot="end" *ngIf="!cliente['tieneMesa']">
+            <ion-item>
+              <ion-select
+                aria-label="mesa"
+                placeholder="Asignar Mesa"
+                okText="Asignar mesa"
+                cancelText="Cancelar"
+                [disabled]="mesasLibres.length === 0"
+                (ionChange)="asignarMesa($event.detail.value, cliente)"
+              >
+                <ion-select-option
+                  *ngFor="let mesa of mesasLibres"
+                  [value]="mesa"
+                >
+                  №: {{ mesa['numero'] }} CAP: {{ mesa['capacidad'] }} TIPO: {{ mesa['tipo'] }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ng-container>
+
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <hr>
+
+  <ion-list *ngIf="$mesas | async" lines="none" class="item-background-B ion-margin-top lista-card" [inset]="true">
+    <ion-list-header>
+      <ion-label>Mesas</ion-label>
+    </ion-list-header>
+
+    <ng-container *ngFor="let mesa of $mesas | async">
+
+      <ion-item *ngIf="mesa['estado'] !== 'ocupada'" class="item-B">
+        <ion-label>
+          №: {{ mesa['numero'] }} TIPO: {{ mesa['tipo'] }} CAP: {{ mesa['capacidad'] }} ESTADO: {{ mesa['estado'] }}
+        </ion-label>
+      </ion-item>
+
+      <ion-accordion-group *ngIf="mesa['estado'] === 'ocupada'" class="item-B">
+        <ion-accordion toggleIcon="caret-down-circle">
+
+          <ion-item slot="header" class="item-B">
+            <ion-label>
+              №: {{ mesa['numero'] }} TIPO: {{ mesa['tipo'] }} CAP: {{ mesa['capacidad'] }} ESTADO: {{ mesa['estado'] }}
+            </ion-label>
+          </ion-item>
+
+          <div slot="content">
+            <ion-item>
+              <ion-avatar aria-hidden="true" slot="start">
+                <img alt="" [src]="mesa['cliente'].foto" />
+              </ion-avatar>
+
+              <ion-label *ngIf="!mesa['cliente'].esAnonimo">
+                {{ mesa['cliente'].nombre }} {{ mesa['cliente'].apellido }}
+              </ion-label>
+
+              <ion-label *ngIf="mesa['cliente'].esAnonimo">
+                {{ mesa['cliente'].nombre }} (anónimo)
+              </ion-label>
+            </ion-item>
+          </div>
+
+        </ion-accordion>
+      </ion-accordion-group>
+
+    </ng-container>
+  </ion-list>
+
+</div>

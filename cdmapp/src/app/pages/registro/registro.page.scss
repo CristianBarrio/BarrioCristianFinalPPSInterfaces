@@ -1,0 +1,94 @@
+$fuente: 'arco';
+
+ion-toolbar{
+  --background: rgba(255, 0, 0, 1);
+  --color: #fffb00;
+  --border-color: #fffb00;
+  --border-width: 0px 0px 4px 0px;
+  font-family: $fuente;
+}
+
+ion-content{
+//  //--background: black;
+//  --background: #724121;
+  //--background: #fa2828;
+  --background: 'none';
+background-color: #ffcfcf;
+opacity: 1;
+background-image:  linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777);
+background-size: 56px 98px;
+background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+font-family: $fuente;
+}
+
+ion-input.customA {
+  --background: #FF0000;
+  --color: #fffb00;
+  --placeholder-color: #fffb00;
+  --placeholder-opacity: 0.8;
+  --padding-bottom: 10px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --padding-top: 2px;
+  opacity: 1;
+font-family: $fuente;
+
+}
+
+ion-input.customB {
+  --background: #fffb00;
+  --color: #FF0000;
+  --placeholder-color: #FF0000;
+  --placeholder-opacity: 0.8;
+opacity: 1;
+  --padding-bottom: 10px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --padding-top: 2px;
+font-family: $fuente;
+}
+
+.customButtonA{
+  --background: #fffb00;
+  --color: rgb(255, 0, 0);
+    font-family: $fuente;
+
+}
+
+.customButtonB{
+  --background: rgb(255, 0, 0);
+  --color: #fffb00;
+    font-family: $fuente;
+
+}
+
+.outer {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 150px !important; /* any size */
+  max-height: 150px !important; /* any size */
+  margin: auto;
+  background-color: #fffb00;
+  border-radius: 100%;
+  position: relative;
+  border: 5px solid #ff0000;
+  }
+
+.inner {
+  background-color: #ff0000;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  position: absolute;
+  border: 5px solid #fffb00;
+  bottom: 0;
+  right: 0;
+}
+
+.profilePic {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 148px !important; /* any size */
+  max-height: 148px !important; /* any size */
+  border-radius: 50%;
+}

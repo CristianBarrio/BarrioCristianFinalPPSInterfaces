@@ -1,0 +1,55 @@
+.logo {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.tema-naif{
+    h1{
+        color: #fef3d0;
+        text-shadow:
+        0 0 3px #ce2b43,
+        0 0 6px #ce2b43,
+        0 0 10px #ce2b43;
+    }
+    .logo{
+        fill: #fef3d0;
+        filter: drop-shadow(0 0 8px #ff7b00);
+    }
+}
+
+.tema-profesional{
+    h1{
+        color:#e9bc77;
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    .logo{
+        fill: #e9bc77;
+    }
+}
+
+.tema-festivo{
+    h1{
+        color: #cd4239;
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    .logo{
+        fill: #cd4239;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+    }
+}
+
+.tema-argentina{
+    fill: white;
+    filter: drop-shadow(0 0 8px #f5b30d);
+    h1{
+        font-family: "Girassol", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+}

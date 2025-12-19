@@ -1,0 +1,114 @@
+$fuente: 'arco';
+
+ion-toolbar {
+  --background: rgba(255, 0, 0, 1);
+  --color: #fffb00;
+  --border-color: #fffb00;
+  --border-width: 0px 0px 4px 0px;
+  font-family: $fuente;
+}
+
+ion-content {
+  //  //--background: black;
+  //  --background: #724121;
+  //--background: #fa2828;
+  --background: 'none';
+  background-color: #ffcfcf;
+  opacity: 1;
+  background-image: linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(30deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(150deg, #fffed7 12%, transparent 12.5%, transparent 87%, #fffed7 87.5%, #fffed7), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777), linear-gradient(60deg, #fffed777 25%, transparent 25.5%, transparent 75%, #fffed777 75%, #fffed777);
+  background-size: 56px 98px;
+  background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+  font-family: $fuente;
+  height: 100vh;
+}
+
+ion-button.expand {
+  width: 100%;
+  /* Ocupar toda la anchura disponible */
+  height: 100%;
+  /* Ocupar toda la altura disponible */
+}
+
+.xc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+.customButtonA {
+  --background: #fffb00 !important;
+  --color: #ff0000 !important;
+  font-family: $fuente;
+
+}
+
+.customButtonB {
+  --background: rgb(255, 0, 0) !important;
+  --color: #fffb00 !important;
+  font-family: $fuente;
+
+}
+
+.cardA {
+  --background: #fffb00 !important;
+  --color: #ff0000 !important;
+  font-family: $fuente;
+
+  ion-card-title {
+    --color: #ff0000;
+    font-family: $fuente;
+  }
+
+  ion-card-subtitle {
+    --color: #920000;
+    font-family: $fuente;
+  }
+}
+
+.cardB {
+  --background: #ff0000 !important;
+  --color: #fffb00 !important;
+  font-family: $fuente;
+
+  ion-card-title {
+    --color: #fffb00;
+    font-family: $fuente;
+  }
+
+  ion-card-subtitle {
+    --color: #b3b000;
+    font-family: $fuente;
+  }
+}
+
+.itemA {
+  --background: #ff0000 !important;
+  --color: #fffb00 !important;
+
+  ion-label {
+    font-family: $fuente;
+  }
+}
+
+.itemB {
+  --background: #fffb00 !important;
+  --color: #ff0000 !important;
+
+  ion-label {
+    font-family: $fuente;
+  }
+}
+
+ion-accordion {
+  --background: #fffb00 !important;
+  --color: #ff0000 !important;
+}
+
+ion-input {
+  font-family: $fuente;
+  font-size: 18px;
+}

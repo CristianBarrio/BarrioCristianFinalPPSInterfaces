@@ -1,0 +1,66 @@
+<div [ngClass]="temaActual">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>{{ artista }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+</div>
+  
+<ion-content [fullscreen]="true" [ngClass]="temaActual">
+
+  <div *ngIf="cancionesActuales.length === 2 && cancionesActuales[0] && cancionesActuales[1]" class="vs-canciones-contenedor" [ngClass]="temaActual">
+      <button class="btn-cancion btn-cancion1" (click)="elegirCancion(cancionesActuales[0])">
+        <h1>{{ cancionesActuales[0]?.name }}</h1>
+        <p>{{ cancionesActuales[0]?.artists[0]?.name }}</p>
+      </button>
+      
+      <div class="vs">vs</div>
+      
+      <button class="btn-cancion btn-cancion2" (click)="elegirCancion(cancionesActuales[1])">
+        <h1>{{ cancionesActuales[1]?.name }}</h1>
+        <p>{{ cancionesActuales[1]?.artists[0]?.name }}</p>
+      </button>
+    </div>
+    
+    <div *ngIf="ganadora" class="ganadora-mensaje" [ngClass]="temaActual">
+      <h1 class="texto1">Tu canción favorita de {{ artista }} es </h1>
+      <h1 class="texto2">{{ ganadora?.name }}</h1>
+      <br>
+      <div *ngIf="ganadora">
+        <button class="btn-rejugar" expand="block" (click)="jugarDeNuevo()">Jugar de nuevo
+          <img *ngIf="temaActual === 'tema-profesional'" src="assets/replay.png" slot="end" height="40px" width="40px" style="margin-left: 8px;">
+          <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/arrow-back.png"  height="45px" width="45px">
+          <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/tango.png" slot="end" height="45px" width="45px" style="margin-left: 8px;">
+          <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/chick3.gif" slot="end" height="45px" width="45px" style="margin-left: 8px;">
+
+          <ion-icon *ngIf="temaActual !== 'tema-argentina' 
+                    && temaActual !== 'tema-naif'
+                    && temaActual !== 'tema-festivo'
+                    && temaActual !== 'tema-profesional'" 
+                    slot="end" name="musical-notes-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <ion-button class="signOut" expand="block" (click)="signOut()">Cerrar Sesión
+      <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/easter-eggs.png" height="25px" width="25px" style="margin-left: 8px;" slot="end">
+      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/scribble.png" height="30px" width="30px" style="margin-left: 8px;" slot="end">
+      <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/medialuna.png" height="30px" width="30px" style="margin-left: 8px;" slot="end">
+
+      <ion-icon *ngIf="temaActual !== 'tema-argentina' 
+                && temaActual !== 'tema-naif'
+                && temaActual !== 'tema-festivo'" 
+                slot="end" name="log-out-outline"></ion-icon>
+    </ion-button>
+
+    <div class="fondo-pascua" aria-hidden="true">
+      <div class="fondo">
+        <div class="patron"></div>
+      </div>
+      <div>
+        <div class="patron"></div>
+      </div>
+    </div>
+
+</ion-content>
+

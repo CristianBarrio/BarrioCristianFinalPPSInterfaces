@@ -1,0 +1,1805 @@
+@import "@ionic/angular/css/core.css";
+
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+// ion-toast.custom-toast {
+//   --background: #fbff00;
+//   --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+//   --color: #ff0000;
+//   font-family: 'arco';
+// }
+
+// ion-loading.custom-loading {
+//   --background: #ff0000;
+//   --spinner-color: #fbff00;
+//   font-family: 'arco';
+//   color: #fbff00;
+// }
+
+ion-toast.custom-toast{
+  position: relative;
+  transform: translateY(-50px);
+}
+
+// -------------------- TEMAS --------------------
+
+.submit-img {
+  width: 24px;
+  height: 24px;
+  background-image: var(--submit-icon);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+ion-input {
+  height: 50px;
+
+  input {
+    padding-left: 10px !important;
+    border-radius: 12px  !important;
+  }
+}
+
+/* --------------------------------------------------- FESTIVO --------------------------------------------------- */
+.tema-festivo, .tema-festivo * {
+  transition: all 0.3s ease-in-out;
+
+    --submit-icon: url('/assets/custom/christmas-tree.png');
+
+    .navidad, .navidad *{
+        .custom-toast{
+          font-family: "Mountains of Christmas", serif;
+          font-weight: 700;
+          font-style: normal;
+        }
+
+        --background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+    
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-style: normal;
+
+      .logo{
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+        .logo-naif, .logo-pro, .logo-arg{
+          display:none;
+        }
+      }
+      .logo-h1{
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+        color: #cd4239;
+      }
+
+        ion-button{
+          font-family: "Mountains of Christmas", serif;
+          font-weight: 700;
+          font-style: normal;
+        }
+
+        ion-input{
+          font-family: "Mountains of Christmas", serif;
+          font-weight: 700;
+          font-style: normal;
+          --background: #fcf4e4 !important;
+          --color: #837e57 !important;
+        }
+
+        ion-icon{
+        color:#cd4239;
+        }
+
+        h1{
+        color: #B71C1C;
+        text-shadow: 1px 1px 0 #FFD700;
+        }
+
+        ion-toolbar{
+            --background: white;
+            --color:black;
+            font-family: "Mountains of Christmas", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        .submit{
+        --background: #cd4239;
+        --color: white;
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-style: normal;
+        }
+
+        .user-buttons-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+        justify-content: center;
+        }
+
+        .user-button {
+        --color: gold; 
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-style: normal;
+
+        width: 25%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.75em; 
+        }
+
+        .button1, .button3, .button5{
+        --background: #961e00; 
+        }
+        .button2, .button4, .button6{
+        --background: #095502; 
+        }
+
+
+
+        .validators{
+        font-family: "Mountains of Christmas", serif;
+        font-weight: 700;
+        font-style: normal;
+        }
+
+
+        .animacion-navidad {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 9999;
+          overflow: hidden;
+        }
+    
+        .anim-img {
+          position: absolute;
+          top: -10px;
+          color: rgb(0, 0, 0);
+          font-size: 1.5em;
+          user-select: none;
+          animation: fall 10s linear infinite;
+          opacity: 0.8;
+        }
+    
+        .anim-img:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+        .anim-img:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 1s; }
+        .anim-img:nth-child(3) { left: 40%; animation-duration: 8s;  animation-delay: 2s; }
+        .anim-img:nth-child(4) { left: 60%; animation-duration: 14s; animation-delay: 1.5s; }
+        .anim-img:nth-child(5) { left: 80%; animation-duration: 11s; animation-delay: 3s; }
+        .anim-img:nth-child(6) { left: 90%; animation-duration: 13s; animation-delay: 1s; }
+    
+        @keyframes fall {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0.6;
+          }
+        }
+
+
+      .outer, .inner{
+        ion-icon{
+          color: #cd4239;
+        }
+      }
+
+      .customButtonA{
+        --background: gold;
+      }
+      .customButtonB{
+        --background: #095502;
+        --color: gold;
+      }
+      .customButtonC{
+        --background: #961e00;
+        --color: gold;
+      }
+
+    }
+
+    --salir-icon: url('/assets/custom/tombstone.png');
+
+    .pro-icon,
+    .icon-naif, .icon-pro, .icon-arg{
+      display:none;
+    }
+
+    .cliente{
+      .botonQr::part(native){
+        border-radius: 20px;
+      } 
+    }
+
+    .admin, .admin *, .cliente, .cliente *, .pagar, .pagar *{
+      font-family: "Creepster", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .halloween, .halloween *{
+      font-family: "Creepster", system-ui;
+      font-weight: 400;
+      font-style: normal;
+        
+      --background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
+
+      ion-toolbar{
+        --background: #242424;
+      }
+
+      .salir{
+        --background:#1b090c;
+        --color: #ffffff;
+        border: 2px solid #10fe08;
+        box-sizing: border-box;
+      }
+
+      .animacion {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+      }
+
+      .anim-img {
+        position: absolute;
+        top: 0;
+        left: -10%;
+        color: rgb(0, 0, 0);
+        font-size: 1.5em;
+        user-select: none;
+        animation: drift 12s linear infinite;
+        opacity: 0.8;
+      }
+
+      .anim-img:nth-child(1) { top: 7.5%; animation-duration: 12s; animation-delay: 0s; }
+      .anim-img:nth-child(2) { top: 20%; animation-duration: 14s; animation-delay: 2s; }
+      .anim-img:nth-child(3) { top: 40%; animation-duration: 10s; animation-delay: 4s; }
+      .anim-img:nth-child(4) { top: 60%; animation-duration: 16s; animation-delay: 3s; }
+      .anim-img:nth-child(5) { top: 75%; animation-duration: 11s; animation-delay: 5s; }
+      .anim-img:nth-child(6) { top: 90%; animation-duration: 13s; animation-delay: 1.5s; }
+
+      @keyframes drift {
+        0% {
+          transform: translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(110vw) rotate(0deg);
+          opacity: 0.6;
+        }
+      }
+
+      .lista-card {
+        font-family: "Creepster", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
+        border: 4px solid #10fe08;
+        border-radius: 25px 25px 35px 35px;
+        padding: 8px;
+        margin: 20px auto;
+        width: 90%;
+        box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+        --background: transparent;
+
+        ion-item {
+          --background: transparent;
+        }
+
+        ion-list-header{background: transparent;}
+        ion-list-header ion-label {
+          color: white;
+          background: transparent;
+          font-size: 22px;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        ion-label, ion-select, ion-item {
+          color: white;
+        }
+
+        ion-icon{
+          --background: #fe4e00;
+          --color: black;
+        }
+      }
+
+    }
+
+    .mozo{
+      .customButtonA{
+        --background: #fe4e00;
+        --border-radius: 12px;
+        --ripple-color: transparent;
+        --box-shadow: none;
+        border-radius: 12px;
+        border: none;
+        background: #fe4e00;
+        box-shadow: 0 0 15px #fe4e00;
+        transition: box-shadow 0.3s;
+      }
+      .customButtonA::part(native) {
+        border-radius: 12px;
+      }
+    }
+    
+    .btn-confirmar::part(native) {background: #c900ff !important;}
+    .btn-confirmar2::part(native) {background: #10fe08 !important;}
+    .btn-confirmar3::part(native) {background: #fe4e00 !important;}
+    .btn-confirmar ion-icon {color: #f5b30d !important;}
+    .btn-confirmar2 ion-icon {color: black !important;}
+    .btn-confirmar3 ion-icon {color: black !important;}
+    
+    .cliente, .cliente *{
+      .botonQr::part(native){
+        --background: #fe4e00;
+      }
+      ion-item{
+        --background: transparent;
+        font-size: 30px;
+      }
+      ion-button{
+        --background: #fe4e00;
+      }
+      .botonMozo::part(native){
+        border-radius: 12px;
+      }
+    }
+
+
+    .pascua, .pascua *{
+      font-family: "Chewy", system-ui;
+      font-weight: 400;
+      font-style: normal;
+      
+      ion-content{
+        --background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+      }
+
+      ion-toolbar{
+        --background: #f26434;
+        --color: white;
+      }
+
+      .chat-footer ion-toolbar{
+        --background: #ff9fcf;
+        --color: #795476;
+      }
+    }
+
+    .btn-mesa,.btn-encuesta {
+      width: 260px;
+      height: 180px;
+
+      --background: #ffe6e8;
+      --color: #795476;
+      --border-radius: 60% 60% 50% 50% / 70% 70% 40% 40%;
+
+      --box-shadow: 0 0 10px #ffcae6;
+
+      --border-width: 3px;
+      --border-style: solid;
+      --border-color: #ff9fcf;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ion-icon{
+        --color: #795476;
+      }
+    }
+
+    .encuesta-btn-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      .encuesta-btn{
+        --border-radius: 999px;
+        --background: #ffa584;
+        --color: #ffffff;
+
+        --border-width: 2px;
+        --border-style: solid;
+        --border-color: #5bcff8;
+        height: 45px;
+        width: 300px;
+        font-size: 20px;
+      }
+    }
+
+    .encuesta-btn.active {
+      --background: #72b800 !important;
+      --color: black !important;
+      transform: scale(1.05);
+    }
+
+    .cargar-encuesta{
+      --background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+    }
+
+    .encuesta-card, .comentarios-card, .pedido-card {
+      font-family: "Chewy", system-ui;
+      font-weight: 400;
+      font-style: normal;
+      background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+      border: 4px solid #f26434;
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+        color: white;
+      }
+
+      ion-label {
+        color: white;
+      }
+
+      ion-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+
+      ion-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .itemA {
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      .coment{
+        color: white;
+        background:pink;
+      }
+    }
+
+    .btn-cargar{
+      --background:#ffa584;
+    }
+
+    .btn-cant{--background: #72b800; --color: black;}
+    .btn-cant2{--background: #ffa584; --color: #5bcff8;}
+    .btn-cant3{--background: #ffe6e8; --color: #795476;}
+
+    .fab-pedido{
+      --background: #ff9fcf; --color: #795476;
+    }
+
+    .fondo-pascua {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .fondo {
+      position: absolute;
+      bottom: -120%;
+      left: -120%;
+      width: 250%;
+      height: 250%;
+      animation: diagonalFlow 25s linear infinite;
+      opacity: 0.4;
+    }
+
+    .patron {
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/custom/easter-bunny.png"), url("/assets/custom/easter-day.png");
+      background-repeat: repeat, repeat;
+      background-size: 100px 100px, 100px 100px;
+      background-position: 0 0, 100px 0;  
+      opacity: 0.6;
+    }
+
+    @keyframes diagonalFlow {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(50%, -50%);
+      }
+    }
+
+    .pagar-pascua{background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);}
+    .pedido-modal{
+      background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+      border: 4px solid #f26434;
+
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 92%;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+
+      ion-item {
+        --background: transparent;
+        color: white;
+      }
+
+      ion-label {
+        color: white;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed rgba(255,255,255,.5);
+        margin: 12px 0;
+      }
+    }
+
+    .footer-pedido ion-label{color: #ff9fcf;}
+    .footer-pedido .customButtonA{--background: #795476;}
+
+    .my-message{
+      background: #ff9fcf;
+      color: #f26434;
+    }
+    .other-message{
+      background: #ffe6e8;
+      color: #795476;
+    }
+
+    .qrarg,.qrpro,.qrnaif{display:none;}
+
+    .btnPropina{--background: #ffa584; --color: #5bcff8;}
+    .btnPago{--background: #72b800; --color: black;}
+  }
+
+/* --------------------------------------------------- ARGENTINA --------------------------------------------------- */
+.tema-argentina, .tema-argentina * {
+  transition: all 0.3s ease-in-out;
+
+  font-family: "Girassol", serif;
+  font-weight: 400;
+  font-style: normal;
+
+
+  /* -------- GLOBAL -------- */
+  ion-content {
+    --background: linear-gradient(to bottom, #74acdf 0%, #ffffff 100%);
+  }
+
+  ion-toolbar {
+    --background: white;
+    --color: #f5b30d;
+    font-weight: 400;
+  }
+
+  ion-input {
+    --color: white;
+    --background: black;
+    border-radius: 12px;
+    box-shadow: 0 0 6px #ffb347;
+    ion-icon {
+      color: #f5b30d;
+    }
+  }
+
+  
+  /* -------- LOGIN -------- */
+
+  --submit-icon: url('/assets/argentina/mate.png');
+
+  .logo {
+    filter: drop-shadow(0 0 8px #f5b30d);
+    .logo-naif, .logo-pro, .logo-navidad{
+      display:none;
+    }
+  }
+  .logo-h1{
+    filter: drop-shadow(0 0 8px #f5b30d);
+  }
+
+  .user-buttons-container {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .user-button {
+    position: absolute;
+    width: 90px;
+    height: 70px;
+    border-radius: 20px 20px 40px 40px;
+    font-family: "Girassol", serif;
+    font-weight: 400;
+    --color: #031a36;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .user-button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .button1 {
+    --background: #74acdf;
+    top: 0;
+    left: 0%;
+    transform: rotate(-5deg);
+  }
+  .button2 {
+    --background: #ffffff;
+    top: 50px;
+    left: 25%;
+    transform: translateX(-50%);
+  }
+  .button3 {
+    --background: #f5b30d;
+    top: 100px;
+    left: 15%;
+    transform: rotate(5deg);
+  }
+  .button4 {
+    --background: #74acdf;
+    top: 0;
+    right: 10%;
+    transform: rotate(5deg);
+  }
+  .button5 {
+    --background: #ffffff;
+    top: 50px;
+    right: 10%;
+    transform: translateX(10%);
+  }
+  .button6 {
+    --background: #f5b30d;
+    top: 100px;
+    right: 10%;
+    transform: rotate(-5deg);
+  }
+
+  .submit {
+    --background: #f5b30d;
+    --color: #031a36;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .animacion-navidad, .animacion-halloween, .animacion-pascua,
+  .icon-naif, .icon-pro, .icon-pascua{
+      display:none;
+    }
+
+
+   /* -------- ADMIN -------- */
+
+   .admin, .admin *{
+     font-family: "Girassol", serif;
+     font-weight: 400;
+     font-style: normal;
+
+     ion-label{
+       --color: #031a36;
+     }
+   }
+
+   .bartender{
+    ion-list-header{
+      --color: #031a36;
+    }
+   }
+
+   --salir-icon: url('/assets/argentina/medialuna.png');
+
+   .pro-icon{
+      display:none;
+    }
+
+    .cliente, .cliente *{
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      font-style: normal;
+
+      .botonQr::part(native){
+        --background: #f5b30d;
+        border-radius: 20px;
+      }
+
+      ion-item{
+        --background: none;
+        --color: #031a36;
+        font-size: 20px;
+      }
+    }
+
+    .mozo, .mozo *{
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .outer, .inner{
+      ion-icon{
+        color: #f5b30d;
+      }
+    }
+
+    .maitre, .maitre *, .pedido, .pedido *, .pagar, .pagar *{
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .bartender-accordion ion-label,
+    .bartender-accordion ion-item {
+      font-family: "Girassol", serif;
+    }
+
+    .lista-card {
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      font-style: normal;
+      background: linear-gradient(#ffffff 35%, #75aadb 100%);
+      border: 4px solid #f5b30d;
+      border-radius: 25px 25px 35px 35px;
+      padding: 8px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+      }
+
+      ion-list-header ion-label {
+        color: #12263a;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      ion-label, ion-select, ion-item {
+        color: #12263a;
+      }
+    }
+
+    .opcion-encuesta{
+      font-family: "Girassol", serif;
+      font-weight: 400;
+    }
+
+    .encuesta-card, .comentarios-card, .pedido-card {
+      font-family: "Girassol", serif;
+      font-weight: 400;
+      background: linear-gradient(#ffffff 35%, #75aadb 100%);
+      border: 4px solid #f5b30d;
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+        color: #12263a;
+      }
+
+      ion-label {
+        color: #12263a;
+      }
+
+      ion-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #12263a;
+        text-align: center;
+      }
+
+      ion-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .itemA {
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      .coment{
+        color: black;
+        background:#75aadb;
+      }
+    }
+
+    .encuesta-btn-container{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 5px;
+      justify-content: center;
+    }
+
+    .encuesta-btn {
+      --background: #75aadb; 
+      --color: #ffffff; 
+      width: 26%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9em;
+    }
+
+    .encuesta-btn.active {
+      --background: #f5b30d !important;
+      --color: black !important;
+      transform: scale(1.05);
+    }
+
+    .btn-cargar{
+      --background: #f5b30d;
+    }
+
+    .fab-pedido{
+      --background: #75aadb; --color: #f5b30d;
+    }
+
+    .btn-cant{--background: #75aadb; --color: #f5b30d;}
+    .btn-cant2{--background: white; --color: #75aadb;}
+    .btn-cant3{--background: #f5b30d; --color: white;}
+
+    .btn-confirmar::part(native) {background: #75aadb !important;}
+    .btn-confirmar2::part(native) {background: white !important;}
+    .btn-confirmar3::part(native) {background: #f5b30d !important;}
+    .btn-confirmar ion-icon {color: #f5b30d !important;}
+    .btn-confirmar2 ion-icon {color: #75aadb !important;}
+    .btn-confirmar3 ion-icon {color: white !important;}
+
+    .pedido-modal{
+      background: linear-gradient(#ffffff 35%, #75aadb 100%);
+      border: 4px solid #f5b30d;
+
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 92%;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+
+      ion-item {
+        --background: transparent;
+        color: #12263a;
+      }
+
+      ion-label {
+        color: #12263a;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed rgba(255,255,255,.5);
+        margin: 12px 0;
+      }
+    }
+
+    .btn-mesa, .btn-encuesta{
+      --color: #f5b30d;
+    }
+
+    .footer-pedido ion-label{color: #f5b30d;}
+    .footer-pedido .customButtonA{--background: #75aadb;}
+
+    .my-message{
+      background: #75aadb;
+      color: #12263a;
+    }
+    .other-message{
+      background: white;
+      color: #f5b30d;
+    }
+    .qrnaif,.qrpro,.qrhal{display:none;}
+
+    .btnPropina{--background: #75aadb; --color: #12263a;}
+    .btnPago{--background: white; --color: #f5b30d;}
+}
+
+
+
+
+/* --------------------------------------------------- PROFESIONAL --------------------------------------------------- */
+.tema-profesional, .tema-profesional *{
+    transition: all 0.3s ease-in-out;
+
+    font-family: "DM Serif Text", serif;
+    font-weight: 700;
+    font-style: normal;
+
+    .logo{
+      h1{
+        color:#e9bc77;
+      }
+      .logo-naif, .logo-arg, .logo-navidad{
+        display:none;
+      }
+    }
+
+    .logo-h1{
+      color:#e9bc77;
+    }
+
+    ion-content {
+        --background: #031a36; 
+    }
+
+    ion-button{
+       font-family: "DM Serif Text", serif;
+       font-weight: 700;
+       font-style: normal;
+    }
+    
+    .bartender-accordion ion-label,
+    .bartender-accordion ion-item {
+      font-family: "DM Serif Text", serif;
+    }
+
+    ion-toolbar{
+        --background: white;
+        --color:black;
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    h1{
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    
+    ion-input{
+        ion-icon{
+            color:#7b6136;
+        }
+
+        --background: #f0e2c2;
+        --color: #031a36;
+    }
+
+    ion-item{
+        --background: #f0e2c2;
+        --color: #031a36;
+
+        ion-icon{
+            color:#7b6136;
+        }
+    }
+
+    .signOut{
+        --background:white;
+    }
+
+    .btn-rejugar{
+        background:white;
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .submit{
+      --background: #e1b367;
+      --color: #031a36;
+    }
+
+    .user-buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 5px;
+      justify-content: center;
+    }
+
+    .user-button {
+      --background: #964B00; 
+      --color: #ffffff; 
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+
+      width: 28%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7em; 
+    }
+
+    --submit-icon: url('/assets/profesional/ink-pen.png');
+
+    .animacion-navidad, .animacion-halloween, .animacion-pascua,
+    .icon-naif, .icon-arg, .icon-pascua{
+        display:none;
+    }
+
+    .admin{
+      ion-label{
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+
+        --color: white;
+      }
+    }
+
+    
+    .salir-img{
+      display: none;
+    }
+  
+    .cliente{
+      ion-label{
+        font-family: "DM Serif Text", serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .botonMozo{
+        --background: white;
+      }
+
+      .botonQr{
+        --background: #c93434;
+      }
+
+      ion-item{
+        --background: none;
+        --color: #e9bc77;
+        font-size: 20px;
+      }
+    }
+
+    .outer, .inner{
+      ion-icon{
+        color: #c93434;
+      }
+    }
+
+    .customButtonA{
+      --background: #c93434;
+    }
+
+    .customButtonB{
+      --background: #964B00;
+    }
+
+    .customButtonC{
+      --background: #ffd700;
+    }
+
+    .maitre, .maitre *, .mozo, .mozo *, .pedido, .pedido *, .pagar, .pagar *{
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .lista-card {
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+      background: #e9bc77;
+      border: 4px solid #964B00;
+      border-radius: 25px 25px 35px 35px;
+      padding: 8px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+      }
+
+      ion-list-header ion-label {
+        color: #12263a;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      ion-label, ion-select, ion-item {
+        color: #12263a;
+      }
+    }
+
+    .btn-mesa{
+      --background: #631c24;
+      --color: white;
+      ion-icon{
+        --color: white;
+      }
+    }
+    .btn-encuesta{
+      --background: #c93434;
+      --color: white;
+      ion-icon{
+        --color: white;
+      }
+    }
+
+    .btn-confirmar::part(native) {background: #ffd700 !important;}
+    .btn-confirmar2::part(native) {background: #964B00 !important;}
+    .btn-confirmar3::part(native) {background: white !important;}
+    .btn-confirmar ion-icon {color: black !important;}
+    .btn-confirmar2 ion-icon {color: white !important;}
+    .btn-confirmar3 ion-icon {color: black !important;}
+
+    .encuesta-btn-container{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 3px;
+      justify-content: center;
+      .encuesta-btn{
+        --background: #964B00;
+        --color: #ffffff;
+
+        --border-width: 2px;
+        --border-style: solid;
+        width: 26%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7em; 
+      }
+    }
+
+    .encuesta-btn.active {
+      --background: #ffd700 !important;
+      --color: black !important;
+      transform: scale(1.05);
+    }
+
+    .encuesta-card, .comentarios-card, .pedido-card {
+      font-family: "DM Serif Text", serif;
+      font-weight: 700;
+      font-style: normal;
+      background: #e9bc77;
+      border: 4px solid #964B00;
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+        color: white;
+      }
+
+      ion-label {
+        color: white;
+      }
+
+      ion-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+
+      ion-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .itemA {
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      .coment{
+        color: white;
+        background:#12263a;
+      }
+    }
+
+    .btn-cargar{
+      --color:white;
+    }
+
+    .btn-cant{--background: #ffd700; --color: black;}
+    .btn-cant2{--background: #964B00; --color: white;}
+    .btn-cant3{--background: white; --color: black;}
+
+    .fab-pedido{
+      --background: #ffd700; --color: black;
+    }
+
+    .pedido-modal{
+      background: #e9bc77;
+      border: 4px solid #964B00;
+
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 92%;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+
+      ion-item {
+        --background: transparent;
+        color: white;
+      }
+
+      ion-label {
+        color: #12263a;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed rgba(255,255,255,.5);
+        margin: 12px 0;
+      }
+    }
+
+    .footer-pedido ion-label{color: white;}
+    .footer-pedido .customButtonA{--background: #964B00;}
+
+    .my-message{
+      background: #75aadb;
+      color: #12263a;
+    }
+    .other-message{
+      background: white;
+      color: #f5b30d;
+    }
+
+    .qrarg,.qrnaif,.qrhal{display:none;}
+
+    .btnPropina{--background: #964B00; --color: white;}
+    .btnPago{--background: #ffd700; --color: black;}
+  }
+
+
+/* --------------------------------------------------- NAIF --------------------------------------------------- */
+.tema-naif, .tema-naif *{
+    transition: all 0.3s ease-in-out;
+
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    ion-content {
+        --background: #fed4e8; 
+    }
+
+    ion-button{
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+        
+    ion-toolbar{
+        --background: #10b1a9;
+        --color:black;
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    h1{
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .signOut{
+      --background:#e68dbd;
+    }
+
+    .btn-rejugar{
+        background:#ffb347;
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+        color: black;
+    }
+
+    ion-input{
+        --background:#f1daae;
+        --color:black;
+        ion-icon{
+            color:gray;
+        }
+    }
+
+    ion-item{
+        --background: #f1daae;
+
+        ion-icon{
+            color:gray;
+        }
+    }
+
+    ion-label{
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    // LOGIN
+
+    --submit-icon: url('/assets/naif/paint-brush.png');
+
+    .logo {
+      filter: drop-shadow(0 0 8px #ff7b00);
+      .logo-arg, .logo-pro, .logo-navidad{
+        display:none;
+      }
+    }
+    .logo-h1{
+      color: #fef3d0;
+      text-shadow:
+      0 0 3px #ce2b43,
+      0 0 6px #ce2b43,
+      0 0 10px #ce2b43;
+    }
+
+    .user-buttons-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .bartender-accordion ion-label,
+    .bartender-accordion ion-item {
+      font-family: "Pacifico", serif;
+    }
+
+    .user-button {
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+      --color: #ffffff;
+      width: 90px;
+      height: 90px;
+      min-width: 80px;
+      min-height: 80px;
+
+      border-radius: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.7em;
+    }
+
+    .user-button::part(native) {
+      border-radius: 50%;
+    }
+
+    .button1 {
+      --background: #af7dee;
+      top: 0px;
+      left: -50px;
+    }
+    .button2 {
+      --background: #30a890;
+      top: 40px;
+      left: 50px;
+    }
+    .button3 {
+      --background: #fc6a9c;
+      top: 80px;
+      left: 0px;
+    }
+    .button4 {
+      --background: #af7dee;
+      top: 0px;
+      left: -50px;
+    }
+    .button5 {
+      --background: #30a890;
+      top: 40px;
+      left: 50px;
+    }
+    .button6 {
+      --background: #fc6a9c;
+      top: 80px;
+      left: 0px;
+    }
+
+    .submit {
+      --background: #ff7b00;
+      --color: black;
+    }
+
+    .animacion-navidad, .animacion-halloween, .animacion-pascua,
+    .icon-pro, .icon-arg, .icon-pascua, .pro-icon{
+      display:none;
+    }
+
+    .admin{
+      ion-label{
+        font-family: "Pacifico", serif;
+        font-weight: 400;
+        font-style: normal;
+
+        --color: black;
+      }
+    }
+
+    --salir-icon: url('/assets/naif/scribble.png');
+
+    .cliente{
+      ion-label{
+        font-family: "Pacifico", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .botonMozo{
+        --background: #ff7b00;
+      }
+      
+
+      .botonQr::part(native){
+        --background: #fc6a9c;
+        border-radius: 25%;
+      }
+
+      ion-item{
+        --background: none;
+        text-shadow:
+        0 0 3px #ce2b43,
+        0 0 6px #ce2b43,
+        0 0 10px #ce2b43;
+        font-size: 20px;
+      }
+    }
+
+    .outer, .inner{
+      ion-icon{
+        color: #ce2b43;
+      }
+    }
+
+    .customButtonA{
+      --background: #af7dee;
+    }
+
+    .customButtonB{
+      --background: #fc6a9c;
+    }
+
+    .customButtonC{
+      --background: #ff7b00;
+    }
+
+    .maitre, .maitre *, .mozo, .mozo *, .pedido, .pedido *, .pagar, .pagar *{
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .lista-card {
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+      background: transparent;
+      border: 4px solid #af7dee;
+      border-radius: 25px 25px 35px 35px;
+      padding: 8px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      .accordion1{ion-icon{color: #30a890;}}
+      .accordion2{ion-icon{color: #ce2b43;}}
+      
+      ion-item {
+        --background: transparent;
+      }
+
+      ion-list-header ion-label {
+        color: black;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      ion-label, ion-select, ion-item {
+        color: black;
+      }
+    }
+
+    .btn-confirmar::part(native) {background: #af7dee !important; border-radius: 50%;}
+    .btn-confirmar2::part(native) {background: #fc6a9c !important; border-radius: 50%;}
+    .btn-confirmar3::part(native) {background: #ff7b00 !important; border-radius: 50%;}
+    .btn-confirmar3 ion-icon {color: black !important;}
+
+    .encuesta-btn-container{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .encuesta-btn {
+      --color: #ffffff;
+      width: 95px;
+      height: 95px;
+      min-width: 80px;
+      min-height: 80px;
+
+      border-radius: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.65em;
+      --background: #fc6a9c;
+    }
+
+    .encuesta-btn::part(native){border-radius: 50%;}
+
+    .encuesta-btn.active {
+      --background: #ce2b43 !important;
+      --color: black !important;
+      transform: scale(1.05);
+    }
+
+    .encuesta-card, .comentarios-card, .pedido-card {
+      font-family: "Pacifico", serif;
+      font-weight: 400;
+      font-style: normal;
+      background: transparent;
+      border: 4px solid #af7dee;
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+
+      --background: transparent;
+
+      ion-item {
+        --background: transparent;
+        color: black;
+      }
+
+      ion-label {
+        color: black;
+      }
+
+      ion-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+      }
+
+      ion-radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .itemA {
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      .coment{
+        color: black;
+        background: pink;
+      }
+    }
+
+    .btn-cargar{
+      --background:#fc6a9c;
+      --border-radius: 20px;
+    }
+
+    .btn-cant{--background: #af7dee; --color: black;}
+    .btn-cant2{--background: #fc6a9c; --color: black;}
+    .btn-cant3{--background: #ff7b00; --color: black;}
+
+    .fab-pedido{
+      --background: #ffb347; --color: #4a2e0e;
+    }
+
+    .btn-mesa, .btn-encuesta{
+      --background: #ffb347;
+      --color: #4a2e0e;
+      --border-radius: 999px;
+      --border: 3px solid #ffe6b3;
+      --box-shadow: 0 0 6px #ffb347;
+    }
+
+    .pedido-modal{
+      background: #fed4e8;
+      border: 4px solid #af7dee;
+
+      border-radius: 25px 25px 35px 35px;
+      padding: 15px;
+      margin: 20px auto;
+      width: 92%;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+
+      ion-item {
+        --background: transparent;
+        color: black;
+      }
+
+      ion-label {
+        color: black;
+      }
+
+      hr {
+        border: none;
+        border-top: 2px dashed rgba(255,255,255,.5);
+        margin: 12px 0;
+      }
+    }
+
+    .footer-pedido ion-label{color: #ce2b43;}
+
+    .my-message{
+      background: #fc6a9c;
+      color: white;
+    }
+    .other-message{
+      background: #ff7b00;
+      color: black;
+    }
+
+    .qrarg,.qrpro,.qrhal{display:none;}
+
+    .btnPropina{--background: #ff7b00; --color: black;}
+    .btnPago{--background: #fc6a9c; --color: black;}
+}
+
+
+/* --------------------------------------------------- TEMAS --------------------------------------------------- */
+.submit {
+    margin-top: 20px;
+}
+
+ion-accordion{
+  background: transparent;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px;
+    opacity: 30%;
+
+    ion-icon {
+      font-size: 100px;
+    }
+}
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.validators {
+    color: var(--ion-color-danger);
+    font-size: 13px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+
+.auth-form {
+    width: 100%;
+    padding: 20px;
+}
+
+ion-input{
+    --border-radius: 15px;
+    --border-style: solid;
+    --border-width: 1px;
+}
+
+.eye-icon {
+  position: relative;
+  height: 25px;
+  width: 25px;
+}
+
+.salir, .signOut{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: bottom;
+  bottom: 15px;
+
+  margin: 0 auto;
+  width: calc(100% - 40px);
+  text-align: center;
+  box-sizing: border-box;
+
+  --padding-top: 18px;
+  --padding-bottom: 18px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+ion-toolbar{
+  --border-width: 0px 0px 0px 0px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Pacifico&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Girassol&family=Pacifico&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Chewy&display=swap');
