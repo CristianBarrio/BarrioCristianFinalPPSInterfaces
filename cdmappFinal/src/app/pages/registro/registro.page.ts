@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController, IonModal, LoadingController, ToastController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
+import { PushApiService } from 'src/app/servicios/push-api.service';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
 
 @Component({
@@ -40,7 +41,8 @@ export class RegistroPage implements OnInit {
     private firebase: FirebaseService,
     private router: Router,
     private loadingCtrl: LoadingController,
-    private pushService: PushNotificationService,
+    //private pushService: PushNotificationService,
+    private pushService: PushApiService,
     private toastController: ToastController
   ) {
     BarcodeScanner.isGoogleBarcodeScannerModuleAvailable().then((respnse) => {
@@ -115,10 +117,8 @@ export class RegistroPage implements OnInit {
     this.imagePreview = '../../../assets/userph.png';
   }
 
-  //Foto
   async nuevaFoto() {
     await this.firebase.tomarFoto().then((resultado) => {
-      //console.info(resultado);
       this.imagePreview = resultado.webPath;
       this.firebase.readAsBase64(resultado).then((blob) => {
         this.fotoFile = blob;
@@ -128,10 +128,8 @@ export class RegistroPage implements OnInit {
   }
 
   async scan(): Promise<void> {
-    
     let codigo = await BarcodeScanner.scan();
     let dni = codigo.barcodes[0].displayValue.split('@');
-    //alert(dni);
     this.formularioClientes.controls['nombre'].setValue(dni[2]);
     this.formularioClientes.controls['apellido'].setValue(dni[1]);
     this.formularioClientes.controls['dni'].setValue(dni[4]);
@@ -140,7 +138,6 @@ export class RegistroPage implements OnInit {
   async modal(head, mensaje) {
     const alert = await this.alertController.create({
       header: head,
-      //subHeader: 'No se pudo realizar la carga.',
       cssClass: 'my-custom-class',
       message: mensaje,
       buttons: ['Cerrar'],
@@ -148,32 +145,91 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
+  // async guardar(formulario: any) {
+  //   let tempObj = formulario;
+  //   let nombre = Date.now().toString(),
+  //     carpeta = 'fotosPerfil',
+  //     sufijo = '_fotoPerfil',
+  //     coleccion = 'usuarios';
+  //     await this.showLoading().then(() => {
+  //     this.firebase
+  //     .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
+  //     .then((uploadResult) => {
+  //         this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
+  //           tempObj.foto = ruta;
+  //           this.firebase.supabase.storage.from('PPS').upload('/' + nombre + sufijo, this.fotoFile!, { upsert: true, contentType: 'image/jpeg'});
+  //           delete tempObj.fotoFile;
+  //           this.firebase.guardarEnFirebase(tempObj, coleccion).then(() => {
+  //             this.loadingCtrl.dismiss();
+  //             this.toast("Un administrador debe aceptar su cuenta, recibirá más información por e-mail");
+  //             this.router.navigate(['/login']);
+  //             this.pushService.enviarPushRol(
+  //               'Se registró un nuevo usuario',
+  //               `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
+  //               'admin'
+  //             );
+  //           });
+  //         });
+  //       });
+  //     });
+  //   }
+
   async guardar(formulario: any) {
-    let tempObj = formulario;
-    let nombre = Date.now().toString(),
-      carpeta = 'fotosPerfil',
-      sufijo = '_fotoPerfil',
-      coleccion = 'usuarios';
-    await this.showLoading().then(() => {
-      this.firebase
-        .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
-        .then((uploadResult) => {
-          this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
-            tempObj.foto = ruta;
-            delete tempObj.fotoFile;
-            this.firebase.guardarEnFirebase(tempObj, coleccion).then(() => {
-              this.loadingCtrl.dismiss();
-              this.toast("Un administrador debe aceptar su cuenta, recibirá más información por e-mail");
-              //this.toast("Un administrador debe aceptar su cuenta.");
-              this.router.navigate(['/login']);
-              this.pushService.enviarPushRol(
-                'Se registró un nuevo usuario',
-                `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
-                'admin'
-              );
-            });
-          });
+    const tempObj = { ...formulario };
+
+    const nombre = Date.now().toString();
+    const sufijo = '_fotoPerfil.jpeg';
+    const carpeta = 'fotosPerfil';
+    const coleccion = 'usuarios';
+    const bucket = 'PPS';
+
+    const path = `${carpeta}/${nombre}${sufijo}`;
+
+    await this.showLoading();
+
+    try {
+      if (!this.fotoFile) {
+        throw new Error('No hay foto seleccionada');
+      }
+
+      const { error: uploadError } = await this.firebase.supabase
+        .storage
+        .from(bucket)
+        .upload(path, this.fotoFile, {
+          upsert: true,
+          contentType: 'image/jpeg',
         });
-    });
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+      const { data } = this.firebase.supabase
+        .storage
+        .from(bucket)
+        .getPublicUrl(path);
+
+      const publicUrl = data.publicUrl;
+
+      tempObj.foto = publicUrl;
+      delete tempObj.fotoFile;
+
+      await this.firebase.guardarEnFirebase(tempObj, coleccion);
+
+      this.loadingCtrl.dismiss();
+      this.toast('Un administrador debe aceptar su cuenta, recibirá más información por e-mail');
+      this.router.navigate(['/login']);
+
+      this.pushService.enviarPushRol(
+        'admin',
+        'Se registró un nuevo usuario',
+        `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
+      );
+
+    } catch (error: any) {
+      this.loadingCtrl.dismiss();
+      console.error(error);
+      this.toast('Error al subir la foto');
+    }
   }
 }

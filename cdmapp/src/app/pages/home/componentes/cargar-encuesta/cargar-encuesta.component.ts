@@ -51,7 +51,8 @@ export class CargarEncuestaComponent implements OnInit {
       coleccion = 'usuariosAnonimos';
     }
     const resultados = {
-      fecha: Timestamp.fromDate(new Date()),
+      //fecha: Timestamp.fromDate(new Date()),
+      fecha: new Date(),
       respuestas: this.respuestas,
     };
     console.info(resultados);

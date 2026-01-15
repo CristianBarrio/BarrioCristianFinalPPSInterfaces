@@ -4,6 +4,7 @@ import { where } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
 import { UtilsService } from 'src/app/servicios/utils.service';
+import { PushApiService } from 'src/app/servicios/push-api.service';
 
 @Component({
   selector: 'app-bartender',
@@ -18,7 +19,8 @@ export class BartenderComponent implements OnInit {
 
   constructor(
     private firebase: FirebaseService,
-    private pushService: PushNotificationService,
+    //private pushService: PushNotificationService,
+    private pushService: PushApiService,
     private utilsSvc: UtilsService
   ) {}
 
@@ -29,9 +31,9 @@ export class BartenderComponent implements OnInit {
     this.firebase.update('pedidos', pedido);
     this.utilsSvc.play('elegir');
     this.pushService.enviarPushRol(
+      'mozo',
       'Orden lista',
-      `El bartender marcó como lista la orden de la mesa ${pedido.mesa.numero}`,
-      'mozo'
+      `El bartender marcó como lista la orden de la mesa ${pedido.mesa.numero}`
     );
   }
 }

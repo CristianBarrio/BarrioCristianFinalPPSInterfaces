@@ -118,7 +118,7 @@ export class LoginPage {
                 if (data[0]['estado'] === 'rechazado') {
                   this.loadingCtrl.dismiss();
                   this.toast(
-                    'Lametnamos informarle que su solicitud fue rechazada'
+                    'Lamentamos informarle que su solicitud fue rechazada'
                   );
                 }
               } else {

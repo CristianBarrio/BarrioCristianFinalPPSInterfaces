@@ -219,10 +219,13 @@ export class EncuestasComponent implements OnInit {
     this.comentarios = respuestas || [];
   }
 
-  segmentChanged(event: any) {
-    this.selectedSegment = event.detail.value;
-    this.graficoTorta();
-    this.graficoBarra();
-    this.graficoLinea();
+  segmentChanged(eventOrValue: any) {
+    this.selectedSegment = eventOrValue?.detail?.value ?? eventOrValue;
+
+    setTimeout(() => {
+      if (this.selectedSegment === 'torta') this.graficoTorta();
+      if (this.selectedSegment === 'barras') this.graficoBarra();
+      if (this.selectedSegment === 'linea') this.graficoLinea();
+    });
   }
 }

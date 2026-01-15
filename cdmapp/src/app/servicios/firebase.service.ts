@@ -34,10 +34,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+  supabase: SupabaseClient<any, 'public', any>;
+
   private _usuarioActual: DocumentData | undefined;
   //private _pedidoActual$: DocumentData | undefined;
     private _pedidoActual$ = new BehaviorSubject<any>(null);
@@ -53,7 +56,12 @@ export class FirebaseService {
     private storage: Storage,
     private http: HttpClient,
     private loadingCtrl: LoadingController
-  ) {}
+  ) {
+    this.supabase = createClient(
+      "https://vtrudepogzohsxpcnygn.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0cnVkZXBvZ3pvaHN4cGNueWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NzAxMTQsImV4cCI6MjA2MzQ0NjExNH0.jtqJZ7VQya8TXm4CjY7SpjfOUwcETlQillxzHiQsJ1M"
+    );
+  }
 
   checkUser() {
     if (localStorage.getItem('user') !== null) {
@@ -293,8 +301,8 @@ export class FirebaseService {
 
   enviarMail(mail: string, nombre: string, aceptacion: boolean) {
     const templateId = aceptacion
-      ? 'template_zrwsxgk'
-      : 'template_l13014h';
+      ? 'template_3cik8hk'
+      : 'template_7fuvw0b';
 
     const templateParams = {
       email: mail,
@@ -303,10 +311,10 @@ export class FirebaseService {
 
     emailjs
       .send(
-        'service_oyyh8fl', 
+        'service_68eq94i', 
         templateId,
         templateParams,
-        'TOSgRyOfj_XaUlWSU' 
+        'nE1RJpbcZknmfwwVC' 
       )
       .then(
         (response: EmailJSResponseStatus) => {

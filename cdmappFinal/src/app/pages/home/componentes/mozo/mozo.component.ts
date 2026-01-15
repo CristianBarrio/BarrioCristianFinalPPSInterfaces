@@ -6,6 +6,7 @@ import { ChatComponent } from '../chat/chat.component';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
 import { UtilsService } from 'src/app/servicios/utils.service';
+import { PushApiService } from 'src/app/servicios/push-api.service';
 
 @Component({
   selector: 'app-mozo',
@@ -36,7 +37,8 @@ export class MozoComponent implements OnInit {
     private firebase: FirebaseService,
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
-    private pushService: PushNotificationService,
+    //private pushService: PushNotificationService,
+    private pushService: PushApiService,
     private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
@@ -49,14 +51,14 @@ export class MozoComponent implements OnInit {
     this.utilsSvc.play('elegir');
     if (estado === 'enProceso') {
       this.pushService.enviarPushRol(
+        'cocinero',
         'Nueva orden',
         `Recibió una nueva orden de la mesa ${pedido.mesa.numero}`,
-        'cocinero'
       );
       this.pushService.enviarPushRol(
+        'bartender',
         'Nueva orden',
         `Recibió una nueva orden de la mesa ${pedido.mesa.numero}`,
-        'bartender'
       );
     }
     this.firebase.update('pedidos', pedido);

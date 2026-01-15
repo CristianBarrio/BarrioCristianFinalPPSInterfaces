@@ -118,9 +118,9 @@ export class ChatComponent implements OnInit {
       : `${this.usuarioActual.nombre} ${this.usuarioActual.apellido} Mesa ${this.usuarioActual.mesa.numero}`;
 
     this.pushService.enviarPushRol(
+      'mozo',
       'Nueva consulta de cliente',
       `${elemento.nombre} ha enviado un mensaje`,
-      'mozo'
     );
   } else {
     elemento.nombre = `${this.usuarioActual.nombre} ${this.usuarioActual.apellido} (Mozo)`;

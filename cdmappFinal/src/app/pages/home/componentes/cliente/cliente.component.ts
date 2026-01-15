@@ -14,6 +14,8 @@ import { CargarEncuestaComponent } from '../cargar-encuesta/cargar-encuesta.comp
 import { PagarPedidoComponent } from '../pagar-pedido/pagar-pedido.component';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
 import { UtilsService } from 'src/app/servicios/utils.service';
+import { PushApiService } from 'src/app/servicios/push-api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cliente',
@@ -26,18 +28,21 @@ export class ClienteComponent implements OnInit {
   usuarioActual: any;
   pedidoActual: any;
 
+  pedidoSub: Subscription;
+
   constructor(
     private router: Router,
     private firebase: FirebaseService,
     private modalCtrl: ModalController,
     private toastController: ToastController,
-    private pushService: PushNotificationService,
+    //private pushService: PushNotificationService,
+    private pushService: PushApiService,
     private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
-    setInterval(() => {
-      this.usuarioActual = this.firebase.usuario;
-    }, 1000);
+    // setInterval(() => {
+    //   this.usuarioActual = this.firebase.usuario;
+    // }, 1000);
   }
   
   async scan(): Promise<void> {
@@ -67,29 +72,21 @@ export class ClienteComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    const check = setInterval(() => {
+      const user = this.firebase.usuario;
 
-  // ngOnInit() {
-  //   this.usuarioActual = this.firebase.usuario;
+      if (!user) return;
 
-  //   if (this.usuarioActual?.tienePedido) {
-  //     this.monitorearPedido(this.usuarioActual.uid);
-  //   }
-  // }
-ngOnInit() {
-  const check = setInterval(() => {
-    const user = this.firebase.usuario;
+      this.usuarioActual = user;
 
-    if (!user) return;
+      if (user['tienePedido'] && user['pedidoUid']) {
+        this.monitorearPedido(user['pedidoUid']);
+      }
 
-    this.usuarioActual = user;
-
-    if (user['tienePedido'] && user['pedidoUid']) {
-      this.monitorearPedido(user['pedidoUid']);
-    }
-
-    clearInterval(check);
-  }, 200);
-}
+      clearInterval(check);
+    }, 200);
+  }
 
 
   async openModal() {
@@ -114,9 +111,9 @@ ngOnInit() {
         nombre += ' ' + this.usuarioActual.apellido;
       }
       this.pushService.enviarPushRol(
+        'maitre',
         'Nuevo cliente en espera',
         `El usuario ${nombre} ha ingresado a la cola`,
-        'maitre'
       );
     }
     if(data === 'encuestas'){
@@ -124,32 +121,6 @@ ngOnInit() {
     }
   }
 
-  // async modalPedido() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: PedidoComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   this.pedidoActual = data;
-  //   this.pedidoActual.uid = this.firebase.generateUniqueFirestoreId();
-  //   if (role === 'confirm') {
-  //     this.usuarioActual.tienePedido = true;
-  //     this.usuarioActual.enEspera = false;
-  //     this.usuarioActual.pedidoUid = this.pedidoActual.uid;//
-  //     if (this.usuarioActual.esAnonimo) {
-  //       this.firebase.update('usuariosAnonimos', this.usuarioActual);
-  //     } else {
-  //       this.firebase.update('usuarios', this.usuarioActual);
-  //     }
-  //     this.firebase.guardarPedidoEnFirebase(this.pedidoActual).then(() => {
-  //       this.monitorearPedido(this.pedidoActual.uid);
-  //     });
-  //   }
-  // }
   async modalPedido() {
     const modal = await this.modalCtrl.create({
       component: PedidoComponent,
@@ -178,18 +149,24 @@ ngOnInit() {
 
     this.monitorearPedido(pedidoUid);
   }
-
-
-monitorearPedido(uid: string) {
-  this.firebase.obsPedido('pedidos', uid);
-
-  this.firebase.pedido$.subscribe(pedido => {
-    if (pedido) {
-      this.pedidoActual = pedido;
+    
+  monitorearPedido(uid: string) {
+    if (this.pedidoSub) {
+      this.pedidoSub.unsubscribe();
     }
-  });
-}
 
+    this.firebase.obsPedido('pedidos', uid);
+
+    this.pedidoSub = this.firebase.pedido$.subscribe(pedido => {
+      if (pedido) {
+        this.pedidoActual = pedido;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.pedidoSub?.unsubscribe();
+  }
 
   async modalChat() {
     this.utilsSvc.play('confirmar');
@@ -207,10 +184,10 @@ monitorearPedido(uid: string) {
   }
 
   async modalOpciones() {
-    if (!this.pedidoActual) {
-      console.warn('Pedido aún no cargado');
-      return;
-    }
+    // if (!this.pedidoActual) {
+    //   console.warn('Pedido aún no cargado');
+    //   return;
+    // }
     const modal = await this.modalCtrl.create({
       component: OpcionesClienteComponent,
       componentProps: {
@@ -289,9 +266,9 @@ monitorearPedido(uid: string) {
       this.pedidoActual.monto = data.monto;
       this.cambiarEstado('pagando');
       this.pushService.enviarPushRol(
+        'mozo',
         'Un cliente pidió la cuenta',
         `La mesa ${this.pedidoActual.mesa.numero} ha pedido la cuenta`,
-        'mozo'
       );
     }
   }

@@ -108,30 +108,83 @@ export class RegistroAnonimoPage {
     await alert.present();
   }
 
+  // async guardar(formulario: any) {
+  //   let tempObj = formulario;
+  //   tempObj.uid = this.firebase.generateUniqueFirestoreId();
+  //   let nombre = Date.now().toString(),
+  //     carpeta = 'fotosPerfilAnonimos',
+  //     sufijo = '_fotoPerfil',
+  //     coleccion = 'usuariosAnonimos';
+  //   await this.showLoading().then(() => {
+  //     this.firebase
+  //       .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
+  //       .then((uploadResult) => {
+  //         this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
+  //           tempObj.foto = ruta;
+  //           delete tempObj.fotoFile;
+  //           this.firebase.guardarEnFirebaseAnonimo(tempObj).then(() => {
+  //             localStorage.setItem('user', JSON.stringify(tempObj));
+  //             this.firebase.obsUsuario('usuariosAnonimos', tempObj.uid);
+  //             setTimeout(() => {
+  //               this.loadingCtrl.dismiss();
+  //               this.router.navigate(['/home']);
+  //             }, 3000);
+  //           });
+  //         });
+  //       });
+  //   });
+  // }
+
   async guardar(formulario: any) {
     let tempObj = formulario;
+
     tempObj.uid = this.firebase.generateUniqueFirestoreId();
-    let nombre = Date.now().toString(),
-      carpeta = 'fotosPerfilAnonimos',
-      sufijo = '_fotoPerfil',
-      coleccion = 'usuariosAnonimos';
-    await this.showLoading().then(() => {
-      this.firebase
-        .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
-        .then((uploadResult) => {
-          this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
-            tempObj.foto = ruta;
-            delete tempObj.fotoFile;
-            this.firebase.guardarEnFirebaseAnonimo(tempObj).then(() => {
-              localStorage.setItem('user', JSON.stringify(tempObj));
-              this.firebase.obsUsuario('usuariosAnonimos', tempObj.uid);
-              setTimeout(() => {
-                this.loadingCtrl.dismiss();
-                this.router.navigate(['/home']);
-              }, 3000);
-            });
-          });
+
+    const nombre = Date.now().toString();
+    const sufijo = '_fotoPerfil.jpeg';
+    const carpeta = 'fotosPerfilAnonimos';
+    const bucket = 'PPS';
+
+    const path = `${carpeta}/${nombre}${sufijo}`;
+
+    await this.showLoading();
+
+    try {
+      if (!tempObj.fotoFile) {
+        throw new Error('No hay foto seleccionada');
+      }
+
+      const { error } = await this.firebase.supabase
+        .storage
+        .from(bucket)
+        .upload(path, tempObj.fotoFile, {
+          upsert: true,
+          contentType: 'image/jpeg'
         });
-    });
+
+      if (error) throw error;
+
+      const { data } = this.firebase.supabase
+        .storage
+        .from(bucket)
+        .getPublicUrl(path);
+
+      tempObj.foto = data.publicUrl;
+      delete tempObj.fotoFile;
+
+      await this.firebase.guardarEnFirebaseAnonimo(tempObj);
+
+      localStorage.setItem('user', JSON.stringify(tempObj));
+      this.firebase.obsUsuario('usuariosAnonimos', tempObj.uid);
+
+      setTimeout(() => {
+        this.loadingCtrl.dismiss();
+        this.router.navigate(['/home']);
+      }, 3000);
+
+    } catch (err) {
+      this.loadingCtrl.dismiss();
+      console.error(err);
+    }
   }
 }

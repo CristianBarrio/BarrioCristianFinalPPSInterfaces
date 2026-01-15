@@ -5,6 +5,7 @@ import { FirebaseService } from 'src/app/servicios/firebase.service';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
 import OneSignal, { OneSignalPlugin } from 'onesignal-cordova-plugin';
 import { UtilsService } from 'src/app/servicios/utils.service';
+import { PushApiService } from 'src/app/servicios/push-api.service';
 
 @Component({
   selector: 'app-cocina',
@@ -20,8 +21,9 @@ export class CocinaComponent implements OnInit {
 
   constructor(
     private firebase: FirebaseService,
-    private pushService: PushNotificationService,
-        private utilsSvc: UtilsService
+    //private pushService: PushNotificationService,
+    private pushService: PushApiService,
+    private utilsSvc: UtilsService
   ) {
     OneSignal.login(this.firebase.usuario['uid']);
     OneSignal.User.addTag("tipo", "cocinero");
@@ -35,16 +37,16 @@ export class CocinaComponent implements OnInit {
     pedido.listoCocina = estado;
     this.firebase.update('pedidos', pedido);
     this.utilsSvc.play('elegir');
-    // this.pushService.enviarPushRol(
+    this.pushService.enviarPushRol(
+      'mozo',
+      'Orden lista',
+      `La cocina marcó como lista la orden de la mesa ${pedido.mesa.numero}`,
+    );
+    // this.pushService.sendToRole(
     //   'Orden lista',
     //   `La cocina marcó como lista la orden de la mesa ${pedido.mesa.numero}`,
     //   'mozo'
     // );
-    this.pushService.sendToRole(
-      'Orden lista',
-      `La cocina marcó como lista la orden de la mesa ${pedido.mesa.numero}`,
-      'mozo'
-    );
   }
 
 }

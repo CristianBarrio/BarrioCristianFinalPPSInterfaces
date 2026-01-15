@@ -1,4 +1,4 @@
-import { Injectable, OnInit, EventEmitter } from '@angular/core';
+import { Injectable, OnInit, EventEmitter, inject } from '@angular/core';
 import {
   and,
   addDoc,
@@ -33,11 +33,14 @@ import {
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+  supabase: SupabaseClient<any, "public", any>;
+
   private _usuarioActual: DocumentData | undefined;
   private _pedidoActual$ = new BehaviorSubject<any>(null);
 
@@ -49,7 +52,7 @@ export class FirebaseService {
     return onSnapshot(doc(this.firestore, coleccion, uid), (doc) => {
       this._pedidoActual$.next(doc.data());
     });
-}
+  }
 
   unsub: any;
 
@@ -60,7 +63,12 @@ export class FirebaseService {
     private storage: Storage,
     private http: HttpClient,
     private loadingCtrl: LoadingController
-  ) {}
+  ) {
+    this.supabase = createClient(
+      "https://vtrudepogzohsxpcnygn.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0cnVkZXBvZ3pvaHN4cGNueWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NzAxMTQsImV4cCI6MjA2MzQ0NjExNH0.jtqJZ7VQya8TXm4CjY7SpjfOUwcETlQillxzHiQsJ1M"
+    );
+  }
 
   checkUser() {
     if (localStorage.getItem('user') !== null) {

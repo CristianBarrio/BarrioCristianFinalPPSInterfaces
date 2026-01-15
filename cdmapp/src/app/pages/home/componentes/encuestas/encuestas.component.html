@@ -22,7 +22,7 @@
     <div *ngSwitchCase="'torta'">
       <ion-card>
         <ion-card-content>
-          <div *ngIf="chartPie" [chart]="chartPie"></div>
+          <div [hidden]="selectedSegment !== 'torta'" [chart]="chartPie"></div>
         </ion-card-content>
       </ion-card>
     </div>
@@ -31,7 +31,7 @@
         <ion-card-header>
         </ion-card-header>
         <ion-card-content>
-          <div *ngIf="chartBar" [chart]="chartBar"></div>
+          <div [hidden]="selectedSegment !== 'barras'" [chart]="chartBar"></div>
         </ion-card-content>
       </ion-card>
     </div>
@@ -40,7 +40,7 @@
         <ion-card-header>
         </ion-card-header>
         <ion-card-content>
-          <div *ngIf="chartLine" [chart]="chartLine"></div>
+          <div [hidden]="selectedSegment !== 'linea'" [chart]="chartLine"></div>
         </ion-card-content>
       </ion-card>
     </div>

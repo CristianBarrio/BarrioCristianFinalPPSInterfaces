@@ -6,7 +6,6 @@ import { TemasService } from './servicios/temas.service';
 import { PushNotificationService } from './servicios/push-notification.service';
 import { Platform } from '@ionic/angular';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import OneSignal from 'onesignal-cordova-plugin';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +21,10 @@ export class AppComponent implements OnInit {
      this.platform.ready().then(async () => {
       await BarcodeScanner.installGoogleBarcodeScannerModule();
 
-      OneSignal.Debug.setLogLevel(6);
-      OneSignal.initialize('437c386d-d2f2-4a5e-8c5c-49a11c6f90fb');
+      // OneSignal.Debug.setLogLevel(6);
+      // OneSignal.initialize('437c386d-d2f2-4a5e-8c5c-49a11c6f90fb');
 
-      OneSignal.Notifications.requestPermission(true);
+      // OneSignal.Notifications.requestPermission(true);
     });
   }
 

@@ -14,125 +14,107 @@ import { docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from './firebase.service';
-//import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
-//declare var OneSignal: any;
-import OneSignal from 'onesignal-cordova-plugin';
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PushNotificationService {
   constructor(
-    private plt: Platform,
     private firebase: FirebaseService,
     private http: HttpClient
   ) {}
 
+  async inicializarPushService() {
+    if (!Capacitor.isNativePlatform()) {
+      console.log('Push no disponible en web');
+      return;
+    }
 
+    const perm = await PushNotifications.requestPermissions();
+    if (perm.receive !== 'granted') {
+      console.log('Permiso denegado');
+      return;
+    }
 
-inicializarPushService() {}
-//   if (this.plt.is('hybrid')) {
-//     this.initializeOneSignal();
-//   } else {
-//     console.info('Web browser detected: simulating notification');
+    await LocalNotifications.requestPermissions();
 
-//     // simulate a push received after 2 seconds
-//     setTimeout(() => {
-//       const simulatedNotification = {
-//         title: 'Test Notification',
-//         body: 'This is a simulated notification',
-//         data: { test: true }
-//       };
+    await PushNotifications.register();
+    this.addListeners();
+  }
 
-//       console.log('Simulated notification received:', simulatedNotification);
+  addListeners() {
+    PushNotifications.addListener('registration', (token) => {
+      console.log('FCM TOKEN:', token.value);
 
-//       // Optional: use LocalNotifications API to show a browser notification
-//       if ('Notification' in window && Notification.permission === 'granted') {
-//         new Notification(simulatedNotification.title, {
-//           body: simulatedNotification.body
-//         });
-//       } else if ('Notification' in window) {
-//         Notification.requestPermission().then(permission => {
-//           if (permission === 'granted') {
-//             new Notification(simulatedNotification.title, {
-//               body: simulatedNotification.body
-//             });
-//           }
-//         });
-//       }
-//     }, 2000);
+      this.firebase.updateToken(
+        this.firebase.usuario['uid'],
+        token.value
+      );
+    });
 
-//     // Simulate token update
-//     if (this.firebase.usuario?.['esAnonimo']) {
-//       console.info('No actualizo token con usuario anónimo');
-//     } else {
-//       this.firebase.updateToken(this.firebase.usuario['uid'], 'Token falso test').then(() => {
-//         console.log('Se guardó el Token en la BD');
-//       });
-//     }
-//   }
-// }
+    PushNotifications.addListener('pushNotificationReceived', (notification) => {
+        console.log('Push recibida (foreground):', notification);
 
+        LocalNotifications.schedule({
+          notifications: [
+            {
+              id: Date.now(),
+              title: notification.title || 'Notificación',
+              body: notification.body || '',
+              autoCancel: true,
+            },
+          ],
+        });
+      }
+    );
+    /*
+      PushNotifications.addListener(
+      'pushNotificationReceived',
+      (notification) => {
+        console.log('Push recibida (foreground):', notification);
 
-//   initializeOneSignal() {
-//     if (!OneSignal) {
-//       console.error('OneSignal SDK not loaded. Make sure to add <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script> in index.html');
-//       return;
-//     }
+        LocalNotifications.schedule({
+          notifications: [
+            {
+              id: Date.now(),
+              title: notification.title ?? '',
+              body: notification.body ?? '',
+              extra: notification.data,
+              autoCancel: true,
+            },
+          ],
+        });
+      }
+    );
+    */ 
 
-//     OneSignal.push(function() {
-//       OneSignal.init({
-//         appId: '437c386d-d2f2-4a5e-8c5c-49a11c6f90fb',
-//         //safari_web_id: 'YOUR_SAFARI_WEB_ID_IF_ANY',
-//         allowLocalhostAsSecureOrigin: true, // useful for testing on localhost
-//       });
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      (notification) => {
 
-//       OneSignal.on('subscriptionChange', function(isSubscribed: boolean) {
-//         console.log('Subscription state:', isSubscribed);
-//       });
+        const user = this.firebase.usuario;
+        if (!user) return;
 
-//       OneSignal.on('notificationDisplay', function(event: any) {
-//         console.log('Notification displayed:', event);
-//       });
+        const rolePush = notification.data?.role;
+        if (rolePush && user['tipo'] !== rolePush) return;
 
-//       OneSignal.showNativePrompt();
-//     });
-//   }
+        LocalNotifications.schedule({
+          notifications: [{
+            id: Date.now(),
+            title: notification.title ?? '',
+            body: notification.body ?? '',
+          }],
+        });
+      }
+    );
 
-//   // Example methods for sending notifications
-//   enviarPush(titulo: string, mensaje: string, token: string) {
-//     const url = 'https://us-central1-pps-sp-b0c30.cloudfunctions.net/app/notify';
-//     const body = { title: titulo, body: mensaje, token: token };
-//     this.http.post<any>(url, body).subscribe(data => console.info(data));
-//   }
-
-//   enviarPushRol(titulo: string, mensaje: string, rol: string) {
-//     const url = 'https://us-central1-pps-sp-b0c30.cloudfunctions.net/app/notify-role';
-//     const body = { title: titulo, body: mensaje, role: rol };
-//     this.http.post<any>(url, body).subscribe(data => console.info(data));
-//   }
-
-
-  // inicializarPushService() {
-  //   if (this.plt.is('android')) {
-  //     this.addListeners();
-  //     this.registerNotifications();
-  //   } else {
-  //     console.info('Estoy en un web browser');
-  //     if (this.firebase.usuario['esAnonimo'])
-  //       console.info('No actualizo token con usuario anónimo');
-  //     else {
-  //       this.firebase
-  //         .updateToken(this.firebase.usuario['uid'], 'Token falso test')
-  //         .then(() => {
-  //           console.log('Se guardó el Token en la BD');
-  //           //alert(token.value);
-  //         });
-  //     }
-  //   }
-  // }
-
-
+    PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
+        console.log('Usuario tocó la notificación', notification);
+        // acá podés navegar a una pantalla
+      }
+    );
+  }
 
   async registerNotifications() {
     let permStatus = await PushNotifications.checkPermissions();
@@ -145,66 +127,20 @@ inicializarPushService() {}
     await PushNotifications.register();
   }
 
-  async addListeners() {
-    await PushNotifications.addListener('registration', (token) => {
-      console.log('Registration token: ', token.value);
-      this.firebase
-        .updateToken(this.firebase.usuario['uid'], token.value)
-        .then(() => {
-          console.log('Se guardó el Token en la BD');
-          //alert(token.value);
-        });
-      //alert(token.value);
-    });
-    await PushNotifications.addListener('registrationError', (err) => {
-      console.error('Registration error: ', err.error);
-    });
-    await PushNotifications.addListener(
-      'pushNotificationReceived',
-      (notification) => {
-        console.log('Push notification received: ', notification);
-        LocalNotifications.schedule({
-          notifications: [
-            {
-              title: notification.title || '',
-              body: notification.body || '',
-              id: 1,
-              extra: {
-                data: notification.data,
-              },
-              autoCancel:true
-            },
-          ],
-        });
-      }
-    );
-    await PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      (notification) => {
-        console.log(
-          'Push notification action performed',
-          notification.actionId,
-          notification.inputValue
-        );
-      }
-    );
-  }
 
   enviarPush(titulo: string, mensaje: string, token: string) {
-    //let url = 'https://cdmcomanda.adaptable.app/send-mail';
-    let url = 'https://us-central1-pps-sp-b0c30.cloudfunctions.net/app/notify';
-    let body = {
+    const url = 'https://us-central1-TU-PROYECTO.cloudfunctions.net/notifyUser';
+
+    this.http.post(url, {
       title: titulo,
       body: mensaje,
       token: token,
-    };
-    this.http.post<any>(url, body).subscribe((data) => {
-      console.info(data);
-    });
+    }).subscribe();
+    console.info(titulo + ' ' + mensaje + ' ' + token);
   }
 
+
   enviarPushRol(titulo: string, mensaje: string, rol: string) {
-    //let url = 'https://cdmcomanda.adaptable.app/send-mail';
     let url = 'https://us-central1-pps-sp-b0c30.cloudfunctions.net/app/notify-role';
     let body = {
       title: titulo,

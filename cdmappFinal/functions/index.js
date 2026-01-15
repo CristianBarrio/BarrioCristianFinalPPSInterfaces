@@ -9,15 +9,16 @@ const functions = require('firebase-functions');
 dotenv.config();
 
 //const serviceAccount = require(process.env.SERVICE_ACCOUNT);
-const serviceAccount = require("./key_file.json");
+//const serviceAccount = require("./key_file.json");
 
 const app = express();
 const PORT = 4000 || 3000;
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://pps-sp-b0c30.firebaseio.com",
-});
+admin.initializeApp();
+// {
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://pps-sp-b0c30.firebaseio.com",
+// });
 
 const db = admin.firestore();
 

@@ -13,6 +13,9 @@ import { EncuestasComponent } from '../encuestas/encuestas.component';
 import { CargarEncuestaComponent } from '../cargar-encuesta/cargar-encuesta.component';
 import { PagarPedidoComponent } from '../pagar-pedido/pagar-pedido.component';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
+// import { UtilsService } from 'src/app/servicios/utils.service';
+// import { PushApiService } from 'src/app/servicios/push-api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cliente',
@@ -20,243 +23,26 @@ import { PushNotificationService } from 'src/app/servicios/push-notification.ser
   styleUrls: ['./cliente.component.scss'],
 })
 export class ClienteComponent implements OnInit {
-  // @ViewChild(IonModal) modal: IonModal;
-
-  // usuarioActual: any;
-  // pedidoActual: any;
-
-  // constructor(
-  //   private router: Router,
-  //   private firebase: FirebaseService,
-  //   private modalCtrl: ModalController,
-  //   private toastController: ToastController,
-  //   private pushService: PushNotificationService
-  // ) {
-  //   this.usuarioActual = this.firebase.usuario;
-  //   setInterval(() => {
-  //     this.usuarioActual = this.firebase.usuario;
-  //   }, 1000);
-  // }
-
-  // async scan(): Promise<void> {
-  //   let codigo = await BarcodeScanner.scan();
-  //   switch (codigo.barcodes[0].displayValue) {
-  //     case 'lobby':
-  //       this.openModal();
-  //       break;
-  //     default:
-  //       if (this.usuarioActual.tieneMesa) {
-  //         if (this.usuarioActual.mesa.uid === codigo.barcodes[0].displayValue) {
-  //           this.modalOpciones();
-  //         } else {
-  //           this.toast(
-  //             'Esta no es su mesa, su mesa es la número ' +
-  //               this.usuarioActual.mesa.numero
-  //           );
-  //         }
-  //       } else {
-  //         this.toast('Usted no tiene mesa asignada');
-  //       }
-  //       break;
-  //   }
-  // }
-
-  // ngOnInit() {}
-
-  // async openModal() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: ModalComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   if (data === 'mesa') {
-  //     let nombre = this.usuarioActual.nombre;
-  //     this.usuarioActual.enEspera = true;
-  //     if (this.usuarioActual.esAnonimo) {
-  //       this.firebase.update('usuariosAnonimos', this.usuarioActual);
-  //       nombre += ' (anónimo)';
-  //     } else {
-  //       this.firebase.update('usuarios', this.usuarioActual);
-  //       nombre += ' ' + this.usuarioActual.apellido;
-  //     }
-  //     this.pushService.enviarPushRol(
-  //       'Nuevo cliente en espera',
-  //       `El usuario ${nombre} ha ingresado a la cola`,
-  //       'maitre'
-  //     );
-  //   }
-  //   if(data === 'encuestas'){
-  //     this.modalEncuestas();
-  //   }
-  // }
-
-  // async modalPedido() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: PedidoComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   this.pedidoActual = data;
-  //   this.pedidoActual.uid = this.firebase.generateUniqueFirestoreId();
-  //   if (role === 'confirm') {
-  //     this.usuarioActual.tienePedido = true;
-  //     this.usuarioActual.enEspera = false;
-  //     if (this.usuarioActual.esAnonimo) {
-  //       this.firebase.update('usuariosAnonimos', this.usuarioActual);
-  //     } else {
-  //       this.firebase.update('usuarios', this.usuarioActual);
-  //     }
-  //     this.firebase.guardarPedidoEnFirebase(this.pedidoActual).then(() => {
-  //       this.monitorearPedido(this.pedidoActual.uid);
-  //     });
-  //   }
-  // }
-
-  // monitorearPedido(uid: string) {
-  //   this.firebase.obsPedido('pedidos', uid).then(() => {
-  //     setInterval(() => {
-  //       this.pedidoActual = this.firebase.pedidoActual;
-  //     }, 1000);
-  //   });
-  // }
-
-  // async modalChat() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: ChatComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   if (role === 'confirm') {
-  //   }
-  // }
-
-  // async modalOpciones() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: OpcionesClienteComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //       pedidoActual: this.pedidoActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   switch (data) {
-  //     case 'hacerPedido':
-  //       this.modalPedido();
-  //       break;
-  //     case 'encuestas':
-  //       this.modalEncuestas();
-  //       break;
-  //     case 'pedirCuenta':
-  //       this.modalPedirCuenta();
-  //       break;
-  //     case 'cargarEncuesta':
-  //       if (this.usuarioActual.cargoEncuesta) {
-  //         this.toast('Ya cargó la encuesta, muchas gracias!');
-  //       } else {
-  //         this.modalCargarEncuesta();
-  //       }
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // }
-
-  // async modalEncuestas() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: EncuestasComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //       pedidoActual: this.pedidoActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   if (role === 'encuestas') {
-  //   }
-  // }
-
-  // async modalCargarEncuesta() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: CargarEncuestaComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //       pedidoActual: this.pedidoActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   if (role === 'encuestas') {
-  //   }
-  // }
-
-  // async modalPedirCuenta() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: PagarPedidoComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //       pedidoActual: this.pedidoActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   if (data.accion === 'pagar') {
-  //     this.pedidoActual.monto = data.monto;
-  //     this.cambiarEstado('pagando');
-  //     this.pushService.enviarPushRol(
-  //       'Un cliente pidió la cuenta',
-  //       `La mesa ${this.pedidoActual.mesa.numero} ha pedido la cuenta`,
-  //       'mozo'
-  //     );
-  //   }
-  // }
-
-  // cambiarEstado(estado: string) {
-  //   this.pedidoActual.estado = estado;
-  //   this.firebase.update('pedidos', this.pedidoActual);
-  // }
-
-  // async toast(mensaje: string) {
-  //   const toast = await this.toastController.create({
-  //     message: mensaje,
-  //     duration: 5000,
-  //     position: 'middle',
-  //     cssClass: 'custom-toast',
-  //   });
-  //   await toast.present();
-  // }
-    @ViewChild(IonModal) modal: IonModal;
+  @ViewChild(IonModal) modal: IonModal;
 
   usuarioActual: any;
   pedidoActual: any;
+
+  pedidoSub: Subscription;
 
   constructor(
     private router: Router,
     private firebase: FirebaseService,
     private modalCtrl: ModalController,
     private toastController: ToastController,
-    private pushService: PushNotificationService
+    //private pushService: PushNotificationService,
+    // private pushService: PushApiService,
+    // private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
-    setInterval(() => {
-      this.usuarioActual = this.firebase.usuario;
-    }, 1000);
+    // setInterval(() => {
+    //   this.usuarioActual = this.firebase.usuario;
+    // }, 1000);
   }
   
   async scan(): Promise<void> {
@@ -286,29 +72,21 @@ export class ClienteComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    const check = setInterval(() => {
+      const user = this.firebase.usuario;
 
-  // ngOnInit() {
-  //   this.usuarioActual = this.firebase.usuario;
+      if (!user) return;
 
-  //   if (this.usuarioActual?.tienePedido) {
-  //     this.monitorearPedido(this.usuarioActual.uid);
-  //   }
-  // }
-ngOnInit() {
-  const check = setInterval(() => {
-    const user = this.firebase.usuario;
+      this.usuarioActual = user;
 
-    if (!user) return;
+      if (user['tienePedido'] && user['pedidoUid']) {
+        this.monitorearPedido(user['pedidoUid']);
+      }
 
-    this.usuarioActual = user;
-
-    if (user['tienePedido'] && user['pedidoUid']) {
-      this.monitorearPedido(user['pedidoUid']);
-    }
-
-    clearInterval(check);
-  }, 200);
-}
+      clearInterval(check);
+    }, 200);
+  }
 
 
   async openModal() {
@@ -332,43 +110,17 @@ ngOnInit() {
         this.firebase.update('usuarios', this.usuarioActual);
         nombre += ' ' + this.usuarioActual.apellido;
       }
-      this.pushService.enviarPushRol(
-        'Nuevo cliente en espera',
-        `El usuario ${nombre} ha ingresado a la cola`,
-        'maitre'
-      );
+      // this.pushService.enviarPushRol(
+      //   'maitre',
+      //   'Nuevo cliente en espera',
+      //   `El usuario ${nombre} ha ingresado a la cola`,
+      // );
     }
     if(data === 'encuestas'){
       this.modalEncuestas();
     }
   }
 
-  // async modalPedido() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: PedidoComponent,
-  //     componentProps: {
-  //       usuarioActual: this.usuarioActual,
-  //     },
-  //   });
-  //   modal.present();
-  //   const { data, role } = await modal.onWillDismiss();
-  //   console.info(data);
-  //   this.pedidoActual = data;
-  //   this.pedidoActual.uid = this.firebase.generateUniqueFirestoreId();
-  //   if (role === 'confirm') {
-  //     this.usuarioActual.tienePedido = true;
-  //     this.usuarioActual.enEspera = false;
-  //     this.usuarioActual.pedidoUid = this.pedidoActual.uid;//
-  //     if (this.usuarioActual.esAnonimo) {
-  //       this.firebase.update('usuariosAnonimos', this.usuarioActual);
-  //     } else {
-  //       this.firebase.update('usuarios', this.usuarioActual);
-  //     }
-  //     this.firebase.guardarPedidoEnFirebase(this.pedidoActual).then(() => {
-  //       this.monitorearPedido(this.pedidoActual.uid);
-  //     });
-  //   }
-  // }
   async modalPedido() {
     const modal = await this.modalCtrl.create({
       component: PedidoComponent,
@@ -397,18 +149,24 @@ ngOnInit() {
 
     this.monitorearPedido(pedidoUid);
   }
-
-
-monitorearPedido(uid: string) {
-  this.firebase.obsPedido('pedidos', uid);
-
-  this.firebase.pedido$.subscribe(pedido => {
-    if (pedido) {
-      this.pedidoActual = pedido;
+    
+  monitorearPedido(uid: string) {
+    if (this.pedidoSub) {
+      this.pedidoSub.unsubscribe();
     }
-  });
-}
 
+    this.firebase.obsPedido('pedidos', uid);
+
+    this.pedidoSub = this.firebase.pedido$.subscribe(pedido => {
+      if (pedido) {
+        this.pedidoActual = pedido;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.pedidoSub?.unsubscribe();
+  }
 
   async modalChat() {
     const modal = await this.modalCtrl.create({
@@ -425,10 +183,10 @@ monitorearPedido(uid: string) {
   }
 
   async modalOpciones() {
-    if (!this.pedidoActual) {
-      console.warn('Pedido aún no cargado');
-      return;
-    }
+    // if (!this.pedidoActual) {
+    //   console.warn('Pedido aún no cargado');
+    //   return;
+    // }
     const modal = await this.modalCtrl.create({
       component: OpcionesClienteComponent,
       componentProps: {
@@ -506,11 +264,11 @@ monitorearPedido(uid: string) {
     if (data.accion === 'pagar') {
       this.pedidoActual.monto = data.monto;
       this.cambiarEstado('pagando');
-      this.pushService.enviarPushRol(
-        'Un cliente pidió la cuenta',
-        `La mesa ${this.pedidoActual.mesa.numero} ha pedido la cuenta`,
-        'mozo'
-      );
+      // this.pushService.enviarPushRol(
+      //   'mozo',
+      //   'Un cliente pidió la cuenta',
+      //   `La mesa ${this.pedidoActual.mesa.numero} ha pedido la cuenta`,
+      // );
     }
   }
 

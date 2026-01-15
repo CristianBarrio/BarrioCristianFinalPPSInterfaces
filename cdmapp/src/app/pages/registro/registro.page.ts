@@ -147,31 +147,90 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
+  // async guardar(formulario: any) {
+  //   let tempObj = formulario;
+  //   let nombre = Date.now().toString(),
+  //     carpeta = 'fotosPerfil',
+  //     sufijo = '_fotoPerfil',
+  //     coleccion = 'usuarios';
+  //   await this.showLoading().then(() => {
+  //     this.firebase
+  //       .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
+  //       .then((uploadResult) => {
+  //         this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
+  //           tempObj.foto = ruta;
+  //           delete tempObj.fotoFile;
+  //           this.firebase.guardarEnFirebase(tempObj, coleccion).then(() => {
+  //             this.loadingCtrl.dismiss();
+  //             this.toast("Un administrador debe aceptar su cuenta, recibirá más información por e-mail");
+  //             this.router.navigate(['/login']);
+  //             this.pushService.enviarPushRol(
+  //               'Se registró un nuevo usuario',
+  //               `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
+  //               'admin'
+  //             );
+  //           });
+  //         });
+  //       });
+  //   });
+  // }
+
   async guardar(formulario: any) {
-    let tempObj = formulario;
-    let nombre = Date.now().toString(),
-      carpeta = 'fotosPerfil',
-      sufijo = '_fotoPerfil',
-      coleccion = 'usuarios';
-    await this.showLoading().then(() => {
-      this.firebase
-        .subirImagenes(tempObj.fotoFile, carpeta, nombre + sufijo)
-        .then((uploadResult) => {
-          this.firebase.traerImagen(carpeta, nombre + sufijo).then((ruta) => {
-            tempObj.foto = ruta;
-            delete tempObj.fotoFile;
-            this.firebase.guardarEnFirebase(tempObj, coleccion).then(() => {
-              this.loadingCtrl.dismiss();
-              this.toast("Un administrador debe aceptar su cuenta, recibirá más información por e-mail");
-              this.router.navigate(['/login']);
-              this.pushService.enviarPushRol(
-                'Se registró un nuevo usuario',
-                `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
-                'admin'
-              );
-            });
-          });
+    const tempObj = { ...formulario };
+
+    const nombre = Date.now().toString();
+    const sufijo = '_fotoPerfil.jpeg';
+    const carpeta = 'fotosPerfil';
+    const coleccion = 'usuarios';
+    const bucket = 'PPS';
+
+    const path = `${carpeta}/${nombre}${sufijo}`;
+
+    await this.showLoading();
+
+    try {
+      if (!this.fotoFile) {
+        throw new Error('No hay foto seleccionada');
+      }
+
+      const { error: uploadError } = await this.firebase.supabase
+        .storage
+        .from(bucket)
+        .upload(path, this.fotoFile, {
+          upsert: true,
+          contentType: 'image/jpeg',
         });
-    });
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+      const { data } = this.firebase.supabase
+        .storage
+        .from(bucket)
+        .getPublicUrl(path);
+
+      const publicUrl = data.publicUrl;
+
+      tempObj.foto = publicUrl;
+      delete tempObj.fotoFile;
+
+      await this.firebase.guardarEnFirebase(tempObj, coleccion);
+
+      this.loadingCtrl.dismiss();
+      this.toast('Un administrador debe aceptar su cuenta, recibirá más información por e-mail');
+      this.router.navigate(['/login']);
+
+      this.pushService.enviarPushRol(
+        'Se registró un nuevo usuario',
+        `El usuario ${tempObj.nombre} ${tempObj.apellido} se ha registrado con el correo ${tempObj.correo}`,
+        'admin'
+      );
+
+    } catch (error: any) {
+      this.loadingCtrl.dismiss();
+      console.error(error);
+      this.toast('Error al subir la foto');
+    }
   }
 }
