@@ -2,6 +2,9 @@ La app prototipo, titulada "Competencia de Música" hace uso de la API de Spotif
 Una vez elegido el artista, se mostrarán dos canciones en botones enfrentados. Al presionar uno de ellos, esa canción persistirá y la otra será reemplazada, y así sucesivamente hasta llegar al final del juego, donde se mostrará la canción ganadora.
 La app además cuenta con 4 temas dinámicos: "Argentina", "Profesional", "Naif" y "Festivo". Este último está dividido en secciones correspondientes a Navidad, Halloween y Pascuas. El usuario podrá cambiar entre los distintos temas en cualquier momento, permitiendo alterar la apariencia de la aplicación.
 
+APKs:
+https://drive.google.com/drive/folders/18u4XNPA24dhMYdsynHWvvTSlMxpiRa1L?usp=sharing
+
 QRs: 
 https://drive.google.com/drive/folders/1JXR4-7dxmM2sCXDF8fvueLkuVZwcWuqt
 
