@@ -4,5 +4,6 @@ La app además cuenta con 4 temas dinámicos: "Argentina", "Profesional", "Naif"
 
 QRs: 
 https://drive.google.com/drive/folders/1JXR4-7dxmM2sCXDF8fvueLkuVZwcWuqt
+
 Videos: 
 https://drive.google.com/drive/folders/1xKg8e28MYzjddqxy6N0_TuhqzhhIgYsL?usp=sharing
