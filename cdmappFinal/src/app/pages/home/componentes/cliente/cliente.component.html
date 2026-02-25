@@ -41,7 +41,7 @@
     </ion-row>
     <ion-row *ngIf="usuarioActual.tieneMesa">
       <ion-col>
-        <ion-button size="large" expand="full" (click)="modalChat()" class="botonMozo">
+        <ion-button size="large" (click)="modalChat()" class="botonMozo">
           Consultar al mozo
           <img *ngIf="utilsSvc.getIcon('consulta')" [src]="utilsSvc.getIcon('consulta')" style="height:27px; width: 27px;">
           <!-- <img class="qrpro" src="assets/profesional/support.png" style="height:30px; width: 30px;">
@@ -53,8 +53,7 @@
     </ion-row>
     <ion-row *ngIf="pedidoActual !== undefined && pedidoActual !== null && pedidoActual.estado === 'entregado'">
       <ion-col>
-        <ion-button size="large" expand="full" (click)="cambiarEstado('recibido')"
-          class="customButtonB"><ion-label>Confirmar recepción del pedido</ion-label></ion-button>
+        <ion-button size="large" (click)="cambiarEstado('recibido')" class="customButtonB btnConfirmarPedido"><ion-label>Confirmar recepción del pedido</ion-label></ion-button>
       </ion-col>  
     </ion-row>
     

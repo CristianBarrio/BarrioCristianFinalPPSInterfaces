@@ -101,6 +101,22 @@ ion-app.tema-festivo ion-button, .signOut, .salir{
 
 .tema-festivo{
 
+  .botonMozo, .btnConfirmarPedido{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: bottom;
+    bottom: 15px;
+
+    margin: 0 auto;
+    width: calc(100% - 40px);
+    text-align: center;
+    box-sizing: border-box;
+
+    --padding-top: 18px;
+    --padding-bottom: 18px;
+  }
+
   ion-button.botonQr {
     --padding-start: 0;
     --padding-end: 0;
@@ -2190,6 +2206,7 @@ ion-input{
   font-size: 20px;
   margin-bottom: 20px;
 }
+
 
 ion-toolbar{
   --border-width: 0px 0px 0px 0px;
