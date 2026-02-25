@@ -29,8 +29,11 @@ export class CambiarTemasComponent {
   temaActual: string = 'tema-argentina';
   actualIcon: string = 'assets/argentina/argentina.png';
   colorToast: string = 'primary';
-  temaSonidos: string = 'argentina';
-  temaIconos: string = 'argentina';
+
+  // temaSonidos: string = 'argentina';
+  // temaIconos: string = 'argentina';
+  temaIconos: 'argentina' | 'profesional' | 'naif' = 'argentina';
+  temaSonidos: 'argentina' | 'profesional' | 'naif' = 'argentina';
   
   constructor(private temaSvc: TemasService,
     private popoverCtrl: PopoverController
@@ -147,11 +150,12 @@ export class CambiarTemasComponent {
     this.popoverCtrl.dismiss();
   }
 
-  cambiarSonidos(tema:string){
+  //tema:string
+  cambiarSonidos(tema: 'argentina' | 'profesional' | 'naif') {
     this.temaSonidos = tema;
   }
 
-  cambiarIconos(tema:string){
+  cambiarIconos(tema: 'argentina' | 'profesional' | 'naif') {
     this.temaIconos = tema;
   }
 }

@@ -45,29 +45,8 @@ body.btn-rect button {
 }
 
 // POSICIONES
-// .user-buttons-container {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   gap: 8px;
 
-//   max-width: 400px;
-//   width: 100%;
-// }
 
-// body.btn-left .user-buttons-container {
-//   margin-left: 0;
-//   margin-right: auto;
-// }
-
-// body.btn-center .user-buttons-container {
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// body.btn-right .user-buttons-container {
-//   margin-left: auto;
-//   margin-right: 0;
-// }
 
 //COLOR ICONOS
 ion-icon, .check, .arrow-back{
@@ -121,15 +100,6 @@ ion-app.tema-festivo ion-button, .signOut, .salir{
   }
 
 .tema-festivo{
-
-  // .user-buttons-container {
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr;
-  //   gap: 8px;       
-  //   width: 100%;
-  //   padding: 0 4px;    
-  //   box-sizing: border-box;
-  // }
 
   ion-button.botonQr {
     --padding-start: 0;

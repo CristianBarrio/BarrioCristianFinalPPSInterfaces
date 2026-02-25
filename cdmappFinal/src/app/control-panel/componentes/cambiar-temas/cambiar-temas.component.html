@@ -111,7 +111,6 @@
                   class="user-button btn-round"
                   fill="outline"
                   [class.active]="theme.btnShape === 'round'"
-                  shape="round"
                   (click)="theme.btnShape = 'round'"
                 ></ion-button>
 
@@ -135,26 +134,27 @@
               <ion-label style="font-size:15px; color:black;">Imágenes</ion-label>
               <br>
               <div class="banderas-row">
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'argentina'" (click)="cambiarIconos('argentina')">
+                <ion-button class="btn-bandera" [class.selected]="temaIconos === 'argentina'" (click)="cambiarIconos('argentina')">
+                  <!-- [attr.aria-pressed]="temaIconos === 'argentina'" -->
                   <img [src]="'assets/argentina/argentina.png'" [alt]="'Argentina'" class="fab-icon">
                 </ion-button>
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'profesional'" (click)="cambiarIconos('profesional')">
+                <ion-button class="btn-bandera" [class.selected]="temaIconos === 'profesional'" (click)="cambiarIconos('profesional')">
                   <img [src]="'assets/profesional/briefcase (1).png'" [alt]="'Profesional'" class="fab-icon">
                 </ion-button>
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'naif'" (click)="cambiarIconos('naif')">
+                <ion-button class="btn-bandera" [class.selected]="temaIconos === 'naif'" (click)="cambiarIconos('naif')">
                   <img [src]="'assets/naif/paint2.png'" [alt]="'Naif'" class="fab-icon">
                 </ion-button>
               </div>
 
               <br><ion-label style="font-size:15px; color:black;">Sonidos</ion-label><br>
               <div class="banderas-row">
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'argentina'" (click)="cambiarSonidos('argentina')">
+                <ion-button class="btn-bandera" [class.selected]="temaSonidos === 'argentina'" (click)="cambiarSonidos('argentina')">
                   <img [src]="'assets/argentina/argentina.png'" [alt]="'Argentina'" class="fab-icon">
                 </ion-button>
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'profesional'" (click)="cambiarSonidos('profesional')">
+                <ion-button class="btn-bandera" [class.selected]="temaSonidos === 'profesional'" (click)="cambiarSonidos('profesional')">
                   <img [src]="'assets/profesional/briefcase (1).png'" [alt]="'Profesional'" class="fab-icon">
                 </ion-button>
-                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'naif'" (click)="cambiarSonidos('naif')">
+                <ion-button class="btn-bandera" [class.selected]="temaSonidos === 'naif'" (click)="cambiarSonidos('naif')">
                   <img [src]="'assets/naif/paint2.png'" [alt]="'Naif'" class="fab-icon">
                 </ion-button>
               </div>
