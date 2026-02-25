@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, Directive, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
@@ -9,6 +9,7 @@ import { LogoComponent } from 'src/app/shared/components/logo/logo.component';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { TemasService } from 'src/app/services/temas.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { CambiarTemasComponent } from 'src/app/shared/components/cambiar-temas/cambiar-temas.component';
 
 @Component({
@@ -20,7 +21,8 @@ import { CambiarTemasComponent } from 'src/app/shared/components/cambiar-temas/c
     ReactiveFormsModule,
     IonicModule,
     LogoComponent, 
-    CustomInputComponent],
+    CustomInputComponent,
+    SharedModule,],
     standalone: true
 })
 export class AuthPage implements OnInit {
@@ -59,10 +61,11 @@ export class AuthPage implements OnInit {
         localStorage.setItem('username', username);
         this.utilsSvc.routerLink('/main');
 
-        if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('wolf.wav');
-        if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('page.wav');
-        if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('quick-notification.wav');
-        if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('tango2.mp3');
+        // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('wolf.wav');
+        // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('page.wav');
+        // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('quick-notification.wav');
+        // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('tango2.mp3');
+        this.utilsSvc.play('login');
 
       }).catch(error => {
         console.log(error);
@@ -90,10 +93,11 @@ export class AuthPage implements OnInit {
 
 
   autocompletarUsuario(usuario: {correo:string, clave:string}){
-    if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('christmasuser.wav');
-    if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('toy1.wav');
-    if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('classic-click.wav');
-    if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('mate1.mp3');
+    // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('christmasuser.wav');
+    // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('toy1.wav');
+    // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('classic-click.wav');
+    // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('mate1.mp3');
+    this.utilsSvc.play('usuario');
 
     this.form.patchValue({
       email: usuario.correo,

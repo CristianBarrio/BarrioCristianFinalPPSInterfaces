@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
+        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline" class="arrow-back"></ion-icon>
       </ion-buttons>
       <ion-title>Realizar pedido</ion-title>
     </ion-toolbar>
@@ -11,7 +11,7 @@
   <ion-content class="ion-padding pascua">
     <ion-grid>
       <ion-item class="itemB ion-text-center pedido-card" lines="none">
-        <ion-label>Platos</ion-label>
+        <ion-label class="font-bar">Platos</ion-label>
       </ion-item>
       <ng-container *ngFor="let producto of productos | async">
         <ion-row *ngIf="producto.tipo === 'plato'">
@@ -30,10 +30,10 @@
               </ion-row>
             </ion-grid>
             <ion-card-header>
-              <ion-card-title>{{producto.nombre}} ${{producto.precio}}</ion-card-title>
-              <ion-card-subtitle>Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
+              <ion-card-title class="font-bar">{{producto.nombre}} ${{producto.precio}}</ion-card-title>
+              <ion-card-subtitle class="font-bar">Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content class="font-bar">
               {{producto.descripcion}}
             </ion-card-content>
             <ion-grid>
@@ -45,7 +45,7 @@
                   </ion-button>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
-                  <ion-input class="ion-text-center" ion-text-center type="text" min="0"
+                  <ion-input class="ion-text-center pedido-input" ion-text-center type="text" min="0"
                     [value]="calcularCantidad(producto.uid)" [readonly]="true"></ion-input>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
@@ -61,7 +61,7 @@
 
 
       <ion-item class="ion-margin-top itemA ion-text-center pedido-card" lines="none">
-        <ion-label>Bebidas</ion-label>
+        <ion-label class="font-bar">Bebidas</ion-label>
       </ion-item>
       <ng-container *ngFor="let producto of productos | async ; index as i">
         <ion-row *ngIf="producto.tipo === 'bebida'">
@@ -80,10 +80,10 @@
               </ion-row>
             </ion-grid>
             <ion-card-header>
-              <ion-card-title>{{producto.nombre}} ${{producto.precio}}</ion-card-title>
-              <ion-card-subtitle>Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
+              <ion-card-title class="font-bar">{{producto.nombre}} ${{producto.precio}}</ion-card-title>
+              <ion-card-subtitle class="font-bar">Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content class="font-bar">
               {{producto.descripcion}}
             </ion-card-content>
             <ion-grid>
@@ -95,7 +95,7 @@
                   </ion-button>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
-                  <ion-input class="ion-text-center" ion-text-center type="text" min="0"
+                  <ion-input class="ion-text-center pedido-input" ion-text-center type="text" min="0"
                     [value]="calcularCantidad(producto.uid)" [readonly]="true"></ion-input>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
@@ -110,7 +110,7 @@
       </ng-container>
 
       <ion-item class="ion-margin-top itemB ion-text-center pedido-card" lines="none">
-        <ion-label>Postres</ion-label>
+        <ion-label class="font-bar">Postres</ion-label>
       </ion-item>
 
       <ng-container *ngFor="let producto of productos | async">
@@ -130,10 +130,10 @@
               </ion-row>
             </ion-grid>
             <ion-card-header>
-              <ion-card-title>{{producto.nombre}} ${{producto.precio}}</ion-card-title>
-              <ion-card-subtitle>Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
+              <ion-card-title class="font-bar">{{producto.nombre}} ${{producto.precio}}</ion-card-title>
+              <ion-card-subtitle class="font-bar">Tiempo: {{producto.tiempoPreparacion}} minutos</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content>
+            <ion-card-content class="font-bar">
               {{producto.descripcion}}
             </ion-card-content>
             <ion-grid>
@@ -145,7 +145,7 @@
                   </ion-button>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
-                  <ion-input class="ion-text-center" ion-text-center type="text" min="0"
+                  <ion-input class="ion-text-center pedido-input" ion-text-center type="text" min="0"
                     [value]="calcularCantidad(producto.uid)" [readonly]="true"></ion-input>
                 </ion-col>
                 <ion-col size="4" class="ion-text-center">
@@ -175,7 +175,7 @@
             <ion-row>
               <ion-col>
                 <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
-                  <label>Detalle</label>
+                  <label class="font-bar">Detalle</label>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -184,7 +184,7 @@
               <ion-row>
                 <ion-col>
                   <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
-                    <ion-label>El pedido está vacío</ion-label>
+                    <ion-label class="font-bar">El pedido está vacío</ion-label>
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -194,21 +194,21 @@
               <ion-col>
                 <ng-container *ngFor="let producto of pedido.productos">
                   <ion-item *ngIf="producto.tipo === 'plato'" class="itemA">
-                    <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+                    <ion-label class="font-bar">x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
                       ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
                   </ion-item>
                 </ng-container>
                 <hr>
                 <ng-container *ngFor="let producto of pedido.productos">
                   <ion-item *ngIf="producto.tipo === 'bebida'" class="itemA">
-                    <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+                    <ion-label class="font-bar">x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
                       ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
                   </ion-item>
                 </ng-container>
                 <hr>
                 <ng-container *ngFor="let producto of pedido.productos">
                   <ion-item *ngIf="producto.tipo === 'postre'" class="itemA">
-                    <ion-label>x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
+                    <ion-label class="font-bar">x{{ producto.cantidad }} {{ producto.nombre }} | ${{ producto.precio }} | TOTAL:
                       ${{producto.precio * producto.cantidad | number : "1.2-2"}}</ion-label>
                   </ion-item>
                 </ng-container>
@@ -218,7 +218,7 @@
             <ion-row>
               <ion-col>
                 <ion-item class="ion-margin-top itemB ion-text-center" lines="none">
-                  <ion-label style="font-size: 64px;">${{ total | number : "1.2-2" }}</ion-label>
+                  <ion-label class="font-bar total">${{ total | number : "1.2-2" }}</ion-label>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -228,20 +228,20 @@
       </ng-template>
     </ion-modal>
 
-    <div class="fondo-pascua" aria-hidden="true">
+    <!-- <div class="fondo-pascua" aria-hidden="true">
       <div class="fondo">
         <div class="patron"></div>
       </div>
       <div>
         <div class="patron"></div>
       </div>
-    </div>
+    </div> -->
     
     <div class="footer-pedido pascua">
       <ion-toolbar style="--border-width: 0px 0px 0px 0px;">
-        <ion-title style="font-size: 18px">${{ total | number : "1.2-2" }}<br>Demora: {{ tiempo }} min.</ion-title>
+        <ion-title class="font-bar demoradinero">${{ total | number : "1.2-2" }}<br>Demora: {{ tiempo }} min.</ion-title>
         <ion-button slot="end" class="customButtonA ion-margin-end" (click)="confirm(pedido)" [hidden]="pedido.productos.length === 0" [disabled]="pedido.productos.length === 0">
-          <ion-label>Confirmar</ion-label>
+          <ion-label class="font-bar">Confirmar</ion-label>
         </ion-button>
       </ion-toolbar>
     </div>

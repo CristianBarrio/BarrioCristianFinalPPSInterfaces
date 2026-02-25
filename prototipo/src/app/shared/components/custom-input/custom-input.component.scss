@@ -1,3 +1,23 @@
 .custom-input {
     margin-bottom: 0px;
   }  
+
+:host ion-button {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  --border-radius: 50%;
+
+  font-size: 14px;
+}
+
+:host ion-button ion-icon {
+  font-size: 18px;
+}

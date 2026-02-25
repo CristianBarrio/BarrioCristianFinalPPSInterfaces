@@ -4,8 +4,179 @@
   </ion-fab-button>
 
   <ion-fab-list side="bottom">
-    <ion-fab-button *ngFor="let tema of temas" (click)="cambiarTema(tema.name)">
-      <img [src]="tema.icon" [alt]="tema.name" class="fab-icon">
+    <ion-fab-button id="click-trigger">
+      <ion-popover trigger="click-trigger" triggerAction="click" cssClass="theme-editor-popover" class="theme-editor-popover"> 
+        <ng-template>
+            <ion-content class="ion-padding">
+                <ion-item>
+                  <ion-label style="font-size:15px;">Fondo</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.background"
+                        >
+                </ion-item>
+
+                <ion-item>
+                  <ion-label style="font-size:15px;">Botones</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.btnColor"
+                        >
+                </ion-item>
+
+                <ion-item>
+                  <ion-label style="font-size:15px;">Texto</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.textColor"
+                        >
+                </ion-item>
+
+                <ion-item>
+                  <ion-label style="font-size:15px;">Íconos/Detalles</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.iconColor"
+                        >
+                </ion-item>
+
+                <ion-item>
+                  <ion-label style="font-size:15px;">Logo de la app</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.logoColor"
+                        >
+                </ion-item>
+
+                <ion-item>
+                  <ion-label style="font-size:15px;">Barra de Título</ion-label>
+                  <input type="color"
+                        [(ngModel)]="theme.toolbarColor"
+                        >
+                </ion-item>
+
+                 <ion-item>
+                  <ion-label style="font-size:15px;">Fuente</ion-label>
+                  <ion-select [(ngModel)]="theme.fontFamily" interface="popover" interfaceOptions="{ cssClass: 'font-select-popover' }">
+                    <ion-select-option value="Arial, Helvetica, sans-serif">Arial</ion-select-option>
+                    <ion-select-option value="'Girassol', serif">Argentina</ion-select-option>
+                    <ion-select-option value="'DM Serif Text', serif">Profesional</ion-select-option>
+                    <ion-select-option value="'Pacifico', cursive">Naif</ion-select-option>
+                    <ion-select-option value="'Mountains of Christmas', serif">Navideña</ion-select-option>
+                    <ion-select-option value="'Creepster', system-ui">Halloween</ion-select-option>
+                    <ion-select-option value="'Chewy', system-ui">Pascuas</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+               <br>
+               <ion-label style="font-size:15px; color:black;">Tamaño del texto</ion-label>
+                <ion-range min="12" max="22" step="1" snaps="true" ticks="true" [(ngModel)]="fontSizeTemp">
+                  <ion-label slot="end" style="font-size:15px; color:black;">{{ fontSizeTemp }}px</ion-label>
+                </ion-range>
+
+                <!-- <ion-item>
+                  <ion-label>Altura del botón</ion-label>
+                  <ion-select
+                    [(ngModel)]="btnHeightTemp">
+                    <ion-select-option *ngFor="let h of btnHeights" [value]="h">
+                      {{ h }} px
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>Ancho del botón</ion-label>
+                  <ion-select
+                    [(ngModel)]="btnWidthTemp">
+                    <ion-select-option *ngFor="let w of btnWidths" [value]="w">
+                      {{ w }} px
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item> -->
+
+                <!-- <ion-label style="font-size:15px;">Posición de los botones</ion-label>
+                <ion-item>
+                  <ion-segment [(ngModel)]="theme.btnPosition">
+                    <ion-segment-button value="left">
+                    Izquierda
+                    </ion-segment-button>
+                    <ion-segment-button value="center">
+                    Centro
+                    </ion-segment-button>
+                    <ion-segment-button value="right">
+                    Derecha
+                    </ion-segment-button>
+                  </ion-segment>
+                </ion-item> -->
+                
+              <br>
+              <ion-label style="font-size:15px; color:black;">Forma de los botones</ion-label><br>
+              <div class="button-shape-selector shape-row">
+                <ion-button
+                  class="user-button btn-round"
+                  fill="outline"
+                  [class.active]="theme.btnShape === 'round'"
+                  shape="round"
+                  (click)="theme.btnShape = 'round'"
+                ></ion-button>
+
+                <ion-button
+                  class="user-button btn-rect"
+                  fill="outline"
+                  [class.active]="theme.btnShape === 'rect'"
+                  (click)="theme.btnShape = 'rect'"
+                ></ion-button>
+
+                <ion-button
+                  class="user-button btn-square"
+                  fill="outline"
+                  [class.active]="theme.btnShape === 'square'"
+                  (click)="theme.btnShape = 'square'"
+                  style="--border-radius: 0"
+                ></ion-button>
+              </div>
+
+              <br>
+              <ion-label style="font-size:15px; color:black;">Imágenes</ion-label>
+              <br>
+              <div class="banderas-row">
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'argentina'" (click)="cambiarIconos('argentina')">
+                  <img [src]="'assets/argentina/argentina.png'" [alt]="'Argentina'" class="fab-icon">
+                </ion-button>
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'profesional'" (click)="cambiarIconos('profesional')">
+                  <img [src]="'assets/profesional/briefcase (1).png'" [alt]="'Profesional'" class="fab-icon">
+                </ion-button>
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaIconos === 'naif'" (click)="cambiarIconos('naif')">
+                  <img [src]="'assets/naif/paint2.png'" [alt]="'Naif'" class="fab-icon">
+                </ion-button>
+              </div>
+
+              <br><ion-label style="font-size:15px; color:black;">Sonidos</ion-label><br>
+              <div class="banderas-row">
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'argentina'" (click)="cambiarSonidos('argentina')">
+                  <img [src]="'assets/argentina/argentina.png'" [alt]="'Argentina'" class="fab-icon">
+                </ion-button>
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'profesional'" (click)="cambiarSonidos('profesional')">
+                  <img [src]="'assets/profesional/briefcase (1).png'" [alt]="'Profesional'" class="fab-icon">
+                </ion-button>
+                <ion-button class="btn-bandera" [attr.aria-pressed]="temaSonidos === 'naif'" (click)="cambiarSonidos('naif')">
+                  <img [src]="'assets/naif/paint2.png'" [alt]="'Naif'" class="fab-icon">
+                </ion-button>
+              </div>
+
+              <ion-button (click)="aplicarCambios()" class="btn-aceptar" expand="block" style="font-size:16px;">Aplicar Tema Custom</ion-button>
+            </ion-content>
+        </ng-template>
+      </ion-popover>
+      <img [src]="'assets/custom.png'" [alt]="'Custom'" class="fab-icon">
     </ion-fab-button>
+
+
+    <ion-fab-button (click)="cambiarTema('argentina')">
+      <img [src]="'assets/argentina/argentina.png'" [alt]="'Argentina'" class="fab-icon">
+    </ion-fab-button>
+    <ion-fab-button (click)="cambiarTema('profesional')">
+      <img [src]="'assets/profesional/briefcase (1).png'" [alt]="'Profesional'" class="fab-icon">
+    </ion-fab-button>
+    <ion-fab-button (click)="cambiarTema('naif')">
+      <img [src]="'assets/naif/paint2.png'" [alt]="'Naif'" class="fab-icon">
+    </ion-fab-button>
+
   </ion-fab-list>
 </ion-fab>
+

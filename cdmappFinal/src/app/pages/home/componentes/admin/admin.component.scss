@@ -29,7 +29,16 @@ ion-item{
   margin-top: 6px;
 }
 
+
 .acciones ion-button {
   flex: 1;
-  font-size: 14px;
+  // font-size: 14px;
+  color: var(--custom-textColor);
+}
+
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
 }

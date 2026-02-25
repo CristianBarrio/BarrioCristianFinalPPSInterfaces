@@ -52,7 +52,7 @@ import { CustomInputComponent } from "./componentes/custom-input/custom-input.co
     PushComponent,
     LogoComponent,
     HeaderComponent,
-    CustomInputComponent
+    CustomInputComponent,
   ],
   schemas: [
   CUSTOM_ELEMENTS_SCHEMA

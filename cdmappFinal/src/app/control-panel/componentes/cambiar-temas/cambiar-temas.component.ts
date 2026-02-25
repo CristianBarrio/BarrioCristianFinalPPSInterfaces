@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
 import { TemasService } from 'src/app/servicios/temas.service';
 import { UtilsService } from 'src/app/servicios/utils.service';
 
@@ -16,7 +17,7 @@ export class CambiarTemasComponent {
   esSplash = false;
 
   temas = [
-    { name: 'festivo', icon: 'assets/custom/confetti2.png' },
+    { name: 'festivo', icon: 'assets/custom.png' },
     { name: 'argentina', icon: 'assets/argentina/argentina.png' },
     { name: 'profesional', icon: 'assets/profesional/briefcase (1).png' },
     { name: 'naif', icon: 'assets/naif/paint2.png' }
@@ -25,8 +26,12 @@ export class CambiarTemasComponent {
   //temaActual: string = localStorage.getItem('theme') || 'argentina';
   actualIcon: string = 'assets/argentina/argentina.png';
   colorToast: string = 'primary';
+  temaSonidos: string = 'argentina';
+  temaIconos: string = 'argentina';
   
-  constructor(private temaSvc: TemasService) {
+  constructor(private temaSvc: TemasService,
+    private popoverCtrl: PopoverController
+  ) {
     const temaGuardado = localStorage.getItem('theme');
     const iconoGuardado = localStorage.getItem('themeIcon');
 
@@ -79,14 +84,80 @@ export class CambiarTemasComponent {
     localStorage.setItem('theme', tema);
     localStorage.setItem('themeIcon', this.actualIcon);
 
-    this.utilsSvc.presentToast({
-      message: `Tema ${tema}`,
-      duration: 2000,
-      color: this.colorToast,
-      position: 'bottom',
-      icon: 'color-palette-outline',
+    // this.utilsSvc.presentToast({
+    //   message: `Tema ${tema}`,
+    //   duration: 2000,
+    //   color: this.colorToast,
+    //   position: 'bottom',
+    //   icon: 'color-palette-outline',
       
-      cssClass: 'custom-toast'
-    });
+    //   cssClass: 'custom-toast'
+    // });
+  }
+
+  defaultTheme = {
+    background: '#f7a240',
+    textColor: '#000000',
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontSize: '15px',
+    btnColor: '#9537ec',
+    buttonHeight: '44px',
+    buttonWidth: '100%',
+    logoColor: '#fc0303',
+    toolbarColor: '#10a8d6',
+    iconColor: '#ee32cf',
+
+    btnPosition: 'center',
+    btnShape: 'rect',
+
+    icons: 'argentina',
+    sounds: 'argentina'
+  };
+
+  theme = { ...this.defaultTheme };
+
+  btnSizeTemp = 20;
+  fontSizeTemp = 15;
+
+
+  aplicarCambios() {
+    this.cambiarTema('festivo');
+
+    this.theme.fontSize = `${this.fontSizeTemp}px`;
+
+    const root = document.documentElement.style;
+
+    root.setProperty('--custom-bg', this.theme.background);
+    root.setProperty('--custom-btnColor', this.theme.btnColor);
+    root.setProperty('--custom-textColor', this.theme.textColor);
+    root.setProperty('--custom-fontFamily', this.theme.fontFamily);
+    root.setProperty('--custom-fontSize', this.theme.fontSize);
+    root.setProperty('--custom-logoColor', this.theme.logoColor);
+    root.setProperty('--custom-Toolbar', this.theme.toolbarColor);
+    root.setProperty('--custom-iconColor', this.theme.iconColor);
+
+    this.temaSvc.setTemaIconos(this.temaIconos);
+
+    this.temaSvc.setTemaSonidos(this.temaSonidos);
+
+    document.body.classList.remove(
+      'btn-left', 'btn-center', 'btn-right',
+      'btn-round', 'btn-square', 'btn-rect'
+    );
+
+    document.body.classList.add(
+      `btn-${this.theme.btnPosition}`,
+      `btn-${this.theme.btnShape}`
+    );
+
+    this.popoverCtrl.dismiss();
+  }
+
+  cambiarSonidos(tema:string){
+    this.temaSonidos = tema;
+  }
+
+  cambiarIconos(tema:string){
+    this.temaIconos = tema;
   }
 }

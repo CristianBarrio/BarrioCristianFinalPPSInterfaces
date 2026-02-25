@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/use-lifecycle-interface */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -38,6 +38,8 @@ export class LoginPage {
 
   // temas = ['festivo', 'argentina', 'profesional', 'naif'];
   // temaActual = 'tema-argentina';
+  temas = inject(TemasService);
+  temaActual = `tema-${this.temas.getTema().toLowerCase()}`;
 
   hide: boolean = true;
 
@@ -61,7 +63,7 @@ export class LoginPage {
     private loadingCtrl: LoadingController,
     private alertController: AlertController,
     private toastController: ToastController,
-    private utilsSvc: UtilsService,
+    public utilsSvc: UtilsService,
     //private temaSvc: TemasService
     private pushSvc: PushNotificationService
   ) {

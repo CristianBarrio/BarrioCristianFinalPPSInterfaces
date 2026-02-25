@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class SplashPage  {
 
-  temas = ['tema-argentina', 'tema-profesional', 'tema-naif', 'tema-festivo-navidad', 'tema-festivo-halloween', 'tema-festivo-pascua'];
-  duraciones = [1500, 1500, 1500, 1500, 1500, 1500];
+  temas = ['tema-argentina', 'tema-profesional', 'tema-naif'];//, 'tema-festivo-navidad', 'tema-festivo-halloween', 'tema-festivo-pascua'];
+  duraciones = [1500, 1500, 1500]; //, 1500, 1500, 1500];
   temaActual = this.temas[0];
 
   constructor(public router: Router) {}

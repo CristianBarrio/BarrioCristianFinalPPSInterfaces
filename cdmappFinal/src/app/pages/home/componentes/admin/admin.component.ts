@@ -1,5 +1,6 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
+import { collectionData } from '@angular/fire/firestore';
 import { where } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
 import { TemasService } from 'src/app/servicios/temas.service';
@@ -13,13 +14,13 @@ import { UtilsService } from 'src/app/servicios/utils.service';
 export class AdminComponent implements OnInit {
 
   $clientes = this.firebase.traerColeccion(
-    'usuarios',
+    'usuarios', 
     where('perfil', '==', 'cliente')
   );
-
   constructor(private firebase: FirebaseService,
     private utils: UtilsService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
   }

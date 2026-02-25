@@ -24,10 +24,6 @@ ion-button.expand {
   height: 100%;
 }
 
-ion-input {
-  font-size: 18px;
-}
-
 ion-fab{
   margin-bottom: 70px;
 }
@@ -35,10 +31,6 @@ ion-fab{
 .pedido-card{
   padding: 10px !important;
   margin: 10px auto !important;
-
-  ion-label{
-    font-size: 22px;
-  }
 }
 
 .pascua{
@@ -50,9 +42,7 @@ ion-fab{
   --padding-bottom: 45px;
 }
 
-.itemB{
-  font-size: 22px;
-}
+
 
 .footer-pedido {
   position: bottom;

@@ -2,8 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { where } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
-import { PushNotificationService } from 'src/app/servicios/push-notification.service';
-import OneSignal, { OneSignalPlugin } from 'onesignal-cordova-plugin';
 import { UtilsService } from 'src/app/servicios/utils.service';
 import { PushApiService } from 'src/app/servicios/push-api.service';
 
@@ -21,12 +19,9 @@ export class CocinaComponent implements OnInit {
 
   constructor(
     private firebase: FirebaseService,
-    //private pushService: PushNotificationService,
     private pushService: PushApiService,
     private utilsSvc: UtilsService
   ) {
-    OneSignal.login(this.firebase.usuario['uid']);
-    OneSignal.User.addTag("tipo", "cocinero");
   }
 
   ngOnInit() {

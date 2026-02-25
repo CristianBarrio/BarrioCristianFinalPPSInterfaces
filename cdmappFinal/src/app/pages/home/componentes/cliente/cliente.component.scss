@@ -1,4 +1,15 @@
-.customButtonB ion-label,
-.botonMozo{
-  font-size: 15px;
+// .customButtonB ion-label,
+// .botonMozo{
+//   font-size: 15px;
+// }
+ ion-item, ion-label{
+    --background: transparent !important;
+    --ion-item-background: transparent !important;
+  }
+
+  ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
 }

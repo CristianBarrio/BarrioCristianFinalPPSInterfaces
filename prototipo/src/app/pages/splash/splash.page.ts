@@ -13,8 +13,8 @@ import { CambiarTemasComponent } from 'src/app/shared/components/cambiar-temas/c
 })
 export class SplashPage implements OnInit {
 
-  temas = ['tema-argentina', 'tema-profesional', 'tema-naif', 'tema-festivo-navidad', 'tema-festivo-halloween', 'tema-festivo-pascua'];
-  duraciones = [1500, 1500, 1500, 1500, 1500, 1500];
+  temas = ['tema-argentina', 'tema-profesional', 'tema-naif'];//, 'tema-festivo-navidad', 'tema-festivo-halloween', 'tema-festivo-pascua'];
+  duraciones = [1500, 1500, 1500]; //1500,1500,1500];
   temaActual = this.temas[0];
 
   constructor(public router: Router) {}

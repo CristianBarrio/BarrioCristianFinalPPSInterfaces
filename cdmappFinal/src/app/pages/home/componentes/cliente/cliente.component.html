@@ -4,11 +4,11 @@
       <ion-row>
         <ion-col>
           <ion-item class="itemA" lines="none">
-            <ion-label *ngIf="!usuarioActual.enEspera && !usuarioActual.tieneMesa">Ud. no se encuentra en lista de espera.
+            <ion-label *ngIf="!usuarioActual.enEspera && !usuarioActual.tieneMesa" class="font-bar">Ud. no se encuentra en lista de espera.
               Solicitelo escaneando el código QR</ion-label>
-            <ion-label *ngIf="usuarioActual.enEspera && !usuarioActual.tieneMesa"> Se encuentra en la lista de espera.
+            <ion-label *ngIf="usuarioActual.enEspera && !usuarioActual.tieneMesa" class="font-bar"> Se encuentra en la lista de espera.
             </ion-label>
-            <ion-label *ngIf="usuarioActual.tieneMesa"> Su mesa es la número {{usuarioActual.mesa.numero}} </ion-label>
+            <ion-label *ngIf="usuarioActual.tieneMesa" class="font-bar"> Su mesa es la número {{usuarioActual.mesa.numero}} </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -16,23 +16,25 @@
     <ion-row class="ion-no-margin">
       <ion-col class="ion-text-center">
         <ion-button (click)="scan()" class="botonQr">
-          <img class="ion-margin-top" alt="QR Code" src="../../../assets/qr.svg" style="height: 300px" />
+          <img class="ion-margin-top" alt="QR Code" src="../../../assets/qr2.png"/>
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col class="ion-text-center ">
         <ion-item class="itemA ion-text-center" lines="none">
-          <ion-label>
-            <img class="qrpro" src="assets/profesional/up-chevron1.png" style="height:28px; width: 28px;">
+          <ion-label class="font-bar">
+            <!-- <img class="qrpro" src="assets/profesional/up-chevron1.png" style="height:28px; width: 28px;">
             <img class="qrarg" src="assets/argentina/obelisk-of-buenos-aires.png" style="height:28px; width: 28px;">
             <img class="qrnaif"src="assets/naif/hot-air-balloon.png" style="height:28px; width: 28px;">
-            <img class="qrhal" src="assets/custom/candle (1).png"style="height:28px; width: 28px;">
+            <img class="qrhal" src="assets/custom/candle (1).png"style="height:28px; width: 28px;"> -->
+            <img *ngIf="utilsSvc.getIcon('qr')" [src]="utilsSvc.getIcon('qr')" style="height:28px; width: 28px;">
             Escanee el código QR
-            <img class="qrpro" src="assets/profesional/up-chevron1.png" style="height:28px; width: 28px;">
+            <img *ngIf="utilsSvc.getIcon('qr')" [src]="utilsSvc.getIcon('qr')" style="height:28px; width: 28px;">
+            <!-- <img class="qrpro" src="assets/profesional/up-chevron1.png" style="height:28px; width: 28px;">
             <img class="qrarg" src="assets/argentina/obelisk-of-buenos-aires.png" style="height:28px; width: 28px;">
             <img class="qrnaif"src="assets/naif/hot-air-balloon.png" style="height:28px; width: 28px;">
-            <img class="qrhal" src="assets/custom/candle (1).png" style="height:28px; width: 28px;">
+            <img class="qrhal" src="assets/custom/candle (1).png" style="height:28px; width: 28px;"> -->
           </ion-label>
         </ion-item>
       </ion-col>
@@ -41,10 +43,11 @@
       <ion-col>
         <ion-button size="large" expand="full" (click)="modalChat()" class="botonMozo">
           Consultar al mozo
-          <img class="qrpro" src="assets/profesional/support.png" style="height:30px; width: 30px;">
+          <img *ngIf="utilsSvc.getIcon('consulta')" [src]="utilsSvc.getIcon('consulta')" style="height:27px; width: 27px;">
+          <!-- <img class="qrpro" src="assets/profesional/support.png" style="height:30px; width: 30px;">
           <img class="qrarg" src="assets/argentina/tango.png" style="height:30px; width: 30px;">
           <img class="qrnaif" src="assets/naif/rose.png" style="height:27px; width: 27px;">
-          <img class="qrhal" src="assets/custom/bats.png" style="height:30px; width: 30px;">
+          <img class="qrhal" src="assets/custom/bats.png" style="height:30px; width: 30px;"> -->
         </ion-button>
       </ion-col>
     </ion-row>
@@ -56,13 +59,13 @@
     </ion-row>
     
     <!-- comentar -->
-    <ion-row>
+    <!-- <ion-row>
       <ion-col class="ion-text-center ion-margin-top">
         <ion-button (click)="openModal()" class="customButtonA">Modal Lobby</ion-button>
         <ion-button (click)="modalPedido()" class="customButtonA">Pedido</ion-button>
         <ion-button (click)="modalOpciones()" class="customButtonA">Modal Opciones</ion-button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </ion-grid>
 
   <!-- <div style="padding: 20px; display:flex; flex-direction:column; gap:10px;">

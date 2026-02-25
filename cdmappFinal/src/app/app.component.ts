@@ -20,11 +20,6 @@ export class AppComponent implements OnInit {
    this.initializeApp(); 
      this.platform.ready().then(async () => {
       await BarcodeScanner.installGoogleBarcodeScannerModule();
-
-      // OneSignal.Debug.setLogLevel(6);
-      // OneSignal.initialize('437c386d-d2f2-4a5e-8c5c-49a11c6f90fb');
-
-      // OneSignal.Notifications.requestPermission(true);
     });
   }
 

@@ -39,17 +39,17 @@ export class UtilsService {
   private audio = new Audio();
 
   play(type: 'usuario' | 'login' | 'confirmar' | 'salir' | 'elegir' | 'victoria' | 'atras') {
-    const tema = this.temasSvc.getTema();
+    const tema = this.temasSvc.getTemaSonidos();
 
     const soundMap: Record<string, Record<string, string>> = {
       festivo: {
-        usuario: 'assets/sonidos/festivo/christmasuser.wav',
-        login: 'assets/sonidos/festivo/wolf.wav',
-        confirmar: 'assets/sonidos/festivo/egg-crack1.mp3',
-        salir: 'assets/sonidos/festivo/Christmas Bells1.mp3',
-        elegir: 'assets/sonidos/festivo/soap-bubble.wav',
-        victoria: 'assets/sonidos/festivo/fairy-win.wav',
-        atras: 'assets/sonidos/festivo/cassette.mp3'
+        usuario: 'assets/sonidos/argentina/mate1.mp3',
+        login: 'assets/sonidos/argentina/tango2.mp3',
+        confirmar: 'assets/sonidos/argentina/bandoneon.mp3',
+        salir: 'assets/sonidos/argentina/tango3.mp3',
+        elegir: 'assets/sonidos/argentina/bombo.mp3',
+        victoria: 'assets/sonidos/argentina/gol.mp3',
+        atras: 'assets/sonidos/argentina/chacarera.mp3'
       },
       argentina: {
         usuario: 'assets/sonidos/argentina/mate1.mp3',
@@ -86,6 +86,48 @@ export class UtilsService {
     this.audio.src = src;
     this.audio.currentTime = 0;
     this.audio.play().catch(() => {});
+  }
+
+  getIcon(type: 'logo' | 'login' | 'consulta' | 'qr' | 'salir' | 'cancion'): string {
+
+    const tema = this.temasSvc.getTemaIconos();
+
+    const iconMap: Record<string, Record<string, string>> = {
+      argentina: {
+        logo: 'assets/logoarg.png',
+        login: 'assets/argentina/mate.png',
+        consulta: 'assets/argentina/tango.png',
+        qr: 'assets/argentina/obelisk-of-buenos-aires.png',
+        salir: 'assets/argentina/medialuna.png',
+        cancion: 'assets/argentina/sol-de-mayo.png'
+      },
+      profesional: {
+        logo: 'assets/profesional/logopro.png',
+        login: 'assets/profesional/ink-pen.png',
+        consulta: 'assets/profesional/support.png',
+        qr: 'assets/profesional/up-chevron1.png',
+        salir: 'assets/profesional/log-out-outline.png',
+        cancion: ''
+      },
+      naif: {
+        logo: 'assets/logonaif.png',
+        login: 'assets/naif/paint-brush.png',
+        consulta: 'assets/naif/rose.png',
+        qr: 'assets/naif/hot-air-balloon.png',
+        salir: 'assets/naif/scribble.png',
+        cancion: ''
+      },
+      festivo: {
+        logo: '',
+        login: 'assets/argentina/mate.png',
+        consulta: 'assets/argentina/tango.png',
+        qr: 'assets/argentina/obelisk-of-buenos-aires.png',
+        salir: 'assets/argentina/medialuna.png',
+        cancion: ''
+      }
+    };
+
+    return iconMap[tema]?.[type] ?? '';
   }
 
   enviarMail(mail: string, nombre: string, aceptacion: boolean) {

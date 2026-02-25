@@ -118,141 +118,141 @@
     }
 }
 
-ion-content.tema-festivo-navidad::part(background) {
-    background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
-}
+// ion-content.tema-festivo-navidad::part(background) {
+//     background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+// }
 
-.tema-festivo-navidad {
-  color: #095502;
+// .tema-festivo-navidad {
+//   color: #095502;
 
-  .splash{
-    font-family: "Mountains of Christmas", serif;
-    font-weight: 700;
-    font-style: normal;
-  }
+//   .splash{
+//     font-family: "Mountains of Christmas", serif;
+//     font-weight: 700;
+//     font-style: normal;
+//   }
 
-  h1, ion-label{
-    font-family: "Mountains of Christmas", serif;
-    font-weight: 700;
-    font-style: normal;
-  }
+//   h1, ion-label{
+//     font-family: "Mountains of Christmas", serif;
+//     font-weight: 700;
+//     font-style: normal;
+//   }
 
-    h1{
-        color: #B71C1C;
-        text-shadow: 0 0 3px #FFD700
-        0 0 6px #FFD700
-        0 0 10px #FFD700;
-    }
-    .logo{
-        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
-    }
+//     h1{
+//         color: #B71C1C;
+//         text-shadow: 0 0 3px #FFD700
+//         0 0 6px #FFD700
+//         0 0 10px #FFD700;
+//     }
+//     .logo{
+//         filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+//     }
 
-    background-image: 
-        url('/assets/custom/candy-cane.png'),
-        url('/assets/custom/santa-hat.png'),
-        url('/assets/custom/snowflake.png');
+//     background-image: 
+//         url('/assets/custom/candy-cane.png'),
+//         url('/assets/custom/santa-hat.png'),
+//         url('/assets/custom/snowflake.png');
 
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position:
-        10% 20%,
-        80% 30%,
-        50% 80%,
-        center; 
+//     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+//     background-position:
+//         10% 20%,
+//         80% 30%,
+//         50% 80%,
+//         center; 
         
-    background-size:
-        60px,
-        50px,
-        55px,
-        cover;
-}
+//     background-size:
+//         60px,
+//         50px,
+//         55px,
+//         cover;
+// }
 
-ion-content.tema-festivo-halloween::part(background) {
-    background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
-}
+// ion-content.tema-festivo-halloween::part(background) {
+//     background: radial-gradient(circle at 50% 30%, #fe4e00 0%, #1a0a0a 60%);
+// }
 
-.tema-festivo-halloween {
-  color: white;
+// .tema-festivo-halloween {
+//   color: white;
 
-  .splash{
-    font-family: "Creepster", system-ui;
-    font-weight: 400;
-    font-style: normal;
-  }
+//   .splash{
+//     font-family: "Creepster", system-ui;
+//     font-weight: 400;
+//     font-style: normal;
+//   }
 
-  h1, ion-label{
-    font-family: "Creepster", system-ui;
-    font-weight: 400;
-    font-style: normal;
-  }
+//   h1, ion-label{
+//     font-family: "Creepster", system-ui;
+//     font-weight: 400;
+//     font-style: normal;
+//   }
 
-    .logo{
-        filter: drop-shadow(0 0 8px #fe4e00);
-    }
+//     .logo{
+//         filter: drop-shadow(0 0 8px #fe4e00);
+//     }
 
-      background-image:
-        url('/assets/custom/bats.png'),
-        url('/assets/custom/pumpkin.png'),
-        url('/assets/custom/tombstone.png');
+//       background-image:
+//         url('/assets/custom/bats.png'),
+//         url('/assets/custom/pumpkin.png'),
+//         url('/assets/custom/tombstone.png');
 
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position:
-        30% 20%,
-        70% 30%,
-        40% 75%,
-        center;
+//     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+//     background-position:
+//         30% 20%,
+//         70% 30%,
+//         40% 75%,
+//         center;
         
-    background-size:
-        70px,
-        80px,
-        65px,
-        cover;
-}
+//     background-size:
+//         70px,
+//         80px,
+//         65px,
+//         cover;
+// }
 
-ion-content.tema-festivo-pascua::part(background) {
-    background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
-}
+// ion-content.tema-festivo-pascua::part(background) {
+//     background: linear-gradient(135deg, #f7b5ca, #a3d8f4, #b8e1a9);
+// }
 
-.tema-festivo-pascua {
-  color: #c82519;
+// .tema-festivo-pascua {
+//   color: #c82519;
 
-  .splash{
-    font-family: "Chewy", system-ui;
-    font-weight: 400;
-    font-style: normal;
-  }
+//   .splash{
+//     font-family: "Chewy", system-ui;
+//     font-weight: 400;
+//     font-style: normal;
+//   }
 
-    h1, ion-label{
-      font-family: "Chewy", system-ui;
-      font-weight: 400;
-      font-style: normal;
-    }
+//     h1, ion-label{
+//       font-family: "Chewy", system-ui;
+//       font-weight: 400;
+//       font-style: normal;
+//     }
 
-    h1{
-        color: #795476;
-        text-shadow: 0 0 3px #ff9fcf
-        0 0 6px #ff9fcf
-        0 0 10px #ff9fcf;
-    }
-    .logo{
-        filter: drop-shadow(0 0 8px #ff9fcf);
-    }
+//     h1{
+//         color: #795476;
+//         text-shadow: 0 0 3px #ff9fcf
+//         0 0 6px #ff9fcf
+//         0 0 10px #ff9fcf;
+//     }
+//     .logo{
+//         filter: drop-shadow(0 0 8px #ff9fcf);
+//     }
 
-      background-image:
-        url('/assets/custom/easter-day.png'),
-        url('/assets/custom/easter-bunny.png'),
-        url('/assets/custom/easter-eggs.png');
+//       background-image:
+//         url('/assets/custom/easter-day.png'),
+//         url('/assets/custom/easter-bunny.png'),
+//         url('/assets/custom/easter-eggs.png');
 
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position:
-        15% 25%,
-        70% 2%,
-        50% 75%,
-        center;
+//     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+//     background-position:
+//         15% 25%,
+//         70% 2%,
+//         50% 75%,
+//         center;
 
-    background-size:
-        60px,
-        70px,
-        55px,
-        cover;
-}
+//     background-size:
+//         60px,
+//         70px,
+//         55px,
+//         cover;
+// }
 

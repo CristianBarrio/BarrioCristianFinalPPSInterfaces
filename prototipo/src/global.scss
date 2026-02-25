@@ -37,6 +37,134 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 
+// FONDO, COLOR BTN, COLOR TEXTO, FUENTE, POPOVER DEFECTO
+body.tema-festivo, .elegir-btn, .btn-rejugar{
+  --ion-background-color: var(--custom-bg);
+  --ion-color-primary: var(--custom-btnColor);
+  --ion-text-color: var(--custom-textColor);
+  --ion-font-family: var(--custom-fontFamily);
+}
+
+/* REDONDO */
+body.btn-round ion-button,
+body.btn-round button {
+  --border-radius: 999px;
+  border-radius: 999px;
+}
+
+/* CUADRADO */
+body.btn-square ion-button,
+body.btn-square button {
+  --border-radius: 0;
+  border-radius: 0;
+}
+
+/* RECTANGULAR */
+body.btn-rect ion-button,
+body.btn-rect button {
+  --border-radius: 10px;
+  border-radius: 10px;
+}
+
+//ICONO INPUT
+ion-icon{
+    color: var(--custom-iconColor);
+}
+
+ion-popover.theme-editor-popover ion-content {
+  --background: transparent;
+  --color: #ffffff;
+
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+
+//FONDO  del popover
+ion-popover.theme-editor-popover ion-content::part(background) {
+  background: #ffffff !important;
+}
+
+// BOTONES
+ion-app.tema-festivo ion-button {
+  --color: var(--custom-textColor);
+  
+//   min-height: unset;
+//   min-width: unset;
+ min-height: auto;
+  min-width: auto;
+
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  line-height: 1;
+    font-size: 14px;
+
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tema-festivo{
+    // FORMA DE BOTONES
+    ion-app.btn-round ion-button {
+        width: 75px;  
+        height: 75px;
+        --border-radius: 50%; 
+    }
+    ion-app.btn-round ion-button::part(native) {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+    }
+
+    ion-app.btn-square ion-button {
+        --border-radius: 0px;
+    }
+
+    ion-app.btn-rect ion-button {
+        --border-radius: 8px;
+    }
+}
+
+// LOGO
+.logo-font{
+   color: var(--custom-textColor);
+  font-family: var(--custom-fontFamily);
+}
+.logo{
+    fill: var(--custom-logoColor);
+}
+
+// TOOLBAR
+ion-toolbar{
+    --background: var(--custom-Toolbar);
+}
+
+// TAMAÑO DE FUENTE
+.tema-festivo,
+.tema-festivo .logo-font,
+.tema-festivo body,
+.tema-festivo ion-app,
+.tema-festivo ion-label,
+.tema-festivo ion-text,
+.tema-festivo p,
+.tema-festivo span,
+.tema-festivo ion-button,
+.tema-festivo ion-input,
+.tema-festivo ion-textarea,
+.tema-festivo .btn-cancion,
+.tema-festivo h1{
+  font-size: var(--custom-fontSize);
+}
+
+ion-toolbar {
+  line-height: normal;
+  --min-height: 40px;
+}
+
+
 ion-content.tema-argentina::part(background) {
   background: linear-gradient(to bottom, #74acdf 0%, #ffffff 100%);
 }
@@ -45,12 +173,6 @@ ion-content.tema-argentina::part(background) {
   position: relative;
   transform: translateY(-50px);
 }
-
-ion-content {
-  --padding-top: env(safe-area-inset-top);
-  --padding-bottom: env(safe-area-inset-bottom);
-}
-
 
 // -------------------- TEMAS --------------------
 
@@ -61,6 +183,19 @@ ion-content {
 
 // ARGENTINA
 .tema-argentina{
+
+    // .theme-editor-popover *{
+    //     ion-item{
+    //         --ion-text-color: #ffffff;
+    //     }
+    //     --ion-background-color: #ffffff;
+    //     --ion-text-color: #000000;
+    // }
+      .elegir-btn {
+    --border-radius: 12px; 
+  }
+  
+
     transition: all 0.3s ease-in-out;
 
     ion-content {
@@ -100,6 +235,10 @@ ion-content {
 
 // PROFESIONAL
 .tema-profesional{
+      .elegir-btn {
+    --border-radius: 12px; 
+  }
+  
     transition: all 0.3s ease-in-out;
 
     ion-content {
@@ -153,6 +292,17 @@ ion-content {
 
 // NAIF
 .tema-naif{
+      .elegir-btn {
+    --border-radius: 12px; 
+  }
+  
+        .theme-editor-popover *{
+        ion-item{
+            --ion-text-color: #ffffff;
+        }
+        // --ion-background-color: #ffffff;
+        --ion-text-color: #000000;
+    }
     transition: all 0.3s ease-in-out;
 
     ion-content {
@@ -307,6 +457,23 @@ ion-content {
     }
 }
 
+ion-popover.theme-editor-popover,
+ion-popover.theme-editor-popover * {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+ion-popover.theme-editor-popover .user-button {
+  margin-left: 10px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
+
+ion-popover.theme-editor-popover .user-button .btn-rect {
+  height: 40px !important;
+  min-width: 56px !important;
+  min-height: 40px !important;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=Style+Script&display=swap');
@@ -315,3 +482,4 @@ ion-content {
 @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');

@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { where } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
 import { ChatComponent } from '../chat/chat.component';
@@ -31,6 +31,7 @@ export class MozoComponent implements OnInit {
     where('estado', '==', 'pagando')
   );
 
+  utilsSvc = inject(UtilsService);
   usuarioActual: any;
 
   constructor(
@@ -39,7 +40,7 @@ export class MozoComponent implements OnInit {
     private loadingCtrl: LoadingController,
     //private pushService: PushNotificationService,
     private pushService: PushApiService,
-    private utilsSvc: UtilsService
+    //private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
   }

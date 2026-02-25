@@ -12,10 +12,11 @@ import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { CambiarTemasComponent } from './control-panel/componentes/cambiar-temas/cambiar-temas.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, CambiarTemasComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule],
+  declarations: [AppComponent, CambiarTemasComponent], //quitar formsmodule??
+  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideFirebaseApp(() => initializeApp({"projectId":"pps-sp-b0c30","appId":"1:782214027494:web:79f69b76c7fcad11324327","storageBucket":"pps-sp-b0c30.appspot.com","apiKey":"AIzaSyBYnnuo5INbdxpp7wK7C7Woe5fVWonPH8w","authDomain":"pps-sp-b0c30.firebaseapp.com","messagingSenderId":"782214027494"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())],
   bootstrap: [AppComponent],
 })

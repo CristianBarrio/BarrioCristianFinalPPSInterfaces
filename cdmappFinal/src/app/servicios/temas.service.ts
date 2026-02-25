@@ -9,42 +9,48 @@ export class TemasService {
   private temaActual = new BehaviorSubject<string>('argentina'); 
   temaActual$ = this.temaActual.asObservable();
 
+  // setTema(tema: string) {
+  //   this.temaActual.next(tema);
+  // }
+
+  // getTema(): string {
+  //   return this.temaActual.getValue();
+  // }
+
+  temaSonidos: string = '';
+  temaIconos: string = '';
+
   setTema(tema: string) {
     this.temaActual.next(tema);
+    this.temaSonidos = tema;
+    this.temaIconos = tema;
   }
 
   getTema(): string {
     return this.temaActual.getValue();
   }
+
+  setTemaSonidos(tema: string) {
+    this.temaSonidos = tema;
+    if(this.temaActual.getValue() === 'argentina' || this.temaActual.getValue() === 'profesional' || this.temaActual.getValue() === 'naif'){
+      this.temaSonidos = '';
+    }
+  }
+  
+  getTemaSonidos(): string {
+    return this.temaSonidos;
+  }
+
+  setTemaIconos(tema: string){
+    this.temaIconos = tema;
+    if(this.temaActual.getValue() === 'argentina' || this.temaActual.getValue() === 'profesional' || this.temaActual.getValue() === 'naif'){
+      this.temaIconos = '';
+    }
+  }
+
+  getTemaIconos(): string {
+    return this.temaIconos;
+  }
 }
 
-// @Injectable({ providedIn: 'root' })
-// export class TemasService {
-
-//   private temaActual = new BehaviorSubject<string>('argentina');
-//   temaActual$ = this.temaActual.asObservable();
-
-//   setTema(tema: string) {
-//     this.temaActual.next(tema);
-
-//     document.body.classList.remove(
-//       'tema-argentina',
-//       'tema-festivo',
-//       'tema-profesional',
-//       'tema-naif'
-//     );
-//     document.body.classList.add(`tema-${tema}`);
-    
-//     localStorage.setItem('theme', tema);
-//   }
-
-//   initTema() {
-//     const guardado = localStorage.getItem('theme') || 'argentina';
-//     this.setTema(guardado);
-//   }
-
-//   getTema() {
-//     return this.temaActual.getValue();
-//   }
-// }
 

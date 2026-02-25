@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -21,13 +21,12 @@ export class HomePage implements OnInit {
   cancionesActuales: any[] = [];
   ganadora: any = null;
   temaActual = 'argentina';
-
+  utilsSvc = inject(UtilsService);
   constructor(
     private router: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private firebase: FirebaseService,
-    private temaSvc: TemasService,
-    private utilsSvc: UtilsService
+    private temaSvc: TemasService
   ) {}
 
   ngOnInit() {
@@ -61,11 +60,12 @@ export class HomePage implements OnInit {
   }
 
   elegirCancion(cancionSeleccionada: any) {
-    if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('soap bubble.wav');
-    if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('pen-click.wav');
-    if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('naif-cancion.wav');
-    if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('bombo.mp3');
-    
+    // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('soap bubble.wav');
+    // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('pen-click.wav');
+    // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('naif-cancion.wav');
+    // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('bombo.mp3');
+    this.utilsSvc.play('elegir');
+
     const cancionEliminada =
       this.cancionesActuales[0] === cancionSeleccionada
         ? this.cancionesActuales[1]
@@ -84,10 +84,11 @@ export class HomePage implements OnInit {
       this.cancionesActuales = [];
       this.cdr.detectChanges();
 
-      if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('fairy-win.wav');
-      if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('wind-chimes.wav');
-      if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('fantasy-game-success.wav');
-      if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('gol.mp3');
+      // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('fairy-win.wav');
+      // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('wind-chimes.wav');
+      // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('fantasy-game-success.wav');
+      // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('gol.mp3');
+      this.utilsSvc.play('victoria');
       return;
     }
   
@@ -99,19 +100,21 @@ export class HomePage implements OnInit {
   }
 
   jugarDeNuevo(){
-    if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('Jingle Halloween1.mp3');
-    if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('xylophone.wav');
-    if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('cassette.mp3');
-    if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('chacarera.mp3');
-    
+    // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('Jingle Halloween1.mp3');
+    // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('xylophone.wav');
+    // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('cassette.mp3');
+    // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('chacarera.mp3');
+    this.utilsSvc.play('atras');
+
     this.utilsSvc.routerLink('main');
   }
   
   signOut(){
-    if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('Christmas Bells1.mp3');
-    if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('bubbles-popping.wav');
-    if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('door-close.wav');
-    if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('tango3.mp3');
+    // if(this.temaActual === 'tema-festivo') this.utilsSvc.reproducirSonido('Christmas Bells1.mp3');
+    // if(this.temaActual === 'tema-naif') this.utilsSvc.reproducirSonido('bubbles-popping.wav');
+    // if(this.temaActual === 'tema-profesional') this.utilsSvc.reproducirSonido('door-close.wav');
+    // if(this.temaActual === 'tema-argentina') this.utilsSvc.reproducirSonido('tango3.mp3');
+    this.utilsSvc.play('salir');
 
     this.firebase.signOut();
   }

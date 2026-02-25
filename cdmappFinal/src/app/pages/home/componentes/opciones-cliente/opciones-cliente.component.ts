@@ -1,7 +1,8 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController, NavParams } from '@ionic/angular';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
+import { UtilsService } from 'src/app/servicios/utils.service';
 
 @Component({
   selector: 'app-opciones-cliente',
@@ -13,6 +14,7 @@ export class OpcionesClienteComponent {
   //pedidoActual = this.navParams.get('pedidoActual');
   @Input() usuarioActual: any;
   @Input() pedidoActual: any;
+  utilsSvc = inject(UtilsService);
   constructor(
     private modalCtrl: ModalController,
     private navParams: NavParams,

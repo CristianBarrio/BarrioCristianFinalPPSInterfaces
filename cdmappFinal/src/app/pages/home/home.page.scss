@@ -44,18 +44,18 @@
 //     font-family: $fuente;
 
 // }
-.tema-festivo{
+// .tema-festivo{
 
-    ion-content{
-        --background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
-    }
-}
+//     ion-content{
+//         --background: linear-gradient(to bottom, #FDF6F0, #E3F2FD 80%);
+//     }
+// }
 
 .salir-img {
     width: 40px;
     height: 40px;
     margin-left: 8px;
-    background-image: var(--salir-icon);
+    //background-image: var(--salir-icon);
     background-size: cover;
     background-position: center;
 }

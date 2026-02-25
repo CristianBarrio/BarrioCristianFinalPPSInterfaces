@@ -1,24 +1,6 @@
 <div class="encuestas pascua">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <!-- <ion-buttons slot="start">
-        <ion-icon slot="start" (click)="cancel()" size="large" name="arrow-back-outline"></ion-icon>
-      </ion-buttons> -->
-
-      <!-- <ion-segment (ionChange)="segmentChanged($event)" value="torta">
-        <ion-segment-button value="torta">
-          <ion-label>Servicio</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="barras">
-          <ion-label>Velocidad</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="linea">
-          <ion-label>Precios</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="comentarios">
-          <ion-label>Comentarios</ion-label>
-        </ion-segment-button>
-      </ion-segment> -->
       <ion-title class="ion-text-center"><strong>Encuestas</strong></ion-title>
     </ion-toolbar>
   </ion-header>
@@ -63,7 +45,7 @@
       <div *ngSwitchCase="'comentarios'">
         <ion-card class="comentarios-card">
           <ion-card-header>
-            <ion-card-title>Comentarios</ion-card-title>
+            <ion-card-title class="coment-title">Comentarios</ion-card-title>
           </ion-card-header>
 
           <ion-card-content class="comentarios-content">
@@ -84,13 +66,13 @@
       <ion-button class="encuesta-btn buttonE4" expand="block" shape="square" [ngClass]="{ active: btnElegido === 'comentarios' }" (click)="elegirBoton('comentarios')">Comentarios</ion-button>
     </div>
 
-    <div class="fondo-pascua" aria-hidden="true">
+    <!-- <div class="fondo-pascua" aria-hidden="true">
       <div class="fondo">
         <div class="patron"></div>
       </div>
       <div>
         <div class="patron"></div>
       </div>
-    </div>
+    </div> -->
   </ion-content>
 </div>

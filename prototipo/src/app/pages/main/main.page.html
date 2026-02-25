@@ -20,17 +20,14 @@
 
     
     <div *ngIf="!artista" class="centro-contenedor">
-      <img *ngIf="temaActual === 'tema-profesional'" src="assets/profesional/up-chevron1.png" height=100px width=100px>
+      <!-- <img *ngIf="temaActual === 'tema-profesional'" src="assets/profesional/up-chevron1.png" height=100px width=100px>
       <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/obelisk-of-buenos-aires.png" height=100px width=100px>
-      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/hot-air-balloon.png" height=100px width=100px>
-      <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/candle (1).png" height=100px width=100px style="margin-left: 22px;">
-
-      <img *ngIf="temaActual !== 'tema-profesional' &&
-            temaActual !== 'tema-argentina' &&
-            temaActual !== 'tema-naif' &&
-            temaActual !== 'tema-festivo'"
-            src="assets/up-arrow.png" height=100px width=100px>
-
+      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/hot-air-balloon.png" height=100px width=100px> -->
+      <!-- <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/candle (1).png" height=100px width=100px style="margin-left: 22px;"> -->
+      <img *ngIf="utilsSvc.getIcon('flecha')" [src]="utilsSvc.getIcon('flecha')" height=100px width=100px>
+      <!-- <img *ngIf="temaActual === 'tema-festivo'" src="assets/up-arrow.png" height=100px width=100px> -->
+       <!-- &&
+            temaActual !== 'tema-festivo' -->
       <h1>Ingresá un artista o banda de Spotify</h1>
     </div>
 
@@ -43,11 +40,12 @@
 
         <br>
         <ion-button
-          expand="block"
+          
           (click)="confirmarArtista()"
           [disabled]="cancionesArtista.length < 4"
           class="elegir-btn"
         >
+        <!-- expand="block" -->
           Elegí tu canción favorita
         </ion-button>
       </div>
@@ -61,26 +59,27 @@
       <ion-text color="danger">{{ msgError }}</ion-text>
     </div>
 
-    <ion-button class="signOut" expand="block" (click)="signOut()">Cerrar Sesión
-      <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/tombstone.png" height="35px" width="35px" style="margin-left: 8px;" slot="end">
-      <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/scribble.png" height="40px" width="40px" style="margin-left: 8px;" slot="end">
-      <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/medialuna.png" height="40px" width="40px" style="margin-left: 8px;" slot="end">
-
-      <ion-icon *ngIf="temaActual !== 'tema-argentina' 
+    <ion-button class="signOut" (click)="signOut()">Cerrar Sesión
+      <!-- expand="block" -->
+      <!-- <img *ngIf="temaActual === 'tema-festivo'" src="assets/custom/tombstone.png" height="35px" width="35px" style="margin-left: 8px;" slot="end"> -->
+      <!-- <img *ngIf="temaActual === 'tema-naif'" src="assets/naif/scribble.png" height="40px" width="40px" style="margin-left: 8px;" slot="end">
+      <img *ngIf="temaActual === 'tema-argentina'" src="assets/argentina/medialuna.png" height="40px" width="40px" style="margin-left: 8px;" slot="end"> -->
+      <img *ngIf="utilsSvc.getIcon('salir')" [src]="utilsSvc.getIcon('salir')" height="40px" width="40px" style="margin-left: 8px;" slot="end">
+      <!-- <ion-icon *ngIf="temaActual !== 'tema-argentina' 
                     && temaActual !== 'tema-naif'
                     && temaActual !== 'tema-festivo'" 
-                    slot="end" name="log-out-outline"></ion-icon>
+                    slot="end" name="log-out-outline"></ion-icon> -->
      </ion-button>
 
   </div>
 
-  <div [ngClass]="temaActual" *ngIf="temaActual === 'tema-festivo'" class="animacion" aria-hidden="true">
+  <!-- <div [ngClass]="temaActual" *ngIf="temaActual === 'tema-festivo'" class="animacion" aria-hidden="true">
       <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
       <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
       <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
       <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
       <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
       <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
-  </div>
+  </div> -->
 </ion-content>
 

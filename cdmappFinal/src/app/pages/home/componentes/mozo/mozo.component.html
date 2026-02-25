@@ -1,10 +1,11 @@
 <div class="mozo halloween">
-  <ion-button style="font-size: 20px;" size="large" expand="full" (click)="modalChat()" class="customButtonA ion-margin">
+  <ion-button style="font-size: 20px;" size="large" expand="block" (click)="modalChat()" class="customButtonA ion-margin">
     <ion-label>Consultas de clientes
-       <img class="qrpro" src="assets/profesional/support.png" style="height:30px; width: 30px;">
+       <!-- <img class="qrpro" src="assets/profesional/support.png" style="height:30px; width: 30px;">
         <img class="qrarg" src="assets/argentina/tango.png" style="height:30px; width: 30px;">
         <img class="qrnaif" src="assets/naif/rose.png" style="height:27px; width: 27px;">
-        <img class="qrhal" src="assets/custom/bats.png" style="height:30px; width: 30px;">
+        <img class="qrhal" src="assets/custom/bats.png" style="height:30px; width: 30px;"> -->
+        <img [src]="utilsSvc.getIcon('consulta')" style="height:27px; width: 27px;">
     </ion-label>
   </ion-button>
 
@@ -22,20 +23,20 @@
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="{{pedido['mesa'].foto}}" />
             </ion-avatar>
-            <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
+            <ion-label class="font-bar" *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
               {{pedido['mesa'].numero}}</ion-label>
-            <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+            <ion-label class="font-bar" *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
               Mesa №: {{pedido['mesa'].numero}}</ion-label>
           </ion-item>
           <div slot="content">
             <ion-item *ngFor="let producto of pedido['productos']">
-              <ion-label>x{{producto.cantidad}} {{producto.nombre}}</ion-label>
+              <ion-label class="font-bar">x{{producto.cantidad}} {{producto.nombre}}</ion-label>
             </ion-item>
             <ion-item class="ion-align-items-center">
-              <ion-label color="danger" class="ion-align-items-center">Confirmar</ion-label>
+              <ion-label color="danger" class="ion-align-items-center font-bar">Confirmar</ion-label>
                 <ion-button class="btn-confirmar" size="large" expand="block" slot="end"
                   (click)="cambiarEstado(pedido, 'enProceso')">
-                  <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+                  <ion-icon slot="icon-only" name="checkmark-sharp" class="check"></ion-icon>
                 </ion-button>
             </ion-item>
           </div>
@@ -57,26 +58,26 @@
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="{{pedido['mesa'].foto}}" />
             </ion-avatar>
-            <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
+            <ion-label class="font-bar" *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
               {{pedido['mesa'].numero}}</ion-label>
-            <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+            <ion-label class="font-bar" *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
               Mesa №: {{pedido['mesa'].numero}}</ion-label>
           </ion-item>
           <div slot="content">
             <ion-item>
-              <ion-label *ngIf="pedido['listoCocina']">Estado cocina: Listo!</ion-label>
-              <ion-label *ngIf="!pedido['listoCocina']">Estado cocina: En preparación...</ion-label>
+              <ion-label class="font-bar" *ngIf="pedido['listoCocina']">Estado cocina: Listo!</ion-label>
+              <ion-label class="font-bar" *ngIf="!pedido['listoCocina']">Estado cocina: En preparación...</ion-label>
             </ion-item>
             <ion-item>
-              <ion-label *ngIf="pedido['listoBartender']">Estado bar: Listo!</ion-label>
-              <ion-label *ngIf="!pedido['listoBartender']">Estado bar: En preparación...</ion-label>
+              <ion-label class="font-bar" *ngIf="pedido['listoBartender']">Estado bar: Listo!</ion-label>
+              <ion-label class="font-bar" *ngIf="!pedido['listoBartender']">Estado bar: En preparación...</ion-label>
             </ion-item>
             <ion-item class="ion-align-items-center">
-              <ion-label color="warning" class="ion-align-items-center">Entregar</ion-label>
+              <ion-label class="ion-align-items-center font-bar">Entregar</ion-label>
               <ion-button class="btn-confirmar2" size="large" expand="block" slot="end"
                 (click)="cambiarEstado(pedido, 'entregado')"
                 [disabled]="!pedido['listoCocina']  || !pedido['listoBartender']">
-                <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+                <ion-icon slot="icon-only" name="checkmark-sharp" class="check"></ion-icon>
               </ion-button>
             </ion-item>
           </div>
@@ -97,14 +98,14 @@
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="{{pedido['mesa'].foto}}" />
             </ion-avatar>
-            <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
+            <ion-label class="font-bar" *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
               {{pedido['mesa'].numero}}</ion-label>
-            <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+            <ion-label class="font-bar" *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
               Mesa №: {{pedido['mesa'].numero}}</ion-label>
           </ion-item>
           <div slot="content">
             <ion-item *ngFor="let producto of pedido['productos']">
-              <ion-label>x{{producto.cantidad}} {{producto.nombre}}</ion-label>
+              <ion-label class="font-bar">x{{producto.cantidad}} {{producto.nombre}}</ion-label>
             </ion-item>
           </div>
         </ion-accordion>
@@ -126,17 +127,17 @@
             <ion-avatar aria-hidden="true" slot="start">
               <img alt="" src="{{pedido['mesa'].foto}}" />
             </ion-avatar>
-            <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
+            <ion-label class="font-bar" *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
               {{pedido['mesa'].numero}}</ion-label>
-            <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+            <ion-label class="font-bar" *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
               Mesa №: {{pedido['mesa'].numero}}</ion-label>
           </ion-item>
           <div slot="content">
             <ion-item class="ion-align-items-center">
-              <ion-label color="warning" class="ion-align-items-center">Monto: ${{pedido['monto'] | number :
+              <ion-label  class="font-bar ion-align-items-center">Monto: ${{pedido['monto'] | number :
                 "1.2-2"}}</ion-label>
-              <ion-button class="btn-confirmar3" size="large" expand="block" color="warning" slot="end" (click)="cobrarPedido(pedido)">
-                <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+              <ion-button class="btn-confirmar3" size="large" expand="block" slot="end" (click)="cobrarPedido(pedido)">
+                <ion-icon slot="icon-only" name="checkmark-sharp" class="check"></ion-icon>
               </ion-button>
             </ion-item>
           </div>

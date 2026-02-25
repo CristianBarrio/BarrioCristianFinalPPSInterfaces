@@ -1,0 +1,15 @@
+.editable-wrapper {
+  position: relative;
+}
+
+.edit-btn {
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.submit {
+  position: relative;
+}

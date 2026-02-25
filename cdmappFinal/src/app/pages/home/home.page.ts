@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/servicios/firebase.service';
 import { PushNotificationService } from 'src/app/servicios/push-notification.service';
@@ -14,13 +14,14 @@ import { UtilsService } from 'src/app/servicios/utils.service';
 export class HomePage implements OnInit {
   usuarioActual;
   temaActual = 'tema-argentina';
+  utilsSvc = inject(UtilsService);
 
   constructor(
     private pushService: PushNotificationService,
     private firebase: FirebaseService,
     private router: Router,
     private temaSvc: TemasService,
-    private utilsSvc: UtilsService
+    //private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
   }

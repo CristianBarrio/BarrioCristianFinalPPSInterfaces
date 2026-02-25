@@ -68,6 +68,7 @@ export class FirebaseService {
       "https://vtrudepogzohsxpcnygn.supabase.co",
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0cnVkZXBvZ3pvaHN4cGNueWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NzAxMTQsImV4cCI6MjA2MzQ0NjExNH0.jtqJZ7VQya8TXm4CjY7SpjfOUwcETlQillxzHiQsJ1M"
     );
+    console.log('🔥 FirebaseService creado', Math.random());
   }
 
   checkUser() {
@@ -189,6 +190,19 @@ export class FirebaseService {
       q = query(colRef, queryFilter, order);
     } else {
       q = query(colRef, queryFilter);
+    }
+    return collectionData(q);
+  }
+
+  traerColeccionAdmin(coleccion: string, filters: any[], order = null) {
+    console.log('🔥 ENTRE A traerColeccionAdmin');
+  console.log('🔥 FILTROS:', filters);
+    const colRef = collection(this.firestore, coleccion);
+    let q;
+    if (order) {
+      q = query(colRef, ...filters, order);
+    } else {
+      q = query(colRef, ...filters);
     }
     return collectionData(q);
   }

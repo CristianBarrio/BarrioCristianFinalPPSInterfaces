@@ -24,18 +24,19 @@
     <app-bartender *ngIf="usuarioActual.tipo === 'bartender'"></app-bartender>
   </div>
 
-  <div class="animacion-halloween" aria-hidden="true">
+  <!-- <div class="animacion-halloween" aria-hidden="true">
     <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
     <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
     <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
     <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
     <div class="anim-img"><img src="/assets/custom/witch.png" height="35px" width="35px"></div>
     <div class="anim-img"><img src="/assets/custom/ghost.png" height="30px" width="30px"></div>
-  </div>
+  </div> -->
 
   <ion-button class="salir signOut" expand="block" type="salir" (click)="salir()">Cerrar Sesión
-    <div class="salir-img" slot="end"></div>
-    <ion-icon slot="end" name="log-out-outline" class="pro-icon"></ion-icon>
+    <!-- <div class="salir-img" slot="end"></div> -->
+    <img *ngIf="utilsSvc.getIcon('salir')" [src]="utilsSvc.getIcon('salir')" height="40px" width="40px" style="margin-left: 8px;" slot="end">
+    <!-- <ion-icon slot="end" name="log-out-outline" class="pro-icon"></ion-icon> -->
   </ion-button>
 </ion-content>
 

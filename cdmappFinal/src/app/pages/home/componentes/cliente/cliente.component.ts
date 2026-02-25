@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { IonModal, ModalController, ToastController } from '@ionic/angular';
@@ -29,6 +29,7 @@ export class ClienteComponent implements OnInit {
   pedidoActual: any;
 
   pedidoSub: Subscription;
+  utilsSvc = inject(UtilsService);
 
   constructor(
     private router: Router,
@@ -37,7 +38,7 @@ export class ClienteComponent implements OnInit {
     private toastController: ToastController,
     //private pushService: PushNotificationService,
     private pushService: PushApiService,
-    private utilsSvc: UtilsService
+    //private utilsSvc: UtilsService
   ) {
     this.usuarioActual = this.firebase.usuario;
     // setInterval(() => {

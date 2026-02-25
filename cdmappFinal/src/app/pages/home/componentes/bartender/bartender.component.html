@@ -6,16 +6,16 @@
     <ng-container *ngFor="let pedido of $pedidosEnProceso | async">
       <ng-container *ngIf="!pedido['listoBartender']">
         <ion-accordion-group class="item-B bartender-accordion">
-          <ion-accordion toggleIcon="caret-down-circle">
+          <ion-accordion toggleIcon="caret-down-circle" class="accordion1">
             <ion-item slot="header" class="item-B">
-              <ion-icon class="ion-accordion-toggle-icon" name="caret-down-circle" slot="end" color="white">
-              </ion-icon>
+              <!-- <ion-icon class="ion-accordion-toggle-icon" name="caret-down-circle" slot="end">
+              </ion-icon> -->
               <ion-avatar aria-hidden="true" slot="start">
                 <img alt="" src="{{pedido['mesa'].foto}}" />
               </ion-avatar>
               <ion-label *ngIf="pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} (anónimo) Mesa №:
                 {{pedido['mesa'].numero}}</ion-label>
-              <ion-label *ngIf="!pedido['cliente'].esAnonimo">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
+              <ion-label *ngIf="!pedido['cliente'].esAnonimo" class="font-bar">{{pedido['cliente'].nombre}} {{pedido['cliente'].apellido}}
                 Mesa №: {{pedido['mesa'].numero}}</ion-label>
             </ion-item>
             <div slot="content">
@@ -25,9 +25,9 @@
                 </ion-item>
               </ng-container>
               <ion-item class="ion-align-items-center">
-                <ion-label color="warning" class="ion-align-items-center">Entregar</ion-label>
-                <ion-button size="large" expand="block" color="warning" slot="end" class="btn-confirmar" (click)="cambiarEstado(pedido, true)">
-                  <ion-icon slot="icon-only" name="checkmark-sharp"></ion-icon>
+                <ion-label class="ion-align-items-center font-bar">Entregar</ion-label>
+                <ion-button size="large" expand="block" slot="end" class="btn-confirmar" (click)="cambiarEstado(pedido, true)">
+                  <ion-icon slot="icon-only" name="checkmark-sharp" class="check"></ion-icon>
                 </ion-button>
               </ion-item>
             </div>
